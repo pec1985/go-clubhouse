@@ -1,0 +1,29 @@
+package api
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"net/url"
+
+	"github.com/pec1985/go-clubhouse.io/api/models"
+)
+
+// Get a list of all Stories in an Iteration.
+func (a *api) ListIterationStories(iterationPublicId int64, getIterationStories *models.GetIterationStories) (*[]models.StorySlim, error) {
+	params := url.Values{}
+	{
+		kv := map[string]interface{}{}
+		b, _ := json.Marshal(getIterationStories)
+		json.Unmarshal(b, &kv)
+		for k, v := range kv {
+			params.Set(k, fmt.Sprint(v))
+		}
+	}
+	body := bytes.Buffer{}
+	var out []models.StorySlim
+	if err := a.request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"/stories", params, body, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
