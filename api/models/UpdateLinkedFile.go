@@ -3,10 +3,6 @@ package models
 import "encoding/json"
 
 type UpdateLinkedFile struct {
-	// The UUID of the member that uploaded the file.
-	UploaderId string `json:"uploader_id"`
-	// The URL of linked file.
-	Url string `json:"url"`
 	// The description of the file.
 	Description string `json:"description"`
 	// The name of the file.
@@ -19,6 +15,10 @@ type UpdateLinkedFile struct {
 	ThumbnailUrl string `json:"thumbnail_url"`
 	// The integration type of the file (e.g. google, dropbox, box).
 	Type string `json:"type"`
+	// The UUID of the member that uploaded the file.
+	UploaderId string `json:"uploader_id"`
+	// The URL of linked file.
+	Url string `json:"url"`
 }
 
 func (m *UpdateLinkedFile) Stringify() string {

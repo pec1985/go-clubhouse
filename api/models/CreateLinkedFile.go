@@ -3,6 +3,12 @@ package models
 import "encoding/json"
 
 type CreateLinkedFile struct {
+	// The content type of the image (e.g. txt/plain).
+	ContentType string `json:"content_type"`
+	// The description of the file.
+	Description string `json:"description"`
+	// The name of the file.
+	Name string `json:"name"`
 	// The filesize, if the integration provided it.
 	Size int64 `json:"size"`
 	// The ID of the linked story.
@@ -11,12 +17,6 @@ type CreateLinkedFile struct {
 	ThumbnailUrl string `json:"thumbnail_url"`
 	// The integration type of the file (e.g. google, dropbox, box).
 	Type string `json:"type"`
-	// The content type of the image (e.g. txt/plain).
-	ContentType string `json:"content_type"`
-	// The description of the file.
-	Description string `json:"description"`
-	// The name of the file.
-	Name string `json:"name"`
 	// The UUID of the member that uploaded the file.
 	UploaderId string `json:"uploader_id"`
 	// The URL of linked file.

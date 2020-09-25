@@ -9,34 +9,6 @@ import (
 	"github.com/pec1985/go-clubhouse.io/api/models"
 )
 
-func (a *api) GetIteration(iterationPublicId int64) (*models.Iteration, error) {
-	params := url.Values{}
-	body := bytes.Buffer{}
-	var out models.Iteration
-	if err := a.request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
-		return nil, err
-	}
-	return &out, nil
-}
-func (a *api) UpdateIteration(iterationPublicId int64, updateIteration *models.UpdateIteration) (*models.Iteration, error) {
-	params := url.Values{}
-	jsonbody, _ := json.Marshal(updateIteration)
-	body := bytes.NewBuffer(jsonbody)
-	var out models.Iteration
-	if err := a.request("PUT", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
-		return nil, err
-	}
-	return &out, nil
-}
-func (a *api) DeleteIteration(iterationPublicId int64) error {
-	params := url.Values{}
-	body := bytes.Buffer{}
-	var out interface{}
-	if err := a.request("DELETE", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
-		return err
-	}
-	return nil
-}
 func (a *api) ListIterations() (*[]models.IterationSlim, error) {
 	params := url.Values{}
 	body := bytes.Buffer{}
@@ -55,4 +27,32 @@ func (a *api) CreateIteration(createIteration *models.CreateIteration) error {
 		return err
 	}
 	return nil
+}
+func (a *api) DeleteIteration(iterationPublicId int64) error {
+	params := url.Values{}
+	body := bytes.Buffer{}
+	var out interface{}
+	if err := a.request("DELETE", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
+		return err
+	}
+	return nil
+}
+func (a *api) GetIteration(iterationPublicId int64) (*models.Iteration, error) {
+	params := url.Values{}
+	body := bytes.Buffer{}
+	var out models.Iteration
+	if err := a.request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+func (a *api) UpdateIteration(iterationPublicId int64, updateIteration *models.UpdateIteration) (*models.Iteration, error) {
+	params := url.Values{}
+	jsonbody, _ := json.Marshal(updateIteration)
+	body := bytes.NewBuffer(jsonbody)
+	var out models.Iteration
+	if err := a.request("PUT", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
 }

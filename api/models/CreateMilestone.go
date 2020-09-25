@@ -6,10 +6,6 @@ import (
 )
 
 type CreateMilestone struct {
-	// A manual override for the time/date the Milestone was started.
-	StartedAtOverride time.Time `json:"started_at_override"`
-	// The workflow state that the Milestone is in.
-	State string `json:"state"`
 	// An array of IDs of Categories attached to the Milestone.
 	Categories []CreateCategoryParams `json:"categories"`
 	// A manual override for the time/date the Milestone was completed.
@@ -18,6 +14,10 @@ type CreateMilestone struct {
 	Description string `json:"description"`
 	// The name of the Milestone.
 	Name string `json:"name"`
+	// A manual override for the time/date the Milestone was started.
+	StartedAtOverride time.Time `json:"started_at_override"`
+	// The workflow state that the Milestone is in.
+	State string `json:"state"`
 }
 
 func (m *CreateMilestone) Stringify() string {

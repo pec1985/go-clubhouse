@@ -6,8 +6,6 @@ import (
 )
 
 type CreateTaskParams struct {
-	// Defaults to the time/date the Task is created in Clubhouse but can be set to reflect another time/date.
-	UpdatedAt time.Time `json:"updated_at"`
 	// True/false boolean indicating whether the Task is completed. Defaults to false.
 	Complete bool `json:"complete"`
 	// Defaults to the time/date the Task is created but can be set to reflect another creation time/date.
@@ -18,6 +16,8 @@ type CreateTaskParams struct {
 	ExternalId string `json:"external_id"`
 	// An array of UUIDs for any members you want to add as Owners on this new Task.
 	OwnerIds []string `json:"owner_ids"`
+	// Defaults to the time/date the Task is created in Clubhouse but can be set to reflect another time/date.
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (m *CreateTaskParams) Stringify() string {

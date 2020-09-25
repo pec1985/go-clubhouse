@@ -40,18 +40,6 @@ func (a *api) CreateLabel(createLabelParams *models.CreateLabelParams) error {
 	return nil
 }
 
-// Update Label allows you to replace a Label name with another name. If you try to name a Label something that already exists, you will receive a 422 response.
-func (a *api) UpdateLabel(labelPublicId int64, updateLabel *models.UpdateLabel) (*models.Label, error) {
-	params := url.Values{}
-	jsonbody, _ := json.Marshal(updateLabel)
-	body := bytes.NewBuffer(jsonbody)
-	var out models.Label
-	if err := a.request("PUT", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, body, &out); err != nil {
-		return nil, err
-	}
-	return &out, nil
-}
-
 // Delete Label can be used to delete any Label.
 func (a *api) DeleteLabel(labelPublicId int64) error {
 	params := url.Values{}
@@ -69,6 +57,18 @@ func (a *api) GetLabel(labelPublicId int64) (*models.Label, error) {
 	body := bytes.Buffer{}
 	var out models.Label
 	if err := a.request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, body, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+// Update Label allows you to replace a Label name with another name. If you try to name a Label something that already exists, you will receive a 422 response.
+func (a *api) UpdateLabel(labelPublicId int64, updateLabel *models.UpdateLabel) (*models.Label, error) {
+	params := url.Values{}
+	jsonbody, _ := json.Marshal(updateLabel)
+	body := bytes.NewBuffer(jsonbody)
+	var out models.Label
+	if err := a.request("PUT", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

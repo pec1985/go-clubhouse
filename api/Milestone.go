@@ -9,6 +9,17 @@ import (
 	"github.com/pec1985/go-clubhouse.io/api/models"
 )
 
+// List Milestones returns a list of all Milestones and their attributes.
+func (a *api) ListMilestones() (*[]models.Milestone, error) {
+	params := url.Values{}
+	body := bytes.Buffer{}
+	var out []models.Milestone
+	if err := a.request("GET", "/api/v3/milestones", params, body, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 // Create Milestone allows you to create a new Milestone in Clubhouse.
 func (a *api) CreateMilestone(createMilestone *models.CreateMilestone) error {
 	params := url.Values{}
@@ -19,17 +30,6 @@ func (a *api) CreateMilestone(createMilestone *models.CreateMilestone) error {
 		return err
 	}
 	return nil
-}
-
-// List Milestones returns a list of all Milestones and their attributes.
-func (a *api) ListMilestones() (*[]models.Milestone, error) {
-	params := url.Values{}
-	body := bytes.Buffer{}
-	var out []models.Milestone
-	if err := a.request("GET", "/api/v3/milestones", params, body, &out); err != nil {
-		return nil, err
-	}
-	return &out, nil
 }
 
 // Delete Milestone can be used to delete any Milestone.

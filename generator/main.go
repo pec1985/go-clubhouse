@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"sort"
 	"strings"
 
 	"go/format"
@@ -30,7 +31,12 @@ func main() {
 		fmt.Println(e)
 		os.Exit(1)
 	}
-	ioutil.WriteFile("../api/api.go", b, 0644)
+	if err := ioutil.WriteFile("../api/api.go", b, 0644); err != nil {
+		panic(err)
+	}
+	if err := ioutil.WriteFile("../api/go.mod", []byte(string("module github.com/pec1985/go-clubhouse.io/api\n\ngo 1.14")), 0644); err != nil {
+		panic(err)
+	}
 	if e := exec.Command("goimports", "-w", "../api").Run(); e != nil {
 		panic(e)
 	}
@@ -39,10 +45,22 @@ func main() {
 func generateApi(paths map[string]map[string]swaggerPayloadPath) []string {
 
 	os.MkdirAll("../api", 0755)
-	var funcnames []string
 	files := map[string][]string{}
-	for endpoint, methods := range paths {
-		for method, details := range methods {
+	var funcnames []string
+	var orderedendpoints []string
+	for endpoint := range paths {
+		orderedendpoints = append(orderedendpoints, endpoint)
+	}
+	sort.Strings(orderedendpoints)
+	for _, endpoint := range orderedendpoints {
+		methods := paths[endpoint]
+		var orderedmethods []string
+		for method := range methods {
+			orderedmethods = append(orderedmethods, method)
+		}
+		sort.Strings(orderedmethods)
+		for _, method := range orderedmethods {
+			details := methods[method]
 			var line []string
 			if details.Summary == nil {
 				fmt.Println("missing summery, skipping")
@@ -200,12 +218,23 @@ func generateApi(paths map[string]map[string]swaggerPayloadPath) []string {
 func generateModels(definitions map[string]swaggerPayloadDefinition) {
 
 	os.MkdirAll("../api/models/", 0755)
-	for name, def := range definitions {
-
+	var ordereddefs []string
+	for name := range definitions {
+		ordereddefs = append(ordereddefs, name)
+	}
+	sort.Strings(ordereddefs)
+	for _, name := range ordereddefs {
+		def := definitions[name]
 		var lines []string
 		lines = append(lines, "package models")
 		lines = append(lines, "type "+name+" struct {")
-		for n, p := range *def.Properties {
+		var orderedprops []string
+		for name := range *def.Properties {
+			orderedprops = append(orderedprops, name)
+		}
+		sort.Strings(orderedprops)
+		for _, n := range orderedprops {
+			p := (*def.Properties)[n]
 			l := generatePropery(n, p)
 			if l != "" {
 				lines = append(lines, l)

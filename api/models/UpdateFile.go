@@ -6,6 +6,8 @@ import (
 )
 
 type UpdateFile struct {
+	// The time/date that the file was uploaded.
+	CreatedAt time.Time `json:"created_at"`
 	// The description of the file.
 	Description string `json:"description"`
 	// An additional ID that you may wish to assign to the file.
@@ -16,8 +18,6 @@ type UpdateFile struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// The unique ID assigned to the Member who uploaded the file to Clubhouse.
 	UploaderId string `json:"uploader_id"`
-	// The time/date that the file was uploaded.
-	CreatedAt time.Time `json:"created_at"`
 }
 
 func (m *UpdateFile) Stringify() string {

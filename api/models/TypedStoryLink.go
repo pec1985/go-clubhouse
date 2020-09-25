@@ -6,6 +6,10 @@ import (
 )
 
 type TypedStoryLink struct {
+	// The time/date when the Story Link was created.
+	CreatedAt time.Time `json:"created_at"`
+	// A string description of this resource.
+	EntityType string `json:"entity_type"`
 	// The unique identifier of the Story Link.
 	Id int64 `json:"id"`
 	// The ID of the object Story.
@@ -18,10 +22,6 @@ type TypedStoryLink struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// How the subject Story acts on the object Story. This can be "blocks", "duplicates", or "relates to".
 	Verb string `json:"verb"`
-	// The time/date when the Story Link was created.
-	CreatedAt time.Time `json:"created_at"`
-	// A string description of this resource.
-	EntityType string `json:"entity_type"`
 }
 
 func (m *TypedStoryLink) Stringify() string {

@@ -3,10 +3,6 @@ package models
 import "encoding/json"
 
 type UpdateGroup struct {
-	// The mention name of this Group.
-	MentionName string `json:"mention_name"`
-	// The name of this Group.
-	Name string `json:"name"`
 	// Whether or not this Group is archived.
 	Archived *bool `json:"archived"`
 	// The description of this Group.
@@ -15,6 +11,10 @@ type UpdateGroup struct {
 	DisplayIconId *string `json:"display_icon_id"`
 	// The Member ids to add to this Group.
 	MemberIds []string `json:"member_ids"`
+	// The mention name of this Group.
+	MentionName string `json:"mention_name"`
+	// The name of this Group.
+	Name string `json:"name"`
 }
 
 func (m *UpdateGroup) Stringify() string {

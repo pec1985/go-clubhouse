@@ -3,16 +3,16 @@ package models
 import "encoding/json"
 
 type UpdateTask struct {
-	// The Task's description.
-	Description string `json:"description"`
-	// An array of UUIDs of the owners of this story.
-	OwnerIds []string `json:"owner_ids"`
 	// Move task after this task ID.
 	AfterId int64 `json:"after_id"`
 	// Move task before this task ID.
 	BeforeId int64 `json:"before_id"`
 	// A true/false boolean indicating whether the task is complete.
 	Complete bool `json:"complete"`
+	// The Task's description.
+	Description string `json:"description"`
+	// An array of UUIDs of the owners of this story.
+	OwnerIds []string `json:"owner_ids"`
 }
 
 func (m *UpdateTask) Stringify() string {

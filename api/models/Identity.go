@@ -3,12 +3,12 @@ package models
 import "encoding/json"
 
 type Identity struct {
-	// The type of Identity; currently only type is github.
-	Type *string `json:"type"`
 	// A string description of this resource.
 	EntityType string `json:"entity_type"`
 	// This is your login in VCS.
 	Name *string `json:"name"`
+	// The type of Identity; currently only type is github.
+	Type *string `json:"type"`
 }
 
 func (m *Identity) Stringify() string {

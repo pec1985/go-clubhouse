@@ -6,10 +6,6 @@ import (
 )
 
 type UpdateMilestone struct {
-	// A manual override for the time/date the Milestone was started.
-	StartedAtOverride *time.Time `json:"started_at_override"`
-	// The workflow state that the Milestone is in.
-	State string `json:"state"`
 	// The ID of the Milestone we want to move this Milestone after.
 	AfterId int64 `json:"after_id"`
 	// The ID of the Milestone we want to move this Milestone before.
@@ -22,6 +18,10 @@ type UpdateMilestone struct {
 	Description string `json:"description"`
 	// The name of the Milestone.
 	Name string `json:"name"`
+	// A manual override for the time/date the Milestone was started.
+	StartedAtOverride *time.Time `json:"started_at_override"`
+	// The workflow state that the Milestone is in.
+	State string `json:"state"`
 }
 
 func (m *UpdateMilestone) Stringify() string {

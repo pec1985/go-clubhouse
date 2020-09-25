@@ -6,16 +6,18 @@ import (
 )
 
 type Comment struct {
-	// This field can be set to another unique ID. In the case that the Comment has been imported from another tool, the ID in the other tool can be indicated here.
-	ExternalId *string `json:"external_id"`
-	// A set of Reactions to this Comment.
-	Reactions []Reaction `json:"reactions"`
-	// The time/date when the Comment was updated.
-	UpdatedAt *time.Time `json:"updated_at"`
-	// The unique IDs of the Group who are mentioned in the Comment.
-	GroupMentionIds []string `json:"group_mention_ids"`
+	// The Clubhouse application url for the Comment.
+	AppUrl string `json:"app_url"`
+	// The unique ID of the Member who is the Comment's author.
+	AuthorId *string `json:"author_id"`
 	// The time/date when the Comment was created.
 	CreatedAt time.Time `json:"created_at"`
+	// A string description of this resource.
+	EntityType string `json:"entity_type"`
+	// This field can be set to another unique ID. In the case that the Comment has been imported from another tool, the ID in the other tool can be indicated here.
+	ExternalId *string `json:"external_id"`
+	// The unique IDs of the Group who are mentioned in the Comment.
+	GroupMentionIds []string `json:"group_mention_ids"`
 	// The unique ID of the Comment.
 	Id int64 `json:"id"`
 	// The unique IDs of the Member who are mentioned in the Comment.
@@ -24,16 +26,14 @@ type Comment struct {
 	MentionIds []string `json:"mention_ids"`
 	// The Comments numerical position in the list from oldest to newest.
 	Position int64 `json:"position"`
-	// The text of the Comment.
-	Text string `json:"text"`
-	// The Clubhouse application url for the Comment.
-	AppUrl string `json:"app_url"`
-	// The unique ID of the Member who is the Comment's author.
-	AuthorId *string `json:"author_id"`
-	// A string description of this resource.
-	EntityType string `json:"entity_type"`
+	// A set of Reactions to this Comment.
+	Reactions []Reaction `json:"reactions"`
 	// The ID of the Story on which the Comment appears.
 	StoryId int64 `json:"story_id"`
+	// The text of the Comment.
+	Text string `json:"text"`
+	// The time/date when the Comment was updated.
+	UpdatedAt *time.Time `json:"updated_at"`
 }
 
 func (m *Comment) Stringify() string {

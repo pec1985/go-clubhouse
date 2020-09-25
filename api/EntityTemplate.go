@@ -8,6 +8,17 @@ import (
 	"github.com/pec1985/go-clubhouse.io/api/models"
 )
 
+// List all the entity templates for an organization.
+func (a *api) ListEntityTemplates() (*[]models.EntityTemplate, error) {
+	params := url.Values{}
+	body := bytes.Buffer{}
+	var out []models.EntityTemplate
+	if err := a.request("GET", "/api/v3/entity-templates", params, body, &out); err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
 // Create a new entity template for your organization.
 func (a *api) CreateEntityTemplate(createEntityTemplate *models.CreateEntityTemplate) error {
 	params := url.Values{}
@@ -18,17 +29,6 @@ func (a *api) CreateEntityTemplate(createEntityTemplate *models.CreateEntityTemp
 		return err
 	}
 	return nil
-}
-
-// List all the entity templates for an organization.
-func (a *api) ListEntityTemplates() (*[]models.EntityTemplate, error) {
-	params := url.Values{}
-	body := bytes.Buffer{}
-	var out []models.EntityTemplate
-	if err := a.request("GET", "/api/v3/entity-templates", params, body, &out); err != nil {
-		return nil, err
-	}
-	return &out, nil
 }
 func (a *api) DeleteEntityTemplate(entityTemplatePublicId string) error {
 	params := url.Values{}

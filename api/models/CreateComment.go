@@ -6,8 +6,6 @@ import (
 )
 
 type CreateComment struct {
-	// Defaults to the time/date the comment is last updated, but can be set to reflect another date.
-	UpdatedAt time.Time `json:"updated_at"`
 	// The Member ID of the Comment's author. Defaults to the user identified by the API token.
 	AuthorId string `json:"author_id"`
 	// Defaults to the time/date the comment is created, but can be set to reflect another date.
@@ -16,6 +14,8 @@ type CreateComment struct {
 	ExternalId string `json:"external_id"`
 	// The comment text.
 	Text string `json:"text"`
+	// Defaults to the time/date the comment is last updated, but can be set to reflect another date.
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (m *CreateComment) Stringify() string {

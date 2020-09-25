@@ -9,6 +9,18 @@ import (
 	"github.com/pec1985/go-clubhouse.io/api/models"
 )
 
+// Create Story is used to add a new story to your Clubhouse.
+func (a *api) CreateStory(createStoryParams *models.CreateStoryParams) error {
+	params := url.Values{}
+	jsonbody, _ := json.Marshal(createStoryParams)
+	body := bytes.NewBuffer(jsonbody)
+	var out interface{}
+	if err := a.request("POST", "/api/v3/stories", params, body, &out); err != nil {
+		return err
+	}
+	return nil
+}
+
 // Delete Story can be used to delete any Story.
 func (a *api) DeleteStory(storyPublicId int64) error {
 	params := url.Values{}
@@ -41,16 +53,4 @@ func (a *api) UpdateStory(storyPublicId int64, updateStory *models.UpdateStory) 
 		return nil, err
 	}
 	return &out, nil
-}
-
-// Create Story is used to add a new story to your Clubhouse.
-func (a *api) CreateStory(createStoryParams *models.CreateStoryParams) error {
-	params := url.Values{}
-	jsonbody, _ := json.Marshal(createStoryParams)
-	body := bytes.NewBuffer(jsonbody)
-	var out interface{}
-	if err := a.request("POST", "/api/v3/stories", params, body, &out); err != nil {
-		return err
-	}
-	return nil
 }
