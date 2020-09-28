@@ -187,7 +187,12 @@ func generateApi(paths map[string]map[string]swaggerPayloadPath) []string {
 			filename = strings.TrimPrefix(filename, "List")
 			filename = strings.TrimPrefix(filename, "Update")
 			filename = strings.TrimPrefix(filename, "Create")
-			filename = strings.TrimSuffix(filename, "s")
+			if strings.HasSuffix(filename, "ies") {
+				filename = strings.TrimSuffix(filename, "ies")
+				filename += "y"
+			} else {
+				filename = strings.TrimSuffix(filename, "s")
+			}
 			files[filename] = append(files[filename], string(b))
 		}
 
