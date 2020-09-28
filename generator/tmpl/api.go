@@ -34,7 +34,7 @@ func (a *api) request(method string, endpoint string, params url.Values, data in
 	ur := strings.TrimRight(a.url, "/")
 	endpoint = strings.TrimPrefix(endpoint, "/")
 
-	req, err := http.NewRequest(http.MethodGet, ur+"/"+endpoint, nil)
+	req, err := http.NewRequest(http.MethodGet, ur+"/"+endpoint+"?"+params.Encode(), nil)
 	if err != nil {
 		return err
 	}
