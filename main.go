@@ -1,4 +1,4 @@
-//go:generate go run generator/swagger.go generator/main.go
+//go:generate go run generator/swagger.go generator/main.go -tags gen
 
 package main
 

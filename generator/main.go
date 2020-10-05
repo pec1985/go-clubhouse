@@ -1,3 +1,4 @@
+// +build gen
 package main
 
 import (
@@ -45,9 +46,6 @@ func main() {
 		os.Exit(1)
 	}
 	if err := ioutil.WriteFile(filepath.Join(dir, "api", "api.go"), b, 0644); err != nil {
-		panic(err)
-	}
-	if err := ioutil.WriteFile(filepath.Join(dir, "api", "go.mod"), []byte(string("module github.com/pec1985/go-clubhouse.io/api/v1\n\ngo 1.14")), 0644); err != nil {
 		panic(err)
 	}
 	if e := exec.Command("goimports", "-w", filepath.Join(dir, "api")).Run(); e != nil {
