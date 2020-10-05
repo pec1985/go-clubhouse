@@ -10,8 +10,8 @@ import (
 
 // List Category Milestones returns a list of all Milestones with the Category.
 func (a *api) ListCategoryMilestones(categoryPublicId int64) (*[]models.Milestone, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	body := bytes.Buffer{}
 	var out []models.Milestone
 	if err := a.request("GET", "/api/v3/categories/"+fmt.Sprint(categoryPublicId)+"/milestones", params, body, &out); err != nil {
 		return nil, err

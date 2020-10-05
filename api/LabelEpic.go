@@ -10,8 +10,8 @@ import (
 
 // List all of the Epics with the Label.
 func (a *api) ListLabelEpics(labelPublicId int64) (*[]models.EpicSlim, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	body := bytes.Buffer{}
 	var out []models.EpicSlim
 	if err := a.request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"/epics", params, body, &out); err != nil {
 		return nil, err

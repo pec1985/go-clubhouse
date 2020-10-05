@@ -11,8 +11,9 @@ import (
 
 // Get a list of all Stories in an Epic.
 func (a *api) ListEpicStories(epicPublicId int64, getEpicStories *models.GetEpicStories) (*[]models.StorySlim, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	{
+	if getEpicStories != nil {
 		kv := map[string]interface{}{}
 		b, _ := json.Marshal(getEpicStories)
 		json.Unmarshal(b, &kv)
@@ -20,7 +21,6 @@ func (a *api) ListEpicStories(epicPublicId int64, getEpicStories *models.GetEpic
 			params.Set(k, fmt.Sprint(v))
 		}
 	}
-	body := bytes.Buffer{}
 	var out []models.StorySlim
 	if err := a.request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/stories", params, body, &out); err != nil {
 		return nil, err

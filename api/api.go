@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -230,12 +231,12 @@ type api struct {
 	url    string
 }
 
-func (a *api) request(method string, endpoint string, params url.Values, data interface{}, out interface{}) error {
+func (a *api) request(method string, endpoint string, params url.Values, data io.Reader, out interface{}) error {
 
 	ur := strings.TrimRight(a.url, "/")
 	endpoint = strings.TrimPrefix(endpoint, "/")
 
-	req, err := http.NewRequest(http.MethodGet, ur+"/"+endpoint+"?"+params.Encode(), nil)
+	req, err := http.NewRequest(http.MethodGet, ur+"/"+endpoint+"?"+params.Encode(), data)
 	if err != nil {
 		return err
 	}

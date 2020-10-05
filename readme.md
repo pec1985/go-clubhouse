@@ -41,12 +41,10 @@ To play with the code, clone the repo
 git clone https://github.com/pec1985/go-clubhouse.io.git 
 ```
 
-To generate new code, simply cd to the `generator` folder and run the main.go
+To generate new code, simply call generate
 
 ```
-cd $(GOPATH)/src/github.com/pec1985/go-clubhouse.io
-cd generator
-go run .
+cd generate
 ```
 
 Open the repo in VSCode and start playing with it.

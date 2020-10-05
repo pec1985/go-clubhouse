@@ -18,9 +18,12 @@ import (
 // - "story 2 duplicates story 1” -- Story 2 represents the same body of work as Story 1 (and should probably be archived).
 // - "story 7 relates to story 3”
 func (a *api) CreateStoryLink(createStoryLink *models.CreateStoryLink) error {
+	var body *bytes.Buffer
 	params := url.Values{}
-	jsonbody, _ := json.Marshal(createStoryLink)
-	body := bytes.NewBuffer(jsonbody)
+	if createStoryLink != nil {
+		jsonbody, _ := json.Marshal(createStoryLink)
+		body = bytes.NewBuffer(jsonbody)
+	}
 	var out interface{}
 	if err := a.request("POST", "/api/v3/story-links", params, body, &out); err != nil {
 		return err
@@ -30,8 +33,8 @@ func (a *api) CreateStoryLink(createStoryLink *models.CreateStoryLink) error {
 
 // Removes the relationship between the stories for the given Story Link.
 func (a *api) DeleteStoryLink(storyLinkPublicId int64) error {
+	var body *bytes.Buffer
 	params := url.Values{}
-	body := bytes.Buffer{}
 	var out interface{}
 	if err := a.request("DELETE", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, body, &out); err != nil {
 		return err
@@ -41,8 +44,8 @@ func (a *api) DeleteStoryLink(storyLinkPublicId int64) error {
 
 // Returns the stories and their relationship for the given Story Link.
 func (a *api) GetStoryLink(storyLinkPublicId int64) (*models.StoryLink, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	body := bytes.Buffer{}
 	var out models.StoryLink
 	if err := a.request("GET", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, body, &out); err != nil {
 		return nil, err
@@ -52,9 +55,12 @@ func (a *api) GetStoryLink(storyLinkPublicId int64) (*models.StoryLink, error) {
 
 // Updates the stories and/or the relationship for the given Story Link.
 func (a *api) UpdateStoryLink(storyLinkPublicId int64, updateStoryLink *models.UpdateStoryLink) (*models.StoryLink, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	jsonbody, _ := json.Marshal(updateStoryLink)
-	body := bytes.NewBuffer(jsonbody)
+	if updateStoryLink != nil {
+		jsonbody, _ := json.Marshal(updateStoryLink)
+		body = bytes.NewBuffer(jsonbody)
+	}
 	var out models.StoryLink
 	if err := a.request("PUT", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, body, &out); err != nil {
 		return nil, err

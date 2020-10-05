@@ -1,3 +1,5 @@
+//go:generate go run generator/swagger.go generator/main.go
+
 package main
 
 import (

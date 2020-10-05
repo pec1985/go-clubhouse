@@ -9,8 +9,8 @@ import (
 
 // Get Epic Workflow returns the Epic Workflow for the organization.
 func (a *api) GetEpicWorkflow() (*models.EpicWorkflow, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	body := bytes.Buffer{}
 	var out models.EpicWorkflow
 	if err := a.request("GET", "/api/v3/epic-workflow", params, body, &out); err != nil {
 		return nil, err

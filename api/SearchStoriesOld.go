@@ -10,9 +10,12 @@ import (
 
 // Search Stories lets you search Stories based on desired parameters.
 func (a *api) SearchStoriesOld(searchStories *models.SearchStories) error {
+	var body *bytes.Buffer
 	params := url.Values{}
-	jsonbody, _ := json.Marshal(searchStories)
-	body := bytes.NewBuffer(jsonbody)
+	if searchStories != nil {
+		jsonbody, _ := json.Marshal(searchStories)
+		body = bytes.NewBuffer(jsonbody)
+	}
 	var out interface{}
 	if err := a.request("POST", "/api/v3/stories/search", params, body, &out); err != nil {
 		return err

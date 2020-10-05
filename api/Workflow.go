@@ -9,8 +9,8 @@ import (
 
 // List Workflows returns a list of all Workflows in the organization.
 func (a *api) ListWorkflows() (*[]models.Workflow, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	body := bytes.Buffer{}
 	var out []models.Workflow
 	if err := a.request("GET", "/api/v3/workflows", params, body, &out); err != nil {
 		return nil, err

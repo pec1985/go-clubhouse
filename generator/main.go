@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -14,13 +16,24 @@ import (
 )
 
 func main() {
+
+	dir, err := os.Getwd()
+
+	if filepath.Base(dir) == "generator" {
+		dir = filepath.Join(dir, "..")
+	}
+
 	data, err := downloadSwaggerFile()
 	if err != nil {
 		panic(err)
 	}
-	generateModels(*data.Definitions)
-	funcnames := generateApi(*data.Paths)
-	b, e := ioutil.ReadFile("tmpl/api.go")
+	os.MkdirAll(filepath.Join(dir, "api", "models"), 0755)
+	os.MkdirAll(filepath.Join(dir, "api"), 0755)
+
+	generateModels(dir, *data.Definitions)
+
+	funcnames := generateApi(dir, *data.Paths)
+	b, e := ioutil.ReadFile(path.Join(dir, "generator", "tmpl", "api.go"))
 	if e != nil {
 		panic(e)
 	}
@@ -31,20 +44,19 @@ func main() {
 		fmt.Println(e)
 		os.Exit(1)
 	}
-	if err := ioutil.WriteFile("../api/api.go", b, 0644); err != nil {
+	if err := ioutil.WriteFile(filepath.Join(dir, "api", "api.go"), b, 0644); err != nil {
 		panic(err)
 	}
-	if err := ioutil.WriteFile("../api/go.mod", []byte(string("module github.com/pec1985/go-clubhouse.io/api\n\ngo 1.14")), 0644); err != nil {
+	if err := ioutil.WriteFile(filepath.Join(dir, "api", "go.mod"), []byte(string("module github.com/pec1985/go-clubhouse.io/api\n\ngo 1.14")), 0644); err != nil {
 		panic(err)
 	}
-	if e := exec.Command("goimports", "-w", "../api").Run(); e != nil {
+	if e := exec.Command("goimports", "-w", filepath.Join(dir, "api")).Run(); e != nil {
 		panic(e)
 	}
 }
 
-func generateApi(paths map[string]map[string]swaggerPayloadPath) []string {
+func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []string {
 
-	os.MkdirAll("../api", 0755)
 	files := map[string][]string{}
 	var funcnames []string
 	var orderedendpoints []string
@@ -118,10 +130,12 @@ func generateApi(paths map[string]map[string]swaggerPayloadPath) []string {
 							continue
 						}
 						if method == "post" || method == "put" {
+							body = append(params, "if "+shortname+" != nil {")
 							body = append(body, "jsonbody, _ := json.Marshal("+shortname+")")
-							body = append(body, "body := bytes.NewBuffer(jsonbody)")
+							body = append(body, "body = bytes.NewBuffer(jsonbody)")
+							body = append(body, "}")
 						} else {
-							params = append(params, "{")
+							params = append(params, "if "+shortname+" != nil {")
 							params = append(params, "	kv:=map[string]interface{}{}")
 							params = append(params, "	b,_:=json.Marshal("+shortname+")")
 							params = append(params, "	json.Unmarshal(b, &kv)")
@@ -147,14 +161,13 @@ func generateApi(paths map[string]map[string]swaggerPayloadPath) []string {
 			}
 			funcnames = append(funcnames, funcsignature)
 			line = append(line, "func (a*api)"+funcsignature+"{")
+			line = append(line, "var body *bytes.Buffer")
 			line = append(line, "params := url.Values{}")
 			if params != nil {
 				line = append(line, params...)
 			}
 			if body != nil {
 				line = append(line, body...)
-			} else {
-				line = append(line, "body := bytes.Buffer{}")
 			}
 			if returntype != "" {
 				line = append(line, "var out "+strings.TrimPrefix(returntype, "*"))
@@ -215,14 +228,13 @@ func generateApi(paths map[string]map[string]swaggerPayloadPath) []string {
 			fmt.Println(e)
 			os.Exit(1)
 		}
-		ioutil.WriteFile("../api/"+filename+".go", b, 0644)
+		ioutil.WriteFile(filepath.Join(dir, "api", filename+".go"), b, 0644)
 	}
 	return funcnames
 }
 
-func generateModels(definitions map[string]swaggerPayloadDefinition) {
+func generateModels(dir string, definitions map[string]swaggerPayloadDefinition) {
 
-	os.MkdirAll("../api/models/", 0755)
 	var ordereddefs []string
 	for name := range definitions {
 		ordereddefs = append(ordereddefs, name)
@@ -260,7 +272,7 @@ func generateModels(definitions map[string]swaggerPayloadDefinition) {
 			fmt.Println(object)
 			panic(e)
 		}
-		ioutil.WriteFile("../api/models/"+name+".go", b, 0644)
+		ioutil.WriteFile(filepath.Join(dir, "api", "models", name+".go"), b, 0644)
 	}
 }
 

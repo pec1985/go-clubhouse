@@ -11,8 +11,9 @@ import (
 
 // Delete a Reaction from any comment.
 func (a *api) DeleteReaction(storyPublicId int64, commentPublicId int64, createOrDeleteReaction *models.CreateOrDeleteReaction) error {
+	var body *bytes.Buffer
 	params := url.Values{}
-	{
+	if createOrDeleteReaction != nil {
 		kv := map[string]interface{}{}
 		b, _ := json.Marshal(createOrDeleteReaction)
 		json.Unmarshal(b, &kv)
@@ -20,7 +21,6 @@ func (a *api) DeleteReaction(storyPublicId int64, commentPublicId int64, createO
 			params.Set(k, fmt.Sprint(v))
 		}
 	}
-	body := bytes.Buffer{}
 	var out interface{}
 	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"/reactions", params, body, &out); err != nil {
 		return err
@@ -30,9 +30,12 @@ func (a *api) DeleteReaction(storyPublicId int64, commentPublicId int64, createO
 
 // Create a reaction to a comment.
 func (a *api) CreateReaction(storyPublicId int64, commentPublicId int64, createOrDeleteReaction *models.CreateOrDeleteReaction) error {
+	var body *bytes.Buffer
 	params := url.Values{}
-	jsonbody, _ := json.Marshal(createOrDeleteReaction)
-	body := bytes.NewBuffer(jsonbody)
+	if createOrDeleteReaction != nil {
+		jsonbody, _ := json.Marshal(createOrDeleteReaction)
+		body = bytes.NewBuffer(jsonbody)
+	}
 	var out interface{}
 	if err := a.request("POST", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"/reactions", params, body, &out); err != nil {
 		return err

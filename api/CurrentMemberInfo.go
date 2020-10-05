@@ -9,8 +9,8 @@ import (
 
 // Returns information about the authenticated member.
 func (a *api) GetCurrentMemberInfo() (*models.MemberInfo, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	body := bytes.Buffer{}
 	var out models.MemberInfo
 	if err := a.request("GET", "/api/v3/member", params, body, &out); err != nil {
 		return nil, err

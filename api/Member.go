@@ -11,8 +11,9 @@ import (
 
 // List Members returns information about members of the organization.
 func (a *api) ListMembers(listMembers *models.ListMembers) (*[]models.Member, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	{
+	if listMembers != nil {
 		kv := map[string]interface{}{}
 		b, _ := json.Marshal(listMembers)
 		json.Unmarshal(b, &kv)
@@ -20,7 +21,6 @@ func (a *api) ListMembers(listMembers *models.ListMembers) (*[]models.Member, er
 			params.Set(k, fmt.Sprint(v))
 		}
 	}
-	body := bytes.Buffer{}
 	var out []models.Member
 	if err := a.request("GET", "/api/v3/members", params, body, &out); err != nil {
 		return nil, err
@@ -30,8 +30,9 @@ func (a *api) ListMembers(listMembers *models.ListMembers) (*[]models.Member, er
 
 // Returns information about a Member.
 func (a *api) GetMember(memberPublicId string, getMember *models.GetMember) (*models.Member, error) {
+	var body *bytes.Buffer
 	params := url.Values{}
-	{
+	if getMember != nil {
 		kv := map[string]interface{}{}
 		b, _ := json.Marshal(getMember)
 		json.Unmarshal(b, &kv)
@@ -39,7 +40,6 @@ func (a *api) GetMember(memberPublicId string, getMember *models.GetMember) (*mo
 			params.Set(k, fmt.Sprint(v))
 		}
 	}
-	body := bytes.Buffer{}
 	var out models.Member
 	if err := a.request("GET", "/api/v3/members/"+memberPublicId+"", params, body, &out); err != nil {
 		return nil, err
