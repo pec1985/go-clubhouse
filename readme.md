@@ -5,7 +5,7 @@ This API is generated from the swagger file located in https://clubhouse.io/api/
 To just use it, `go get` it
 
 ```
-go get github.com/pec1985/go-clubhouse.io/v1/api v1.0.0
+go get github.com/pec1985/go-clubhouse/v1/api v1.0.0
 ```
 
 Sample api call
@@ -17,7 +17,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/pec1985/go-clubhouse.io/v1/api"
+	"github.com/pec1985/go-clubhouse/v1/api"
 )
 
 func main() {
@@ -38,13 +38,13 @@ func main() {
 To play with the code, clone the repo
 
 ```
-git clone https://github.com/pec1985/go-clubhouse.io.git 
+git clone https://github.com/pec1985/go-clubhouse.git 
 ```
 
 To generate new code, simply cd to the `generator` folder and run the main.go
 
 ```
-cd $(GOPATH)/src/github.com/pec1985/go-clubhouse.io
+cd $(GOPATH)/src/github.com/pec1985/go-clubhouse
 cd generator
 go run .
 ```

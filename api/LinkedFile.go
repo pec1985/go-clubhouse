@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/v1/api/models"
+	"github.com/pec1985/go-clubhouse/v1/api/models"
 )
 
 // List Linked Files returns a list of all Linked-Files and their attributes.

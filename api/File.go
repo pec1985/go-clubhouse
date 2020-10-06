@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/v1/api/models"
+	"github.com/pec1985/go-clubhouse/v1/api/models"
 )
 
 // List Files returns a list of all Files and related attributes in your Clubhouse.
