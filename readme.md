@@ -5,7 +5,7 @@ This API is generated from the swagger file located in https://clubhouse.io/api/
 To just use it, `go get` it
 
 ```
-go get github.com/pec1985/go-clubhouse/api v1.0.0
+go get github.com/pec1985/go-clubhouse
 ```
 
 Sample api call
