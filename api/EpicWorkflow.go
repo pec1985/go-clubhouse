@@ -3,7 +3,7 @@ package api
 import (
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/v1/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Get Epic Workflow returns the Epic Workflow for the organization.

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/v1/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // This endpoint allows you to create a nested Comment reply to an existing Epic Comment.

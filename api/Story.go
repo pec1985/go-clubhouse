@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/v1/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // List Stories returns a list of all Stories in a selected Project and their attributes.

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/v1/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // List Repositories returns a list of all Repositories and their attributes.

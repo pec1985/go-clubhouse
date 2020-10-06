@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/v1/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Create Comment allows you to create a Comment on any Story.
