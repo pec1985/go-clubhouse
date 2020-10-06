@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/v1/api/models"
+	"github.com/pec1985/go-clubhouse.io/api/v1/models"
 )
 
 func (a *api) ListGroups() (*[]models.Group, error) {

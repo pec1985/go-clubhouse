@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/pec1985/go-clubhouse.io/v1/api/models"
+	"github.com/pec1985/go-clubhouse.io/api/v1/models"
 )
 
 // API the api interface

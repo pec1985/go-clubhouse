@@ -47,6 +47,9 @@ func main() {
 	if err := ioutil.WriteFile(filepath.Join(dir, "api", "api.go"), b, 0644); err != nil {
 		panic(err)
 	}
+	if err := ioutil.WriteFile(filepath.Join(dir, "api", "go.mod"), []byte("module github.com/pec1985/go-clubhouse.io/api/v1\n\ngo 1.14"), 0644); err != nil {
+		panic(err)
+	}
 	if e := exec.Command("goimports", "-w", filepath.Join(dir, "api")).Run(); e != nil {
 		panic(e)
 	}
@@ -218,7 +221,7 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 		header = append(header, `"fmt"`)
 		header = append(header, `"bytes"`)
 		header = append(header, `"net/url"`)
-		header = append(header, `"github.com/pec1985/go-clubhouse.io/v1/api/models"`)
+		header = append(header, `"github.com/pec1985/go-clubhouse.io/api/v1/models"`)
 		header = append(header, `"encoding/json"`)
 		header = append(header, ")")
 		funcs = append(header, funcs...)

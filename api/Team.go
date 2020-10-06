@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/v1/api/models"
+	"github.com/pec1985/go-clubhouse.io/api/v1/models"
 )
 
 // List Teams returns a list of all Teams in the organization.
