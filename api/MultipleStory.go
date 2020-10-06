@@ -6,12 +6,11 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Delete Multiple Stories allows you to delete multiple archived stories at once.
 func (a *api) DeleteMultipleStories(deleteStories *models.DeleteStories) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	if deleteStories != nil {
 		kv := map[string]interface{}{}
@@ -22,7 +21,7 @@ func (a *api) DeleteMultipleStories(deleteStories *models.DeleteStories) error {
 		}
 	}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/stories/bulk", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/stories/bulk", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -30,8 +29,8 @@ func (a *api) DeleteMultipleStories(deleteStories *models.DeleteStories) error {
 
 // Create Multiple Stories allows you to create multiple stories in a single request using the same syntax as [Create Story](https://clubhouse.io/api/#create-story).
 func (a *api) CreateMultipleStories(createStories *models.CreateStories) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createStories != nil {
 		jsonbody, _ := json.Marshal(createStories)
 		body = bytes.NewBuffer(jsonbody)
@@ -45,8 +44,8 @@ func (a *api) CreateMultipleStories(createStories *models.CreateStories) error {
 
 // Update Multiple Stories allows you to make changes to numerous stories at once.
 func (a *api) UpdateMultipleStories(updateStories *models.UpdateStories) (*[]models.StorySlim, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if updateStories != nil {
 		jsonbody, _ := json.Marshal(updateStories)
 		body = bytes.NewBuffer(jsonbody)

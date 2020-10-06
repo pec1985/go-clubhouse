@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Create Comment allows you to create a Comment on any Story.
 func (a *api) CreateComment(storyPublicId int64, createComment *models.CreateComment) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createComment != nil {
 		jsonbody, _ := json.Marshal(createComment)
 		body = bytes.NewBuffer(jsonbody)
@@ -26,10 +26,9 @@ func (a *api) CreateComment(storyPublicId int64, createComment *models.CreateCom
 
 // Delete a Comment from any story.
 func (a *api) DeleteComment(storyPublicId int64, commentPublicId int64) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -37,10 +36,9 @@ func (a *api) DeleteComment(storyPublicId int64, commentPublicId int64) error {
 
 // Get Comment is used to get Comment information.
 func (a *api) GetComment(storyPublicId int64, commentPublicId int64) (*models.Comment, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out models.Comment
-	if err := a.request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -48,8 +46,8 @@ func (a *api) GetComment(storyPublicId int64, commentPublicId int64) (*models.Co
 
 // Update Comment replaces the text of the existing Comment.
 func (a *api) UpdateComment(storyPublicId int64, commentPublicId int64, updateComment *models.UpdateComment) (*models.Comment, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if updateComment != nil {
 		jsonbody, _ := json.Marshal(updateComment)
 		body = bytes.NewBuffer(jsonbody)

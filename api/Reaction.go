@@ -6,12 +6,11 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Delete a Reaction from any comment.
 func (a *api) DeleteReaction(storyPublicId int64, commentPublicId int64, createOrDeleteReaction *models.CreateOrDeleteReaction) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	if createOrDeleteReaction != nil {
 		kv := map[string]interface{}{}
@@ -22,7 +21,7 @@ func (a *api) DeleteReaction(storyPublicId int64, commentPublicId int64, createO
 		}
 	}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"/reactions", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"/reactions", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -30,8 +29,8 @@ func (a *api) DeleteReaction(storyPublicId int64, commentPublicId int64, createO
 
 // Create a reaction to a comment.
 func (a *api) CreateReaction(storyPublicId int64, commentPublicId int64, createOrDeleteReaction *models.CreateOrDeleteReaction) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createOrDeleteReaction != nil {
 		jsonbody, _ := json.Marshal(createOrDeleteReaction)
 		body = bytes.NewBuffer(jsonbody)

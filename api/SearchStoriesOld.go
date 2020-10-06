@@ -5,13 +5,13 @@ import (
 	"encoding/json"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Search Stories lets you search Stories based on desired parameters.
 func (a *api) SearchStoriesOld(searchStories *models.SearchStories) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if searchStories != nil {
 		jsonbody, _ := json.Marshal(searchStories)
 		body = bytes.NewBuffer(jsonbody)

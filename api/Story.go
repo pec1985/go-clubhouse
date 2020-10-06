@@ -6,12 +6,11 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // List Stories returns a list of all Stories in a selected Project and their attributes.
 func (a *api) ListStories(projectPublicId int64, getProjectStories *models.GetProjectStories) (*[]models.StorySlim, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	if getProjectStories != nil {
 		kv := map[string]interface{}{}
@@ -22,7 +21,7 @@ func (a *api) ListStories(projectPublicId int64, getProjectStories *models.GetPr
 		}
 	}
 	var out []models.StorySlim
-	if err := a.request("GET", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"/stories", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -30,8 +29,8 @@ func (a *api) ListStories(projectPublicId int64, getProjectStories *models.GetPr
 
 // Create Story is used to add a new story to your Clubhouse.
 func (a *api) CreateStory(createStoryParams *models.CreateStoryParams) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createStoryParams != nil {
 		jsonbody, _ := json.Marshal(createStoryParams)
 		body = bytes.NewBuffer(jsonbody)
@@ -45,10 +44,9 @@ func (a *api) CreateStory(createStoryParams *models.CreateStoryParams) error {
 
 // Delete Story can be used to delete any Story.
 func (a *api) DeleteStory(storyPublicId int64) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -56,10 +54,9 @@ func (a *api) DeleteStory(storyPublicId int64) error {
 
 // Get Story returns information about a chosen Story.
 func (a *api) GetStory(storyPublicId int64) (*models.Story, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out models.Story
-	if err := a.request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -67,8 +64,8 @@ func (a *api) GetStory(storyPublicId int64) (*models.Story, error) {
 
 // Update Story can be used to update Story properties.
 func (a *api) UpdateStory(storyPublicId int64, updateStory *models.UpdateStory) (*models.Story, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if updateStory != nil {
 		jsonbody, _ := json.Marshal(updateStory)
 		body = bytes.NewBuffer(jsonbody)

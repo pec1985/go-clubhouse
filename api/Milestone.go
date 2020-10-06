@@ -6,15 +6,14 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // List Milestones returns a list of all Milestones and their attributes.
 func (a *api) ListMilestones() (*[]models.Milestone, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out []models.Milestone
-	if err := a.request("GET", "/api/v3/milestones", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/milestones", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -22,8 +21,8 @@ func (a *api) ListMilestones() (*[]models.Milestone, error) {
 
 // Create Milestone allows you to create a new Milestone in Clubhouse.
 func (a *api) CreateMilestone(createMilestone *models.CreateMilestone) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createMilestone != nil {
 		jsonbody, _ := json.Marshal(createMilestone)
 		body = bytes.NewBuffer(jsonbody)
@@ -37,10 +36,9 @@ func (a *api) CreateMilestone(createMilestone *models.CreateMilestone) error {
 
 // Delete Milestone can be used to delete any Milestone.
 func (a *api) DeleteMilestone(milestonePublicId int64) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -48,10 +46,9 @@ func (a *api) DeleteMilestone(milestonePublicId int64) error {
 
 // Get Milestone returns information about a chosen Milestone.
 func (a *api) GetMilestone(milestonePublicId int64) (*models.Milestone, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out models.Milestone
-	if err := a.request("GET", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -59,8 +56,8 @@ func (a *api) GetMilestone(milestonePublicId int64) (*models.Milestone, error) {
 
 // Update Milestone can be used to update Milestone properties.
 func (a *api) UpdateMilestone(milestonePublicId int64, updateMilestone *models.UpdateMilestone) (*models.Milestone, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if updateMilestone != nil {
 		jsonbody, _ := json.Marshal(updateMilestone)
 		body = bytes.NewBuffer(jsonbody)

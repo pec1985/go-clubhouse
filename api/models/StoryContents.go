@@ -16,6 +16,8 @@ type StoryContents struct {
 	EpicId int64 `json:"epic_id"`
 	// The numeric point estimate of the story. Can also be null, which means unestimated.
 	Estimate int64 `json:"estimate"`
+	// An array of external links connected to the story.
+	ExternalLinks []string `json:"external_links"`
 	// An array of external tickets connected to the story.
 	ExternalTickets []ExternalTicket `json:"external_tickets"`
 	// An array of files attached to the story.

@@ -1,12 +1,10 @@
-//go:generate go run generator/swagger.go generator/main.go -tags gen
-
 package main
 
 import (
 	"fmt"
 	"net/http"
 
-	"github.com/pec1985/go-clubhouse.io/api"
+	"github.com/pec1985/go-clubhouse.io/v1/api"
 )
 
 func main() {

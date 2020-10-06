@@ -1,18 +1,16 @@
 package api
 
 import (
-	"bytes"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Get Epic Workflow returns the Epic Workflow for the organization.
 func (a *api) GetEpicWorkflow() (*models.EpicWorkflow, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out models.EpicWorkflow
-	if err := a.request("GET", "/api/v3/epic-workflow", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/epic-workflow", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

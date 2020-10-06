@@ -1,17 +1,15 @@
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Search lets you search Epics and Stories based on desired parameters. Since ordering of the results can change over time (due to search ranking decay, new Epics and Stories being created), the `next` value from the previous response can be used as the path and query string for the next page to ensure stable ordering.
 func (a *api) Search(search *models.Search) (*models.SearchResults, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	if search != nil {
 		kv := map[string]interface{}{}
@@ -22,7 +20,7 @@ func (a *api) Search(search *models.Search) (*models.SearchResults, error) {
 		}
 	}
 	var out models.SearchResults
-	if err := a.request("GET", "/api/v3/search", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/search", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

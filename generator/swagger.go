@@ -1,4 +1,3 @@
-// +build gen
 package main
 
 import (

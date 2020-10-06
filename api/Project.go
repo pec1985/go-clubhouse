@@ -6,15 +6,14 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // List Projects returns a list of all Projects and their attributes.
 func (a *api) ListProjects() (*[]models.Project, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out []models.Project
-	if err := a.request("GET", "/api/v3/projects", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/projects", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -22,8 +21,8 @@ func (a *api) ListProjects() (*[]models.Project, error) {
 
 // Create Project is used to create a new Clubhouse Project.
 func (a *api) CreateProject(createProject *models.CreateProject) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createProject != nil {
 		jsonbody, _ := json.Marshal(createProject)
 		body = bytes.NewBuffer(jsonbody)
@@ -37,10 +36,9 @@ func (a *api) CreateProject(createProject *models.CreateProject) error {
 
 // Delete Project can be used to delete a Project. Projects can only be deleted if all associated Stories are moved or deleted. In the case that the Project cannot be deleted, you will receive a 422 response.
 func (a *api) DeleteProject(projectPublicId int64) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -48,10 +46,9 @@ func (a *api) DeleteProject(projectPublicId int64) error {
 
 // Get Project returns information about the selected Project.
 func (a *api) GetProject(projectPublicId int64) (*models.Project, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out models.Project
-	if err := a.request("GET", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -59,8 +56,8 @@ func (a *api) GetProject(projectPublicId int64) (*models.Project, error) {
 
 // Update Project can be used to change properties of a Project.
 func (a *api) UpdateProject(projectPublicId int64, updateProject *models.UpdateProject) (*models.Project, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if updateProject != nil {
 		jsonbody, _ := json.Marshal(updateProject)
 		body = bytes.NewBuffer(jsonbody)

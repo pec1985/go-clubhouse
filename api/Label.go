@@ -6,12 +6,11 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // List Labels returns a list of all Labels and their attributes.
 func (a *api) ListLabels(listLabels *models.ListLabels) (*[]models.Label, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	if listLabels != nil {
 		kv := map[string]interface{}{}
@@ -22,7 +21,7 @@ func (a *api) ListLabels(listLabels *models.ListLabels) (*[]models.Label, error)
 		}
 	}
 	var out []models.Label
-	if err := a.request("GET", "/api/v3/labels", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/labels", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -30,8 +29,8 @@ func (a *api) ListLabels(listLabels *models.ListLabels) (*[]models.Label, error)
 
 // Create Label allows you to create a new Label in Clubhouse.
 func (a *api) CreateLabel(createLabelParams *models.CreateLabelParams) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createLabelParams != nil {
 		jsonbody, _ := json.Marshal(createLabelParams)
 		body = bytes.NewBuffer(jsonbody)
@@ -45,10 +44,9 @@ func (a *api) CreateLabel(createLabelParams *models.CreateLabelParams) error {
 
 // Delete Label can be used to delete any Label.
 func (a *api) DeleteLabel(labelPublicId int64) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -56,10 +54,9 @@ func (a *api) DeleteLabel(labelPublicId int64) error {
 
 // Get Label returns information about the selected Label.
 func (a *api) GetLabel(labelPublicId int64) (*models.Label, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out models.Label
-	if err := a.request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -67,8 +64,8 @@ func (a *api) GetLabel(labelPublicId int64) (*models.Label, error) {
 
 // Update Label allows you to replace a Label name with another name. If you try to name a Label something that already exists, you will receive a 422 response.
 func (a *api) UpdateLabel(labelPublicId int64, updateLabel *models.UpdateLabel) (*models.Label, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if updateLabel != nil {
 		jsonbody, _ := json.Marshal(updateLabel)
 		body = bytes.NewBuffer(jsonbody)

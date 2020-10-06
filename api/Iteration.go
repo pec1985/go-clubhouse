@@ -6,21 +6,20 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 func (a *api) ListIterations() (*[]models.IterationSlim, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out []models.IterationSlim
-	if err := a.request("GET", "/api/v3/iterations", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/iterations", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 func (a *api) CreateIteration(createIteration *models.CreateIteration) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createIteration != nil {
 		jsonbody, _ := json.Marshal(createIteration)
 		body = bytes.NewBuffer(jsonbody)
@@ -32,26 +31,24 @@ func (a *api) CreateIteration(createIteration *models.CreateIteration) error {
 	return nil
 }
 func (a *api) DeleteIteration(iterationPublicId int64) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
 }
 func (a *api) GetIteration(iterationPublicId int64) (*models.Iteration, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out models.Iteration
-	if err := a.request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 func (a *api) UpdateIteration(iterationPublicId int64, updateIteration *models.UpdateIteration) (*models.Iteration, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if updateIteration != nil {
 		jsonbody, _ := json.Marshal(updateIteration)
 		body = bytes.NewBuffer(jsonbody)

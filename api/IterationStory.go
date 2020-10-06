@@ -1,17 +1,15 @@
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // Get a list of all Stories in an Iteration.
 func (a *api) ListIterationStories(iterationPublicId int64, getIterationStories *models.GetIterationStories) (*[]models.StorySlim, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	if getIterationStories != nil {
 		kv := map[string]interface{}{}
@@ -22,7 +20,7 @@ func (a *api) ListIterationStories(iterationPublicId int64, getIterationStories 
 		}
 	}
 	var out []models.StorySlim
-	if err := a.request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"/stories", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

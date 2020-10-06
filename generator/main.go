@@ -1,4 +1,3 @@
-// +build gen
 package main
 
 import (
@@ -159,12 +158,12 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 			}
 			funcnames = append(funcnames, funcsignature)
 			line = append(line, "func (a*api)"+funcsignature+"{")
-			line = append(line, "var body *bytes.Buffer")
 			line = append(line, "params := url.Values{}")
 			if params != nil {
 				line = append(line, params...)
 			}
 			if body != nil {
+				line = append(line, "var body *bytes.Buffer")
 				line = append(line, body...)
 			}
 			if returntype != "" {
@@ -172,7 +171,11 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 			} else {
 				line = append(line, "var out interface{}")
 			}
-			line = append(line, `if err:= a.request("`+strings.ToUpper(method)+`","`+endpoint+`",  params, body, &out); err != nil {`)
+			if body != nil {
+				line = append(line, `if err:= a.request("`+strings.ToUpper(method)+`","`+endpoint+`",  params, body, &out); err != nil {`)
+			} else {
+				line = append(line, `if err:= a.request("`+strings.ToUpper(method)+`","`+endpoint+`",  params, nil, &out); err != nil {`)
+			}
 			if returntype != "" {
 				line = append(line, "return nil, err")
 			} else {
@@ -215,7 +218,7 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 		header = append(header, `"fmt"`)
 		header = append(header, `"bytes"`)
 		header = append(header, `"net/url"`)
-		header = append(header, `"github.com/pec1985/go-clubhouse.io/api/models"`)
+		header = append(header, `"github.com/pec1985/go-clubhouse.io/v1/api/models"`)
 		header = append(header, `"encoding/json"`)
 		header = append(header, ")")
 		funcs = append(header, funcs...)

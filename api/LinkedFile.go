@@ -6,15 +6,14 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse.io/api/models"
+	"github.com/pec1985/go-clubhouse.io/v1/api/models"
 )
 
 // List Linked Files returns a list of all Linked-Files and their attributes.
 func (a *api) ListLinkedFiles() (*[]models.LinkedFile, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out []models.LinkedFile
-	if err := a.request("GET", "/api/v3/linked-files", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/linked-files", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -22,8 +21,8 @@ func (a *api) ListLinkedFiles() (*[]models.LinkedFile, error) {
 
 // Create Linked File allows you to create a new Linked File in Clubhouse.
 func (a *api) CreateLinkedFile(createLinkedFile *models.CreateLinkedFile) error {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if createLinkedFile != nil {
 		jsonbody, _ := json.Marshal(createLinkedFile)
 		body = bytes.NewBuffer(jsonbody)
@@ -37,10 +36,9 @@ func (a *api) CreateLinkedFile(createLinkedFile *models.CreateLinkedFile) error 
 
 // Delete Linked File can be used to delete any previously attached Linked-File.
 func (a *api) DeleteLinkedFile(linkedFilePublicId int64) error {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, body, &out); err != nil {
+	if err := a.request("DELETE", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -48,10 +46,9 @@ func (a *api) DeleteLinkedFile(linkedFilePublicId int64) error {
 
 // Get File returns information about the selected Linked File.
 func (a *api) GetLinkedFile(linkedFilePublicId int64) (*models.LinkedFile, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
 	var out models.LinkedFile
-	if err := a.request("GET", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, body, &out); err != nil {
+	if err := a.request("GET", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -59,8 +56,8 @@ func (a *api) GetLinkedFile(linkedFilePublicId int64) (*models.LinkedFile, error
 
 // Updated Linked File allows you to update properties of a previously attached Linked-File.
 func (a *api) UpdateLinkedFile(linkedFilePublicId int64, updateLinkedFile *models.UpdateLinkedFile) (*models.LinkedFile, error) {
-	var body *bytes.Buffer
 	params := url.Values{}
+	var body *bytes.Buffer
 	if updateLinkedFile != nil {
 		jsonbody, _ := json.Marshal(updateLinkedFile)
 		body = bytes.NewBuffer(jsonbody)

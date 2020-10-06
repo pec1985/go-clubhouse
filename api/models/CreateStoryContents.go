@@ -16,6 +16,8 @@ type CreateStoryContents struct {
 	EpicId *int64 `json:"epic_id"`
 	// The numeric point estimate to be populated.
 	Estimate *int64 `json:"estimate"`
+	// An array of external links connected to the story.
+	ExternalLinks []string `json:"external_links"`
 	// An array of the external ticket IDs to be populated.
 	ExternalTickets []CreateEntityTemplateExternalTicket `json:"external_tickets"`
 	// An array of the attached file IDs to be populated.
