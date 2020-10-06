@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse/v1/api/models"
+	"github.com/pec1985/go-clubhouse/api/models"
 )
 
 // List Epics returns a list of all Epics and their attributes.

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse/v1/api/models"
+	"github.com/pec1985/go-clubhouse/api/models"
 )
 
 // Story Links (called Story Relationships in the UI) allow you create semantic relationships between two stories. The parameters read like an active voice grammatical sentence:  subject -> verb -> object.

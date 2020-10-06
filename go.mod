@@ -1,4 +1,4 @@
-module github.com/pec1985/go-clubhouse/v1
+module github.com/pec1985/go-clubhouse
 
 go 1.14
 

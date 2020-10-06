@@ -3,7 +3,7 @@ package api
 import (
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse/v1/api/models"
+	"github.com/pec1985/go-clubhouse/api/models"
 )
 
 // Returns information about the authenticated member.

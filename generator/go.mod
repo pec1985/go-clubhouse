@@ -1,4 +1,4 @@
-module github.com/pec1985/go-clubhouse/v1/generator
+module github.com/pec1985/go-clubhouse/generator
 
 go 1.14
 

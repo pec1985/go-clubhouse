@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse/v1/api/models"
+	"github.com/pec1985/go-clubhouse/api/models"
 )
 
 // Get a list of all Stories in an Iteration.

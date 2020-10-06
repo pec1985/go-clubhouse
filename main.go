@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/pec1985/go-clubhouse/v1/api"
+	"github.com/pec1985/go-clubhouse/api"
 )
 
 func main() {

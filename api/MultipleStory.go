@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse/v1/api/models"
+	"github.com/pec1985/go-clubhouse/api/models"
 )
 
 // Delete Multiple Stories allows you to delete multiple archived stories at once.

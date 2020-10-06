@@ -3,7 +3,7 @@ package api
 import (
 	"net/url"
 
-	"github.com/pec1985/go-clubhouse/v1/api/models"
+	"github.com/pec1985/go-clubhouse/api/models"
 )
 
 // List Workflows returns a list of all Workflows in the organization.
