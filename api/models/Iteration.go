@@ -13,7 +13,7 @@ type Iteration struct {
 	// The description of the iteration.
 	Description string `json:"description"`
 	// The date this iteration begins.
-	EndDate time.Time `json:"end_date"`
+	EndDate string `json:"end_date"`
 	// A string description of this resource
 	EntityType string `json:"entity_type"`
 	// An array of UUIDs for any Members listed as Followers.
@@ -33,7 +33,7 @@ type Iteration struct {
 	// The name of the iteration.
 	Name string `json:"name"`
 	// The date this iteration begins.
-	StartDate time.Time      `json:"start_date"`
+	StartDate string         `json:"start_date"`
 	Stats     IterationStats `json:"stats"`
 	// The status of the iteration. Values are either "unstarted", "started", or "done".
 	Status string `json:"status"`

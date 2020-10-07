@@ -56,9 +56,9 @@ func main() {
 }
 
 func overrides(dir string) error {
-	// IterationSlim
-	{
-		fn := filepath.Join(dir, "api", "models", "IterationSlim.go")
+	// replace time.Time with string
+	for _, name := range []string{"IterationSlim.go", "Iteration.go"} {
+		fn := filepath.Join(dir, "api", "models", name)
 		content, err := ioutil.ReadFile(fn)
 		if err != nil {
 			return err
@@ -74,6 +74,7 @@ func overrides(dir string) error {
 			return err
 		}
 	}
+
 	return nil
 }
 
