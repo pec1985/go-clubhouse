@@ -47,9 +47,34 @@ func main() {
 	if err := ioutil.WriteFile(filepath.Join(dir, "api", "api.go"), b, 0644); err != nil {
 		panic(err)
 	}
+	if err := overrides(dir); err != nil {
+		panic(err)
+	}
 	if e := exec.Command("goimports", "-w", filepath.Join(dir, "api")).Run(); e != nil {
 		panic(e)
 	}
+}
+
+func overrides(dir string) error {
+	// IterationSlim
+	{
+		fn := filepath.Join(dir, "api", "models", "IterationSlim.go")
+		content, err := ioutil.ReadFile(fn)
+		if err != nil {
+			return err
+		}
+		lines := strings.Split(string(content), "\n")
+		for i, line := range lines {
+			line = strings.TrimSpace(line)
+			if strings.HasPrefix(line, "StartDate") || strings.HasPrefix(line, "EndDate") {
+				lines[i] = strings.Replace(line, "time.Time", "string", 1)
+			}
+		}
+		if err := ioutil.WriteFile(fn, []byte(strings.Join(lines, "\n")), 0644); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []string {
