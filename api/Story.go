@@ -21,7 +21,7 @@ func (a *api) ListStories(projectPublicId int64, getProjectStories *models.GetPr
 		}
 	}
 	var out []models.StorySlim
-	if err := a.request("GET", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"/stories", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -36,7 +36,7 @@ func (a *api) CreateStory(createStoryParams *models.CreateStoryParams) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/stories", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/stories", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -46,7 +46,7 @@ func (a *api) CreateStory(createStoryParams *models.CreateStoryParams) error {
 func (a *api) DeleteStory(storyPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -56,7 +56,7 @@ func (a *api) DeleteStory(storyPublicId int64) error {
 func (a *api) GetStory(storyPublicId int64) (*models.Story, error) {
 	params := url.Values{}
 	var out models.Story
-	if err := a.request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -71,7 +71,7 @@ func (a *api) UpdateStory(storyPublicId int64, updateStory *models.UpdateStory) 
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Story
-	if err := a.request("PUT", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

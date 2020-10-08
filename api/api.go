@@ -231,7 +231,8 @@ type api struct {
 	url    string
 }
 
-func (a *api) request(method string, endpoint string, params url.Values, data io.Reader, out interface{}) error {
+// Request you can use this method to call any api that's missing from the sdk
+func (a *api) Request(method string, endpoint string, params url.Values, data io.Reader, out interface{}) error {
 
 	ur := strings.TrimRight(a.url, "/")
 	endpoint = strings.TrimPrefix(endpoint, "/")

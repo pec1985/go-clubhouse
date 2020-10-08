@@ -18,6 +18,8 @@ type UpdateStories struct {
 	EpicId *int64 `json:"epic_id"`
 	// The numeric point estimate of the story. Can also be null, which means unestimated.
 	Estimate *int64 `json:"estimate"`
+	// An array of External Links associated with this story.
+	ExternalLinks []string `json:"external_links"`
 	// The UUIDs of the new followers to be added.
 	FollowerIdsAdd []string `json:"follower_ids_add"`
 	// The UUIDs of the followers to be removed.

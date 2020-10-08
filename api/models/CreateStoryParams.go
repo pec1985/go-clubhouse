@@ -24,6 +24,8 @@ type CreateStoryParams struct {
 	Estimate *int64 `json:"estimate"`
 	// This field can be set to another unique ID. In the case that the Story has been imported from another tool, the ID in the other tool can be indicated here.
 	ExternalId string `json:"external_id"`
+	// An array of External Links associated with this story.
+	ExternalLinks []string `json:"external_links"`
 	// An array of External Tickets associated with this story. These External Tickets must have unquie external id. Duplicated External Tickets will be removed.
 	ExternalTickets []CreateExternalTicketParams `json:"external_tickets"`
 	// An array of IDs of files attached to the story.

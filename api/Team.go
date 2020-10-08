@@ -11,7 +11,7 @@ import (
 func (a *api) ListTeams() (*[]models.Team, error) {
 	params := url.Values{}
 	var out []models.Team
-	if err := a.request("GET", "/api/v3/teams", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/teams", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -21,7 +21,7 @@ func (a *api) ListTeams() (*[]models.Team, error) {
 func (a *api) GetTeam(teamPublicId int64) (*models.Team, error) {
 	params := url.Values{}
 	var out models.Team
-	if err := a.request("GET", "/api/v3/teams/"+fmt.Sprint(teamPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/teams/"+fmt.Sprint(teamPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

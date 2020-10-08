@@ -13,7 +13,7 @@ import (
 func (a *api) ListProjects() (*[]models.Project, error) {
 	params := url.Values{}
 	var out []models.Project
-	if err := a.request("GET", "/api/v3/projects", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/projects", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -28,7 +28,7 @@ func (a *api) CreateProject(createProject *models.CreateProject) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/projects", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/projects", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -38,7 +38,7 @@ func (a *api) CreateProject(createProject *models.CreateProject) error {
 func (a *api) DeleteProject(projectPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -48,7 +48,7 @@ func (a *api) DeleteProject(projectPublicId int64) error {
 func (a *api) GetProject(projectPublicId int64) (*models.Project, error) {
 	params := url.Values{}
 	var out models.Project
-	if err := a.request("GET", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -63,7 +63,7 @@ func (a *api) UpdateProject(projectPublicId int64, updateProject *models.UpdateP
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Project
-	if err := a.request("PUT", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/projects/"+fmt.Sprint(projectPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

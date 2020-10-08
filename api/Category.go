@@ -13,7 +13,7 @@ import (
 func (a *api) ListCategories() (*[]models.Category, error) {
 	params := url.Values{}
 	var out []models.Category
-	if err := a.request("GET", "/api/v3/categories", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/categories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -28,7 +28,7 @@ func (a *api) CreateCategory(createCategory *models.CreateCategory) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/categories", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/categories", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -38,7 +38,7 @@ func (a *api) CreateCategory(createCategory *models.CreateCategory) error {
 func (a *api) DeleteCategory(categoryPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/categories/"+fmt.Sprint(categoryPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/categories/"+fmt.Sprint(categoryPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -48,7 +48,7 @@ func (a *api) DeleteCategory(categoryPublicId int64) error {
 func (a *api) GetCategory(categoryPublicId int64) (*models.Category, error) {
 	params := url.Values{}
 	var out models.Category
-	if err := a.request("GET", "/api/v3/categories/"+fmt.Sprint(categoryPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/categories/"+fmt.Sprint(categoryPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -63,7 +63,7 @@ func (a *api) UpdateCategory(categoryPublicId int64, updateCategory *models.Upda
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Category
-	if err := a.request("PUT", "/api/v3/categories/"+fmt.Sprint(categoryPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/categories/"+fmt.Sprint(categoryPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

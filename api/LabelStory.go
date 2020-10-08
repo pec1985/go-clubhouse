@@ -20,7 +20,7 @@ func (a *api) ListLabelStories(labelPublicId int64, getLabelStories *models.GetL
 		}
 	}
 	var out []models.StorySlim
-	if err := a.request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"/stories", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

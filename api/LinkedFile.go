@@ -13,7 +13,7 @@ import (
 func (a *api) ListLinkedFiles() (*[]models.LinkedFile, error) {
 	params := url.Values{}
 	var out []models.LinkedFile
-	if err := a.request("GET", "/api/v3/linked-files", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/linked-files", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -28,7 +28,7 @@ func (a *api) CreateLinkedFile(createLinkedFile *models.CreateLinkedFile) error 
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/linked-files", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/linked-files", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -38,7 +38,7 @@ func (a *api) CreateLinkedFile(createLinkedFile *models.CreateLinkedFile) error 
 func (a *api) DeleteLinkedFile(linkedFilePublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -48,7 +48,7 @@ func (a *api) DeleteLinkedFile(linkedFilePublicId int64) error {
 func (a *api) GetLinkedFile(linkedFilePublicId int64) (*models.LinkedFile, error) {
 	params := url.Values{}
 	var out models.LinkedFile
-	if err := a.request("GET", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -63,7 +63,7 @@ func (a *api) UpdateLinkedFile(linkedFilePublicId int64, updateLinkedFile *model
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.LinkedFile
-	if err := a.request("PUT", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/linked-files/"+fmt.Sprint(linkedFilePublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

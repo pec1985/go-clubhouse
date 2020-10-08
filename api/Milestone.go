@@ -13,7 +13,7 @@ import (
 func (a *api) ListMilestones() (*[]models.Milestone, error) {
 	params := url.Values{}
 	var out []models.Milestone
-	if err := a.request("GET", "/api/v3/milestones", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/milestones", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -28,7 +28,7 @@ func (a *api) CreateMilestone(createMilestone *models.CreateMilestone) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/milestones", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/milestones", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -38,7 +38,7 @@ func (a *api) CreateMilestone(createMilestone *models.CreateMilestone) error {
 func (a *api) DeleteMilestone(milestonePublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -48,7 +48,7 @@ func (a *api) DeleteMilestone(milestonePublicId int64) error {
 func (a *api) GetMilestone(milestonePublicId int64) (*models.Milestone, error) {
 	params := url.Values{}
 	var out models.Milestone
-	if err := a.request("GET", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -63,7 +63,7 @@ func (a *api) UpdateMilestone(milestonePublicId int64, updateMilestone *models.U
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Milestone
-	if err := a.request("PUT", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

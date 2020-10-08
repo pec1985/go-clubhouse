@@ -21,7 +21,7 @@ func (a *api) ListEpics(listEpics *models.ListEpics) (*[]models.EpicSlim, error)
 		}
 	}
 	var out []models.EpicSlim
-	if err := a.request("GET", "/api/v3/epics", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/epics", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -36,7 +36,7 @@ func (a *api) CreateEpic(createEpic *models.CreateEpic) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/epics", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/epics", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -46,7 +46,7 @@ func (a *api) CreateEpic(createEpic *models.CreateEpic) error {
 func (a *api) DeleteEpic(epicPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -56,7 +56,7 @@ func (a *api) DeleteEpic(epicPublicId int64) error {
 func (a *api) GetEpic(epicPublicId int64) (*models.Epic, error) {
 	params := url.Values{}
 	var out models.Epic
-	if err := a.request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -71,7 +71,7 @@ func (a *api) UpdateEpic(epicPublicId int64, updateEpic *models.UpdateEpic) (*mo
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Epic
-	if err := a.request("PUT", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

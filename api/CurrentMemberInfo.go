@@ -10,7 +10,7 @@ import (
 func (a *api) GetCurrentMemberInfo() (*models.MemberInfo, error) {
 	params := url.Values{}
 	var out models.MemberInfo
-	if err := a.request("GET", "/api/v3/member", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/member", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

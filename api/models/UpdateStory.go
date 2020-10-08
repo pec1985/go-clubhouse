@@ -26,6 +26,8 @@ type UpdateStory struct {
 	EpicId *int64 `json:"epic_id"`
 	// The numeric point estimate of the story. Can also be null, which means unestimated.
 	Estimate *int64 `json:"estimate"`
+	// An array of External Links associated with this story.
+	ExternalLinks []string `json:"external_links"`
 	// An array of IDs of files attached to the story.
 	FileIds []int64 `json:"file_ids"`
 	// An array of UUIDs of the followers of this story.

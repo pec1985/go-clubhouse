@@ -17,7 +17,7 @@ func (a *api) SearchStoriesOld(searchStories *models.SearchStories) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/stories/search", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/stories/search", params, body, &out); err != nil {
 		return err
 	}
 	return nil

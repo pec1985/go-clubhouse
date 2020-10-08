@@ -10,7 +10,7 @@ import (
 func (a *api) GetEpicWorkflow() (*models.EpicWorkflow, error) {
 	params := url.Values{}
 	var out models.EpicWorkflow
-	if err := a.request("GET", "/api/v3/epic-workflow", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/epic-workflow", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

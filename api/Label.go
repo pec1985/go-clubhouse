@@ -21,7 +21,7 @@ func (a *api) ListLabels(listLabels *models.ListLabels) (*[]models.Label, error)
 		}
 	}
 	var out []models.Label
-	if err := a.request("GET", "/api/v3/labels", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/labels", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -36,7 +36,7 @@ func (a *api) CreateLabel(createLabelParams *models.CreateLabelParams) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/labels", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/labels", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -46,7 +46,7 @@ func (a *api) CreateLabel(createLabelParams *models.CreateLabelParams) error {
 func (a *api) DeleteLabel(labelPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -56,7 +56,7 @@ func (a *api) DeleteLabel(labelPublicId int64) error {
 func (a *api) GetLabel(labelPublicId int64) (*models.Label, error) {
 	params := url.Values{}
 	var out models.Label
-	if err := a.request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -71,7 +71,7 @@ func (a *api) UpdateLabel(labelPublicId int64, updateLabel *models.UpdateLabel) 
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Label
-	if err := a.request("PUT", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

@@ -13,7 +13,7 @@ import (
 func (a *api) ListFiles() (*[]models.File, error) {
 	params := url.Values{}
 	var out []models.File
-	if err := a.request("GET", "/api/v3/files", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/files", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -26,7 +26,7 @@ func (a *api) CreateFiles(createFiles *models.CreateFiles) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/files", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/files", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -36,7 +36,7 @@ func (a *api) CreateFiles(createFiles *models.CreateFiles) error {
 func (a *api) DeleteFile(filePublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/files/"+fmt.Sprint(filePublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/files/"+fmt.Sprint(filePublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -46,7 +46,7 @@ func (a *api) DeleteFile(filePublicId int64) error {
 func (a *api) GetFile(filePublicId int64) (*models.File, error) {
 	params := url.Values{}
 	var out models.File
-	if err := a.request("GET", "/api/v3/files/"+fmt.Sprint(filePublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/files/"+fmt.Sprint(filePublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -61,7 +61,7 @@ func (a *api) UpdateFile(filePublicId int64, updateFile *models.UpdateFile) (*mo
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.File
-	if err := a.request("PUT", "/api/v3/files/"+fmt.Sprint(filePublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/files/"+fmt.Sprint(filePublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

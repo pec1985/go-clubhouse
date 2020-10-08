@@ -18,7 +18,7 @@ func (a *api) CreateComment(storyPublicId int64, createComment *models.CreateCom
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -28,7 +28,7 @@ func (a *api) CreateComment(storyPublicId int64, createComment *models.CreateCom
 func (a *api) DeleteComment(storyPublicId int64, commentPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -38,7 +38,7 @@ func (a *api) DeleteComment(storyPublicId int64, commentPublicId int64) error {
 func (a *api) GetComment(storyPublicId int64, commentPublicId int64) (*models.Comment, error) {
 	params := url.Values{}
 	var out models.Comment
-	if err := a.request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -53,7 +53,7 @@ func (a *api) UpdateComment(storyPublicId int64, commentPublicId int64, updateCo
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Comment
-	if err := a.request("PUT", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

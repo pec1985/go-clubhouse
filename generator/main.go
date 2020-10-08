@@ -198,9 +198,9 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 				line = append(line, "var out interface{}")
 			}
 			if body != nil {
-				line = append(line, `if err:= a.request("`+strings.ToUpper(method)+`","`+endpoint+`",  params, body, &out); err != nil {`)
+				line = append(line, `if err:= a.Request("`+strings.ToUpper(method)+`","`+endpoint+`",  params, body, &out); err != nil {`)
 			} else {
-				line = append(line, `if err:= a.request("`+strings.ToUpper(method)+`","`+endpoint+`",  params, nil, &out); err != nil {`)
+				line = append(line, `if err:= a.Request("`+strings.ToUpper(method)+`","`+endpoint+`",  params, nil, &out); err != nil {`)
 			}
 			if returntype != "" {
 				line = append(line, "return nil, err")

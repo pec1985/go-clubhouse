@@ -18,7 +18,7 @@ func (a *api) CreateEpicCommentComment(epicPublicId int64, commentPublicId int64
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
 		return err
 	}
 	return nil

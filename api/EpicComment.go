@@ -13,7 +13,7 @@ import (
 func (a *api) ListEpicComments(epicPublicId int64) (*[]models.ThreadedComment, error) {
 	params := url.Values{}
 	var out []models.ThreadedComment
-	if err := a.request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -28,7 +28,7 @@ func (a *api) CreateEpicComment(epicPublicId int64, createEpicComment *models.Cr
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -38,7 +38,7 @@ func (a *api) CreateEpicComment(epicPublicId int64, createEpicComment *models.Cr
 func (a *api) DeleteEpicComment(epicPublicId int64, commentPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -48,7 +48,7 @@ func (a *api) DeleteEpicComment(epicPublicId int64, commentPublicId int64) error
 func (a *api) GetEpicComment(epicPublicId int64, commentPublicId int64) (*models.ThreadedComment, error) {
 	params := url.Values{}
 	var out models.ThreadedComment
-	if err := a.request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -63,7 +63,7 @@ func (a *api) UpdateEpicComment(epicPublicId int64, commentPublicId int64, updat
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.ThreadedComment
-	if err := a.request("PUT", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

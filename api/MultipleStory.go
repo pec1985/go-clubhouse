@@ -21,7 +21,7 @@ func (a *api) DeleteMultipleStories(deleteStories *models.DeleteStories) error {
 		}
 	}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/stories/bulk", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/stories/bulk", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -36,7 +36,7 @@ func (a *api) CreateMultipleStories(createStories *models.CreateStories) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/stories/bulk", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/stories/bulk", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -51,7 +51,7 @@ func (a *api) UpdateMultipleStories(updateStories *models.UpdateStories) (*[]mod
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out []models.StorySlim
-	if err := a.request("PUT", "/api/v3/stories/bulk", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/stories/bulk", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

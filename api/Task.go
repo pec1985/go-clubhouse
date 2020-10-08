@@ -18,7 +18,7 @@ func (a *api) CreateTask(storyPublicId int64, createTask *models.CreateTask) err
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/tasks", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/tasks", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -28,7 +28,7 @@ func (a *api) CreateTask(storyPublicId int64, createTask *models.CreateTask) err
 func (a *api) DeleteTask(storyPublicId int64, taskPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/tasks/"+fmt.Sprint(taskPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/tasks/"+fmt.Sprint(taskPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -38,7 +38,7 @@ func (a *api) DeleteTask(storyPublicId int64, taskPublicId int64) error {
 func (a *api) GetTask(storyPublicId int64, taskPublicId int64) (*models.Task, error) {
 	params := url.Values{}
 	var out models.Task
-	if err := a.request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/tasks/"+fmt.Sprint(taskPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/tasks/"+fmt.Sprint(taskPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -53,7 +53,7 @@ func (a *api) UpdateTask(storyPublicId int64, taskPublicId int64, updateTask *mo
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Task
-	if err := a.request("PUT", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/tasks/"+fmt.Sprint(taskPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/tasks/"+fmt.Sprint(taskPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

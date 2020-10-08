@@ -20,7 +20,7 @@ func (a *api) SearchStories(search *models.Search) (*models.StorySearchResults, 
 		}
 	}
 	var out models.StorySearchResults
-	if err := a.request("GET", "/api/v3/search/stories", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/search/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

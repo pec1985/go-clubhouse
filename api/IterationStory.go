@@ -20,7 +20,7 @@ func (a *api) ListIterationStories(iterationPublicId int64, getIterationStories 
 		}
 	}
 	var out []models.StorySlim
-	if err := a.request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"/stories", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

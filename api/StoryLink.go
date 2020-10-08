@@ -25,7 +25,7 @@ func (a *api) CreateStoryLink(createStoryLink *models.CreateStoryLink) error {
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.request("POST", "/api/v3/story-links", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/story-links", params, body, &out); err != nil {
 		return err
 	}
 	return nil
@@ -35,7 +35,7 @@ func (a *api) CreateStoryLink(createStoryLink *models.CreateStoryLink) error {
 func (a *api) DeleteStoryLink(storyLinkPublicId int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.request("DELETE", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
@@ -45,7 +45,7 @@ func (a *api) DeleteStoryLink(storyLinkPublicId int64) error {
 func (a *api) GetStoryLink(storyLinkPublicId int64) (*models.StoryLink, error) {
 	params := url.Values{}
 	var out models.StoryLink
-	if err := a.request("GET", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
@@ -60,7 +60,7 @@ func (a *api) UpdateStoryLink(storyLinkPublicId int64, updateStoryLink *models.U
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.StoryLink
-	if err := a.request("PUT", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
