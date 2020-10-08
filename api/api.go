@@ -15,7 +15,7 @@ import (
 // API the api interface
 type API interface {
 	// Request you can use this method to call any api that's missing from the sdk
-	Request(method string, endpoint string, params url.Values, data io.Reader, out interface{})
+	Request(method string, endpoint string, params url.Values, data io.Reader, out interface{}) error
 	// List Categories returns a list of all Categories and their attributes.
 	ListCategories() (*[]models.Category, error)
 	// Create Category allows you to create a new Category in Clubhouse.

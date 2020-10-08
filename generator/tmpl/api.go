@@ -13,7 +13,7 @@ import (
 // API the api interface
 type API interface {
 	// Request you can use this method to call any api that's missing from the sdk
-	Request(method string, endpoint string, params url.Values, data io.Reader, out interface{})
+	Request(method string, endpoint string, params url.Values, data io.Reader, out interface{}) error
 	// functions
 }
 
