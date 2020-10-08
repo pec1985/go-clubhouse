@@ -14,6 +14,8 @@ import (
 
 // API the api interface
 type API interface {
+	// Request you can use this method to call any api that's missing from the sdk
+	Request(method string, endpoint string, params url.Values, data io.Reader, out interface{})
 	// List Categories returns a list of all Categories and their attributes.
 	ListCategories() (*[]models.Category, error)
 	// Create Category allows you to create a new Category in Clubhouse.
@@ -234,6 +236,9 @@ type api struct {
 // Request you can use this method to call any api that's missing from the sdk
 func (a *api) Request(method string, endpoint string, params url.Values, data io.Reader, out interface{}) error {
 
+	if params == nil {
+		params = url.Values{}
+	}
 	ur := strings.TrimRight(a.url, "/")
 	endpoint = strings.TrimPrefix(endpoint, "/")
 	var req *http.Request
