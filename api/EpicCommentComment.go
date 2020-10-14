@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// This endpoint allows you to create a nested Comment reply to an existing Epic Comment.
+// CreateEpicCommentComment This endpoint allows you to create a nested Comment reply to an existing Epic Comment.
 func (a *api) CreateEpicCommentComment(epicID int64, commentID int64, commentComment *models.CreateCommentComment) error {
 	params := url.Values{}
 	var body *bytes.Buffer

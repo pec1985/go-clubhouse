@@ -7,7 +7,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Category Milestones returns a list of all Milestones with the Category.
+// ListCategoryMilestones returns a list of all Milestones with the Category.
 func (a *api) ListCategoryMilestones(categoryID int64) (*[]models.Milestone, error) {
 	params := url.Values{}
 	var out []models.Milestone

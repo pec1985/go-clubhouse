@@ -7,7 +7,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List all of the Epics within the Milestone.
+// ListMilestoneEpics List all of the Epics within the Milestone.
 func (a *api) ListMilestoneEpics(milestoneID int64) (*[]models.EpicSlim, error) {
 	params := url.Values{}
 	var out []models.EpicSlim

@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Milestones returns a list of all Milestones and their attributes.
+// ListMilestones returns a list of all Milestones and their attributes.
 func (a *api) ListMilestones() (*[]models.Milestone, error) {
 	params := url.Values{}
 	var out []models.Milestone
@@ -19,7 +19,7 @@ func (a *api) ListMilestones() (*[]models.Milestone, error) {
 	return &out, nil
 }
 
-// Create Milestone allows you to create a new Milestone in Clubhouse.
+// CreateMilestone allows you to create a new Milestone in Clubhouse.
 func (a *api) CreateMilestone(milestone *models.CreateMilestone) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -34,7 +34,7 @@ func (a *api) CreateMilestone(milestone *models.CreateMilestone) error {
 	return nil
 }
 
-// Delete Milestone can be used to delete any Milestone.
+// DeleteMilestone can be used to delete any Milestone.
 func (a *api) DeleteMilestone(milestoneID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -44,7 +44,7 @@ func (a *api) DeleteMilestone(milestoneID int64) error {
 	return nil
 }
 
-// Get Milestone returns information about a chosen Milestone.
+// GetMilestone returns information about a chosen Milestone.
 func (a *api) GetMilestone(milestoneID int64) (*models.Milestone, error) {
 	params := url.Values{}
 	var out models.Milestone
@@ -54,7 +54,7 @@ func (a *api) GetMilestone(milestoneID int64) (*models.Milestone, error) {
 	return &out, nil
 }
 
-// Update Milestone can be used to update Milestone properties.
+// UpdateMilestone can be used to update Milestone properties.
 func (a *api) UpdateMilestone(milestoneID int64, milestone *models.UpdateMilestone) (*models.Milestone, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

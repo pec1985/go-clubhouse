@@ -101,18 +101,27 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 				fmt.Println("missing summery, skipping")
 				continue
 			}
-			if details.Description != nil {
-				descs := strings.Split(*details.Description, "\n")
-				for _, d := range descs {
-					line = append(line, "// "+d)
-					funcnames = append(funcnames, "// "+d)
-				}
-			}
 			var returntype string
 			summary := strings.TrimSuffix(*details.Summary, ".")
 			summary = strings.ReplaceAll(summary, "(", "")
 			summary = strings.ReplaceAll(summary, ")", "")
 			funcname := strings.ReplaceAll(summary, " ", "")
+
+			if details.Description != nil {
+				descs := strings.Split(*details.Description, "\n")
+				for i, d := range descs {
+					d = strings.TrimPrefix(d, *details.Summary)
+					d = strings.TrimSpace(d)
+					if i == 0 {
+						line = append(line, "// "+funcname+" "+d)
+						funcnames = append(funcnames, "// "+funcname+" "+d)
+					} else {
+						line = append(line, "// "+d)
+						funcnames = append(funcnames, "// "+d)
+					}
+				}
+			}
+
 			if response := details.Responses; response != nil {
 				resp := *response
 				if good, ok := resp["200"]; ok {

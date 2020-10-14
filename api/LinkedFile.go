@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Linked Files returns a list of all Linked-Files and their attributes.
+// ListLinkedFiles returns a list of all Linked-Files and their attributes.
 func (a *api) ListLinkedFiles() (*[]models.LinkedFile, error) {
 	params := url.Values{}
 	var out []models.LinkedFile
@@ -19,7 +19,7 @@ func (a *api) ListLinkedFiles() (*[]models.LinkedFile, error) {
 	return &out, nil
 }
 
-// Create Linked File allows you to create a new Linked File in Clubhouse.
+// CreateLinkedFile allows you to create a new Linked File in Clubhouse.
 func (a *api) CreateLinkedFile(linkedFile *models.CreateLinkedFile) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -34,7 +34,7 @@ func (a *api) CreateLinkedFile(linkedFile *models.CreateLinkedFile) error {
 	return nil
 }
 
-// Delete Linked File can be used to delete any previously attached Linked-File.
+// DeleteLinkedFile can be used to delete any previously attached Linked-File.
 func (a *api) DeleteLinkedFile(linkedFileID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -44,7 +44,7 @@ func (a *api) DeleteLinkedFile(linkedFileID int64) error {
 	return nil
 }
 
-// Get File returns information about the selected Linked File.
+// GetLinkedFile Get File returns information about the selected Linked File.
 func (a *api) GetLinkedFile(linkedFileID int64) (*models.LinkedFile, error) {
 	params := url.Values{}
 	var out models.LinkedFile
@@ -54,7 +54,7 @@ func (a *api) GetLinkedFile(linkedFileID int64) (*models.LinkedFile, error) {
 	return &out, nil
 }
 
-// Updated Linked File allows you to update properties of a previously attached Linked-File.
+// UpdateLinkedFile Updated Linked File allows you to update properties of a previously attached Linked-File.
 func (a *api) UpdateLinkedFile(linkedFileID int64, linkedFile *models.UpdateLinkedFile) (*models.LinkedFile, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

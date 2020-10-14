@@ -8,7 +8,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List all the entity templates for an organization.
+// ListEntityTemplates List all the entity templates for an organization.
 func (a *api) ListEntityTemplates() (*[]models.EntityTemplate, error) {
 	params := url.Values{}
 	var out []models.EntityTemplate
@@ -18,7 +18,7 @@ func (a *api) ListEntityTemplates() (*[]models.EntityTemplate, error) {
 	return &out, nil
 }
 
-// Create a new entity template for your organization.
+// CreateEntityTemplate Create a new entity template for your organization.
 func (a *api) CreateEntityTemplate(entityTemplate *models.CreateEntityTemplate) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -41,7 +41,7 @@ func (a *api) DeleteEntityTemplate(entityTemplateID string) error {
 	return nil
 }
 
-// Get Entity Template returns information about a given entity template.
+// GetEntityTemplate returns information about a given entity template.
 func (a *api) GetEntityTemplate(entityTemplateID string) (*models.EntityTemplate, error) {
 	params := url.Values{}
 	var out models.EntityTemplate
@@ -51,7 +51,7 @@ func (a *api) GetEntityTemplate(entityTemplateID string) (*models.EntityTemplate
 	return &out, nil
 }
 
-// Update an entity template's name or its contents.
+// UpdateEntityTemplate Update an entity template's name or its contents.
 func (a *api) UpdateEntityTemplate(entityTemplateID string, entityTemplate *models.UpdateEntityTemplate) (*models.EntityTemplate, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

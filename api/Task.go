@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// Create Task is used to create a new task in a Story.
+// CreateTask is used to create a new task in a Story.
 func (a *api) CreateTask(storyID int64, task *models.CreateTask) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -24,7 +24,7 @@ func (a *api) CreateTask(storyID int64, task *models.CreateTask) error {
 	return nil
 }
 
-// Delete Task can be used to delete any previously created Task on a Story.
+// DeleteTask can be used to delete any previously created Task on a Story.
 func (a *api) DeleteTask(storyID int64, taskID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -34,7 +34,7 @@ func (a *api) DeleteTask(storyID int64, taskID int64) error {
 	return nil
 }
 
-// Returns information about a chosen Task.
+// GetTask Returns information about a chosen Task.
 func (a *api) GetTask(storyID int64, taskID int64) (*models.Task, error) {
 	params := url.Values{}
 	var out models.Task
@@ -44,7 +44,7 @@ func (a *api) GetTask(storyID int64, taskID int64) (*models.Task, error) {
 	return &out, nil
 }
 
-// Update Task can be used to update Task properties.
+// UpdateTask can be used to update Task properties.
 func (a *api) UpdateTask(storyID int64, taskID int64, task *models.UpdateTask) (*models.Task, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

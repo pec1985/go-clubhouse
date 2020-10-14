@@ -8,7 +8,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// Get a list of all Stories in an Epic.
+// ListEpicStories Get a list of all Stories in an Epic.
 func (a *api) ListEpicStories(epicID int64, getEpicStories *models.GetEpicStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	if getEpicStories != nil {

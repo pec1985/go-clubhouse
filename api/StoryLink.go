@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// Story Links (called Story Relationships in the UI) allow you create semantic relationships between two stories. The parameters read like an active voice grammatical sentence:  subject -> verb -> object.
+// CreateStoryLink Story Links (called Story Relationships in the UI) allow you create semantic relationships between two stories. The parameters read like an active voice grammatical sentence:  subject -> verb -> object.
 //
 // The subject story acts on the object Story; the object story is the direct object of the sentence.
 //
@@ -31,7 +31,7 @@ func (a *api) CreateStoryLink(storyLink *models.CreateStoryLink) error {
 	return nil
 }
 
-// Removes the relationship between the stories for the given Story Link.
+// DeleteStoryLink Removes the relationship between the stories for the given Story Link.
 func (a *api) DeleteStoryLink(storyLinkID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -41,7 +41,7 @@ func (a *api) DeleteStoryLink(storyLinkID int64) error {
 	return nil
 }
 
-// Returns the stories and their relationship for the given Story Link.
+// GetStoryLink Returns the stories and their relationship for the given Story Link.
 func (a *api) GetStoryLink(storyLinkID int64) (*models.StoryLink, error) {
 	params := url.Values{}
 	var out models.StoryLink
@@ -51,7 +51,7 @@ func (a *api) GetStoryLink(storyLinkID int64) (*models.StoryLink, error) {
 	return &out, nil
 }
 
-// Updates the stories and/or the relationship for the given Story Link.
+// UpdateStoryLink Updates the stories and/or the relationship for the given Story Link.
 func (a *api) UpdateStoryLink(storyLinkID int64, storyLink *models.UpdateStoryLink) (*models.StoryLink, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

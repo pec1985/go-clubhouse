@@ -7,7 +7,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Teams returns a list of all Teams in the organization.
+// ListTeams returns a list of all Teams in the organization.
 func (a *api) ListTeams() (*[]models.Team, error) {
 	params := url.Values{}
 	var out []models.Team
@@ -17,7 +17,7 @@ func (a *api) ListTeams() (*[]models.Team, error) {
 	return &out, nil
 }
 
-// Get Team is used to get Team information.
+// GetTeam is used to get Team information.
 func (a *api) GetTeam(teamID int64) (*models.Team, error) {
 	params := url.Values{}
 	var out models.Team

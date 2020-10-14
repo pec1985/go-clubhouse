@@ -7,7 +7,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List all of the Epics with the Label.
+// ListLabelEpics List all of the Epics with the Label.
 func (a *api) ListLabelEpics(labelID int64) (*[]models.EpicSlim, error) {
 	params := url.Values{}
 	var out []models.EpicSlim

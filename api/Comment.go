@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// Create Comment allows you to create a Comment on any Story.
+// CreateComment allows you to create a Comment on any Story.
 func (a *api) CreateComment(storyID int64, comment *models.CreateComment) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -24,7 +24,7 @@ func (a *api) CreateComment(storyID int64, comment *models.CreateComment) error 
 	return nil
 }
 
-// Delete a Comment from any story.
+// DeleteComment Delete a Comment from any story.
 func (a *api) DeleteComment(storyID int64, commentID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -34,7 +34,7 @@ func (a *api) DeleteComment(storyID int64, commentID int64) error {
 	return nil
 }
 
-// Get Comment is used to get Comment information.
+// GetComment is used to get Comment information.
 func (a *api) GetComment(storyID int64, commentID int64) (*models.Comment, error) {
 	params := url.Values{}
 	var out models.Comment
@@ -44,7 +44,7 @@ func (a *api) GetComment(storyID int64, commentID int64) (*models.Comment, error
 	return &out, nil
 }
 
-// Update Comment replaces the text of the existing Comment.
+// UpdateComment replaces the text of the existing Comment.
 func (a *api) UpdateComment(storyID int64, commentID int64, comment *models.UpdateComment) (*models.Comment, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

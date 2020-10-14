@@ -7,7 +7,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Repositories returns a list of all Repositories and their attributes.
+// ListRepositories returns a list of all Repositories and their attributes.
 func (a *api) ListRepositories() (*[]models.Repository, error) {
 	params := url.Values{}
 	var out []models.Repository
@@ -17,7 +17,7 @@ func (a *api) ListRepositories() (*[]models.Repository, error) {
 	return &out, nil
 }
 
-// Get Repository returns information about the selected Repository.
+// GetRepository returns information about the selected Repository.
 func (a *api) GetRepository(repoID int64) (*models.Repository, error) {
 	params := url.Values{}
 	var out models.Repository

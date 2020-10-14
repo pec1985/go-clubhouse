@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Categories returns a list of all Categories and their attributes.
+// ListCategories returns a list of all Categories and their attributes.
 func (a *api) ListCategories() (*[]models.Category, error) {
 	params := url.Values{}
 	var out []models.Category
@@ -19,7 +19,7 @@ func (a *api) ListCategories() (*[]models.Category, error) {
 	return &out, nil
 }
 
-// Create Category allows you to create a new Category in Clubhouse.
+// CreateCategory allows you to create a new Category in Clubhouse.
 func (a *api) CreateCategory(category *models.CreateCategory) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -34,7 +34,7 @@ func (a *api) CreateCategory(category *models.CreateCategory) error {
 	return nil
 }
 
-// Delete Category can be used to delete any Category.
+// DeleteCategory can be used to delete any Category.
 func (a *api) DeleteCategory(categoryID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -44,7 +44,7 @@ func (a *api) DeleteCategory(categoryID int64) error {
 	return nil
 }
 
-// Get Category returns information about the selected Category.
+// GetCategory returns information about the selected Category.
 func (a *api) GetCategory(categoryID int64) (*models.Category, error) {
 	params := url.Values{}
 	var out models.Category
@@ -54,7 +54,7 @@ func (a *api) GetCategory(categoryID int64) (*models.Category, error) {
 	return &out, nil
 }
 
-// Update Category allows you to replace a Category name with another name. If you try to name a Category something that already exists, you will receive a 422 response.
+// UpdateCategory allows you to replace a Category name with another name. If you try to name a Category something that already exists, you will receive a 422 response.
 func (a *api) UpdateCategory(categoryID int64, category *models.UpdateCategory) (*models.Category, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

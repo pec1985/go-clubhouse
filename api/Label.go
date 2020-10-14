@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Labels returns a list of all Labels and their attributes.
+// ListLabels returns a list of all Labels and their attributes.
 func (a *api) ListLabels(listLabels *models.ListLabels) (*[]models.Label, error) {
 	params := url.Values{}
 	if listLabels != nil {
@@ -27,7 +27,7 @@ func (a *api) ListLabels(listLabels *models.ListLabels) (*[]models.Label, error)
 	return &out, nil
 }
 
-// Create Label allows you to create a new Label in Clubhouse.
+// CreateLabel allows you to create a new Label in Clubhouse.
 func (a *api) CreateLabel(labelParams *models.CreateLabelParams) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -42,7 +42,7 @@ func (a *api) CreateLabel(labelParams *models.CreateLabelParams) error {
 	return nil
 }
 
-// Delete Label can be used to delete any Label.
+// DeleteLabel can be used to delete any Label.
 func (a *api) DeleteLabel(labelID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -52,7 +52,7 @@ func (a *api) DeleteLabel(labelID int64) error {
 	return nil
 }
 
-// Get Label returns information about the selected Label.
+// GetLabel returns information about the selected Label.
 func (a *api) GetLabel(labelID int64) (*models.Label, error) {
 	params := url.Values{}
 	var out models.Label
@@ -62,7 +62,7 @@ func (a *api) GetLabel(labelID int64) (*models.Label, error) {
 	return &out, nil
 }
 
-// Update Label allows you to replace a Label name with another name. If you try to name a Label something that already exists, you will receive a 422 response.
+// UpdateLabel allows you to replace a Label name with another name. If you try to name a Label something that already exists, you will receive a 422 response.
 func (a *api) UpdateLabel(labelID int64, label *models.UpdateLabel) (*models.Label, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

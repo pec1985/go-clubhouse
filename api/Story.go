@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Stories returns a list of all Stories in a selected Project and their attributes.
+// ListStories returns a list of all Stories in a selected Project and their attributes.
 func (a *api) ListStories(projectID int64, getProjectStories *models.GetProjectStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	if getProjectStories != nil {
@@ -27,7 +27,7 @@ func (a *api) ListStories(projectID int64, getProjectStories *models.GetProjectS
 	return &out, nil
 }
 
-// Create Story is used to add a new story to your Clubhouse.
+// CreateStory is used to add a new story to your Clubhouse.
 func (a *api) CreateStory(storyParams *models.CreateStoryParams) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -42,7 +42,7 @@ func (a *api) CreateStory(storyParams *models.CreateStoryParams) error {
 	return nil
 }
 
-// Delete Story can be used to delete any Story.
+// DeleteStory can be used to delete any Story.
 func (a *api) DeleteStory(storyID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -52,7 +52,7 @@ func (a *api) DeleteStory(storyID int64) error {
 	return nil
 }
 
-// Get Story returns information about a chosen Story.
+// GetStory returns information about a chosen Story.
 func (a *api) GetStory(storyID int64) (*models.Story, error) {
 	params := url.Values{}
 	var out models.Story
@@ -62,7 +62,7 @@ func (a *api) GetStory(storyID int64) (*models.Story, error) {
 	return &out, nil
 }
 
-// Update Story can be used to update Story properties.
+// UpdateStory can be used to update Story properties.
 func (a *api) UpdateStory(storyID int64, story *models.UpdateStory) (*models.Story, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

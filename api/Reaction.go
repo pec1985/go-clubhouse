@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// Delete a Reaction from any comment.
+// DeleteReaction Delete a Reaction from any comment.
 func (a *api) DeleteReaction(storyID int64, commentID int64, orDeleteReaction *models.CreateOrDeleteReaction) error {
 	params := url.Values{}
 	if orDeleteReaction != nil {
@@ -27,7 +27,7 @@ func (a *api) DeleteReaction(storyID int64, commentID int64, orDeleteReaction *m
 	return nil
 }
 
-// Create a reaction to a comment.
+// CreateReaction Create a reaction to a comment.
 func (a *api) CreateReaction(storyID int64, commentID int64, orDeleteReaction *models.CreateOrDeleteReaction) error {
 	params := url.Values{}
 	var body *bytes.Buffer

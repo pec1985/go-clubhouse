@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// Delete Multiple Stories allows you to delete multiple archived stories at once.
+// DeleteMultipleStories allows you to delete multiple archived stories at once.
 func (a *api) DeleteMultipleStories(stories *models.DeleteStories) error {
 	params := url.Values{}
 	if stories != nil {
@@ -27,7 +27,7 @@ func (a *api) DeleteMultipleStories(stories *models.DeleteStories) error {
 	return nil
 }
 
-// Create Multiple Stories allows you to create multiple stories in a single request using the same syntax as [Create Story](https://clubhouse.io/api/#create-story).
+// CreateMultipleStories allows you to create multiple stories in a single request using the same syntax as [Create Story](https://clubhouse.io/api/#create-story).
 func (a *api) CreateMultipleStories(stories *models.CreateStories) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -42,7 +42,7 @@ func (a *api) CreateMultipleStories(stories *models.CreateStories) error {
 	return nil
 }
 
-// Update Multiple Stories allows you to make changes to numerous stories at once.
+// UpdateMultipleStories allows you to make changes to numerous stories at once.
 func (a *api) UpdateMultipleStories(stories *models.UpdateStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

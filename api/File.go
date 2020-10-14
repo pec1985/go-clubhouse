@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Files returns a list of all Files and related attributes in your Clubhouse.
+// ListFiles returns a list of all Files and related attributes in your Clubhouse.
 func (a *api) ListFiles() (*[]models.File, error) {
 	params := url.Values{}
 	var out []models.File
@@ -32,7 +32,7 @@ func (a *api) CreateFiles(files *models.CreateFiles) error {
 	return nil
 }
 
-// Delete File can be used to delete any previously attached File.
+// DeleteFile can be used to delete any previously attached File.
 func (a *api) DeleteFile(fileID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -42,7 +42,7 @@ func (a *api) DeleteFile(fileID int64) error {
 	return nil
 }
 
-// Get File returns information about the selected File.
+// GetFile returns information about the selected File.
 func (a *api) GetFile(fileID int64) (*models.File, error) {
 	params := url.Values{}
 	var out models.File
@@ -52,7 +52,7 @@ func (a *api) GetFile(fileID int64) (*models.File, error) {
 	return &out, nil
 }
 
-// Update File can used to update the properties of a file uploaded to Clubhouse.
+// UpdateFile can used to update the properties of a file uploaded to Clubhouse.
 func (a *api) UpdateFile(fileID int64, file *models.UpdateFile) (*models.File, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

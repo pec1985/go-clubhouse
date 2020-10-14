@@ -6,7 +6,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// Get Epic Workflow returns the Epic Workflow for the organization.
+// GetEpicWorkflow returns the Epic Workflow for the organization.
 func (a *api) GetEpicWorkflow() (*models.EpicWorkflow, error) {
 	params := url.Values{}
 	var out models.EpicWorkflow

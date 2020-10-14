@@ -8,7 +8,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Members returns information about members of the organization.
+// ListMembers returns information about members of the organization.
 func (a *api) ListMembers(listMembers *models.ListMembers) (*[]models.Member, error) {
 	params := url.Values{}
 	if listMembers != nil {
@@ -26,7 +26,7 @@ func (a *api) ListMembers(listMembers *models.ListMembers) (*[]models.Member, er
 	return &out, nil
 }
 
-// Returns information about a Member.
+// GetMember Returns information about a Member.
 func (a *api) GetMember(memberID string, getMember *models.GetMember) (*models.Member, error) {
 	params := url.Values{}
 	if getMember != nil {

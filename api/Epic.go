@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// List Epics returns a list of all Epics and their attributes.
+// ListEpics returns a list of all Epics and their attributes.
 func (a *api) ListEpics(listEpics *models.ListEpics) (*[]models.EpicSlim, error) {
 	params := url.Values{}
 	if listEpics != nil {
@@ -27,7 +27,7 @@ func (a *api) ListEpics(listEpics *models.ListEpics) (*[]models.EpicSlim, error)
 	return &out, nil
 }
 
-// Create Epic allows you to create a new Epic in Clubhouse.
+// CreateEpic allows you to create a new Epic in Clubhouse.
 func (a *api) CreateEpic(epic *models.CreateEpic) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -42,7 +42,7 @@ func (a *api) CreateEpic(epic *models.CreateEpic) error {
 	return nil
 }
 
-// Delete Epic can be used to delete the Epic. The only required parameter is Epic ID.
+// DeleteEpic can be used to delete the Epic. The only required parameter is Epic ID.
 func (a *api) DeleteEpic(epicID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -52,7 +52,7 @@ func (a *api) DeleteEpic(epicID int64) error {
 	return nil
 }
 
-// Get Epic returns information about the selected Epic.
+// GetEpic returns information about the selected Epic.
 func (a *api) GetEpic(epicID int64) (*models.Epic, error) {
 	params := url.Values{}
 	var out models.Epic
@@ -62,7 +62,7 @@ func (a *api) GetEpic(epicID int64) (*models.Epic, error) {
 	return &out, nil
 }
 
-// Update Epic can be used to update numerous fields in the Epic. The only required parameter is Epic ID, which can be found in the Clubhouse UI.
+// UpdateEpic can be used to update numerous fields in the Epic. The only required parameter is Epic ID, which can be found in the Clubhouse UI.
 func (a *api) UpdateEpic(epicID int64, epic *models.UpdateEpic) (*models.Epic, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

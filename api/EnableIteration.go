@@ -4,7 +4,7 @@ import (
 	"net/url"
 )
 
-// Enables Iterations for the current workspace
+// EnableIterations Enables Iterations for the current workspace
 func (a *api) EnableIterations() error {
 	params := url.Values{}
 	var out interface{}
