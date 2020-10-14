@@ -17,11 +17,11 @@ func (a *api) ListIterations() (*[]models.IterationSlim, error) {
 	}
 	return &out, nil
 }
-func (a *api) CreateIteration(createIteration *models.CreateIteration) error {
+func (a *api) CreateIteration(iteration *models.CreateIteration) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createIteration != nil {
-		jsonbody, _ := json.Marshal(createIteration)
+	if iteration != nil {
+		jsonbody, _ := json.Marshal(iteration)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -30,31 +30,31 @@ func (a *api) CreateIteration(createIteration *models.CreateIteration) error {
 	}
 	return nil
 }
-func (a *api) DeleteIteration(iterationPublicId int64) error {
+func (a *api) DeleteIteration(iterationID int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.Request("DELETE", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/iterations/"+fmt.Sprint(iterationID)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
 }
-func (a *api) GetIteration(iterationPublicId int64) (*models.Iteration, error) {
+func (a *api) GetIteration(iterationID int64) (*models.Iteration, error) {
 	params := url.Values{}
 	var out models.Iteration
-	if err := a.Request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationID)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
-func (a *api) UpdateIteration(iterationPublicId int64, updateIteration *models.UpdateIteration) (*models.Iteration, error) {
+func (a *api) UpdateIteration(iterationID int64, iteration *models.UpdateIteration) (*models.Iteration, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateIteration != nil {
-		jsonbody, _ := json.Marshal(updateIteration)
+	if iteration != nil {
+		jsonbody, _ := json.Marshal(iteration)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Iteration
-	if err := a.Request("PUT", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/iterations/"+fmt.Sprint(iterationID)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

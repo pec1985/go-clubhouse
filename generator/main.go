@@ -131,6 +131,13 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 				var vars []string
 				for _, param := range *details.Parameters {
 					shortname := strcase.LowerCamelCase(*param.Name)
+					shortname = strings.TrimPrefix(shortname, "create")
+					shortname = strings.TrimPrefix(shortname, "update")
+					shortname = strings.TrimPrefix(shortname, "delete")
+					shortname = strings.TrimPrefix(shortname, "createOrDelete")
+					shortname = strcase.LowerCamelCase(shortname)
+					shortname = strings.Replace(shortname, "PublicId", "ID", 1)
+
 					if *param.In == "path" {
 						if param.Format == nil || param.Type == nil {
 							fmt.Println("missing param types")
@@ -271,6 +278,16 @@ func generateModels(dir string, definitions map[string]swaggerPayloadDefinition)
 		def := definitions[name]
 		var lines []string
 		lines = append(lines, "package models")
+		if desc := def.Description; desc != nil {
+			parts := strings.Split(*desc, "\n")
+			for i, each := range parts {
+				if i == 0 && !strings.HasPrefix(each, name) {
+					lines = append(lines, "// "+name+" "+each)
+				} else {
+					lines = append(lines, "// "+each)
+				}
+			}
+		}
 		lines = append(lines, "type "+name+" struct {")
 		var orderedprops []string
 		for name := range *def.Properties {
@@ -305,7 +322,20 @@ func generateModels(dir string, definitions map[string]swaggerPayloadDefinition)
 
 func generatePropery(name string, property swaggerPayloadDefinitionProperty) string {
 
-	line := strcase.UpperCamelCase(name)
+	propname := strcase.UpperCamelCase(name)
+	if strings.HasSuffix(propname, "Id") {
+		propname = strings.TrimSuffix(propname, "Id")
+		propname += "ID"
+	}
+	if strings.HasSuffix(propname, "Ids") {
+		propname = strings.TrimSuffix(propname, "Ids")
+		propname += "IDs"
+	}
+	if strings.HasSuffix(propname, "Url") {
+		propname = strings.TrimSuffix(propname, "Url")
+		propname += "URL"
+	}
+	line := propname
 	if null := property.XNullable; null != nil && *null {
 		line += "*"
 	}
@@ -365,8 +395,8 @@ func generatePropery(name string, property swaggerPayloadDefinitionProperty) str
 		return ""
 	}
 	line += " `json:\"" + name + "\"`"
-	if property.Description != nil {
-		return "// " + *property.Description + "\n" + line
+	if property.Description != nil && !strings.HasPrefix(*property.Description, propname) {
+		return "// " + propname + " " + *property.Description + "\n" + line
 	}
 	return line
 }

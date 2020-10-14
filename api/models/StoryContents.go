@@ -5,43 +5,44 @@ import (
 	"time"
 )
 
+// StoryContents A container entity for the attributes this template should populate.
 type StoryContents struct {
-	// The due date of the story.
+	// Deadline The due date of the story.
 	Deadline time.Time `json:"deadline"`
-	// The description of the story.
+	// Description The description of the story.
 	Description string `json:"description"`
-	// A string description of this resource.
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// The ID of the epic the story belongs to.
-	EpicId int64 `json:"epic_id"`
-	// The numeric point estimate of the story. Can also be null, which means unestimated.
+	// EpicID The ID of the epic the story belongs to.
+	EpicID int64 `json:"epic_id"`
+	// Estimate The numeric point estimate of the story. Can also be null, which means unestimated.
 	Estimate int64 `json:"estimate"`
-	// An array of external links connected to the story.
+	// ExternalLinks An array of external links connected to the story.
 	ExternalLinks []string `json:"external_links"`
-	// An array of external tickets connected to the story.
+	// ExternalTickets An array of external tickets connected to the story.
 	ExternalTickets []ExternalTicket `json:"external_tickets"`
-	// An array of files attached to the story.
+	// Files An array of files attached to the story.
 	Files []File `json:"files"`
-	// An array of UUIDs for any Members listed as Followers.
-	FollowerIds []string `json:"follower_ids"`
-	// The ID of the iteration the story belongs to.
-	IterationId int64 `json:"iteration_id"`
-	// An array of labels attached to the story.
+	// FollowerIDs An array of UUIDs for any Members listed as Followers.
+	FollowerIDs []string `json:"follower_ids"`
+	// IterationID The ID of the iteration the story belongs to.
+	IterationID int64 `json:"iteration_id"`
+	// Labels An array of labels attached to the story.
 	Labels []Label `json:"labels"`
-	// An array of linked files attached to the story.
+	// LinkedFiles An array of linked files attached to the story.
 	LinkedFiles []LinkedFile `json:"linked_files"`
-	// The name of the story.
+	// Name The name of the story.
 	Name string `json:"name"`
-	// An array of UUIDs of the owners of this story.
-	OwnerIds []string `json:"owner_ids"`
-	// The ID of the project the story belongs to.
-	ProjectId int64 `json:"project_id"`
-	// The type of story (feature, bug, chore).
+	// OwnerIDs An array of UUIDs of the owners of this story.
+	OwnerIDs []string `json:"owner_ids"`
+	// ProjectID The ID of the project the story belongs to.
+	ProjectID int64 `json:"project_id"`
+	// StoryType The type of story (feature, bug, chore).
 	StoryType string `json:"story_type"`
-	// An array of tasks connected to the story.
+	// Tasks An array of tasks connected to the story.
 	Tasks []StoryContentsTask `json:"tasks"`
-	// The ID of the workflow state the story is currently in.
-	WorkflowStateId int64 `json:"workflow_state_id"`
+	// WorkflowStateID The ID of the workflow state the story is currently in.
+	WorkflowStateID int64 `json:"workflow_state_id"`
 }
 
 func (m *StoryContents) Stringify() string {

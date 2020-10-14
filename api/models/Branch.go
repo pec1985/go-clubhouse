@@ -5,29 +5,30 @@ import (
 	"time"
 )
 
+// Branch refers to a VCS branch. Branches are feature branches associated with Clubhouse Stories.
 type Branch struct {
-	// The time/date the Branch was created.
+	// CreatedAt The time/date the Branch was created.
 	CreatedAt *time.Time `json:"created_at"`
-	// A true/false boolean indicating if the Branch has been deleted.
+	// Deleted A true/false boolean indicating if the Branch has been deleted.
 	Deleted bool `json:"deleted"`
-	// A string description of this resource.
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// The unique ID of the Branch.
-	Id *int64 `json:"id"`
-	// The IDs of the Branches the Branch has been merged into.
-	MergedBranchIds []int64 `json:"merged_branch_ids"`
-	// The name of the Branch.
+	// ID The unique ID of the Branch.
+	ID *int64 `json:"id"`
+	// MergedBranchIDs The IDs of the Branches the Branch has been merged into.
+	MergedBranchIDs []int64 `json:"merged_branch_ids"`
+	// Name The name of the Branch.
 	Name string `json:"name"`
-	// A true/false boolean indicating if the Branch is persistent; e.g. master.
+	// Persistent A true/false boolean indicating if the Branch is persistent; e.g. master.
 	Persistent bool `json:"persistent"`
-	// An array of PullRequests attached to the Branch (there is usually only one).
+	// PullRequests An array of PullRequests attached to the Branch (there is usually only one).
 	PullRequests []PullRequest `json:"pull_requests"`
-	// The ID of the Repository that contains the Branch.
-	RepositoryId *int64 `json:"repository_id"`
-	// The time/date the Branch was updated.
+	// RepositoryID The ID of the Repository that contains the Branch.
+	RepositoryID *int64 `json:"repository_id"`
+	// UpdatedAt The time/date the Branch was updated.
 	UpdatedAt *time.Time `json:"updated_at"`
-	// The URL of the Branch.
-	Url string `json:"url"`
+	// URL The URL of the Branch.
+	URL string `json:"url"`
 }
 
 func (m *Branch) Stringify() string {

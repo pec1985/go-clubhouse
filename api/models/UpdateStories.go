@@ -6,47 +6,47 @@ import (
 )
 
 type UpdateStories struct {
-	// The ID of the story that the stories are to be moved below.
-	AfterId int64 `json:"after_id"`
-	// If the Stories should be archived or not.
+	// AfterID The ID of the story that the stories are to be moved below.
+	AfterID int64 `json:"after_id"`
+	// Archived If the Stories should be archived or not.
 	Archived bool `json:"archived"`
-	// The ID of the story that the stories are to be moved before.
-	BeforeId int64 `json:"before_id"`
-	// The due date of the story.
+	// BeforeID The ID of the story that the stories are to be moved before.
+	BeforeID int64 `json:"before_id"`
+	// Deadline The due date of the story.
 	Deadline *time.Time `json:"deadline"`
-	// The ID of the epic the story belongs to.
-	EpicId *int64 `json:"epic_id"`
-	// The numeric point estimate of the story. Can also be null, which means unestimated.
+	// EpicID The ID of the epic the story belongs to.
+	EpicID *int64 `json:"epic_id"`
+	// Estimate The numeric point estimate of the story. Can also be null, which means unestimated.
 	Estimate *int64 `json:"estimate"`
-	// An array of External Links associated with this story.
+	// ExternalLinks An array of External Links associated with this story.
 	ExternalLinks []string `json:"external_links"`
-	// The UUIDs of the new followers to be added.
+	// FollowerIdsAdd The UUIDs of the new followers to be added.
 	FollowerIdsAdd []string `json:"follower_ids_add"`
-	// The UUIDs of the followers to be removed.
+	// FollowerIdsRemove The UUIDs of the followers to be removed.
 	FollowerIdsRemove []string `json:"follower_ids_remove"`
-	// The Id of the Group the Stories should belong to.
-	GroupId *string `json:"group_id"`
-	// The ID of the iteration the story belongs to.
-	IterationId *int64 `json:"iteration_id"`
-	// An array of labels to be added.
+	// GroupID The Id of the Group the Stories should belong to.
+	GroupID *string `json:"group_id"`
+	// IterationID The ID of the iteration the story belongs to.
+	IterationID *int64 `json:"iteration_id"`
+	// LabelsAdd An array of labels to be added.
 	LabelsAdd []CreateLabelParams `json:"labels_add"`
-	// An array of labels to be removed.
+	// LabelsRemove An array of labels to be removed.
 	LabelsRemove []CreateLabelParams `json:"labels_remove"`
 	MoveTo       string              `json:"move_to"`
-	// The UUIDs of the new owners to be added.
+	// OwnerIdsAdd The UUIDs of the new owners to be added.
 	OwnerIdsAdd []string `json:"owner_ids_add"`
-	// The UUIDs of the owners to be removed.
+	// OwnerIdsRemove The UUIDs of the owners to be removed.
 	OwnerIdsRemove []string `json:"owner_ids_remove"`
-	// The ID of the Project the Stories should belong to.
-	ProjectId int64 `json:"project_id"`
-	// The ID of the member that requested the story.
-	RequestedById string `json:"requested_by_id"`
-	// The unique IDs of the Stories you wish to update.
-	StoryIds []int64 `json:"story_ids"`
-	// The type of story (feature, bug, chore).
+	// ProjectID The ID of the Project the Stories should belong to.
+	ProjectID int64 `json:"project_id"`
+	// RequestedByID The ID of the member that requested the story.
+	RequestedByID string `json:"requested_by_id"`
+	// StoryIDs The Ids of the Stories you wish to update.
+	StoryIDs []int64 `json:"story_ids"`
+	// StoryType The type of story (feature, bug, chore).
 	StoryType string `json:"story_type"`
-	// The ID of the workflow state to put the stories in.
-	WorkflowStateId int64 `json:"workflow_state_id"`
+	// WorkflowStateID The ID of the workflow state to put the stories in.
+	WorkflowStateID int64 `json:"workflow_state_id"`
 }
 
 func (m *UpdateStories) Stringify() string {

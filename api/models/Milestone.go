@@ -5,39 +5,40 @@ import (
 	"time"
 )
 
+// Milestone A Milestone is a collection of Epics that represent a release or some other large initiative that your organization is working on.
 type Milestone struct {
-	// The Clubhouse application url for the Milestone.
-	AppUrl string `json:"app_url"`
-	// An array of Categories attached to the Milestone.
+	// AppURL The Clubhouse application url for the Milestone.
+	AppURL string `json:"app_url"`
+	// Categories An array of Categories attached to the Milestone.
 	Categories []Category `json:"categories"`
-	// A true/false boolean indicating if the Milestone has been completed.
+	// Completed A true/false boolean indicating if the Milestone has been completed.
 	Completed bool `json:"completed"`
-	// The time/date the Milestone was completed.
+	// CompletedAt The time/date the Milestone was completed.
 	CompletedAt *time.Time `json:"completed_at"`
-	// A manual override for the time/date the Milestone was completed.
+	// CompletedAtOverride A manual override for the time/date the Milestone was completed.
 	CompletedAtOverride *time.Time `json:"completed_at_override"`
-	// The time/date the Milestone was created.
+	// CreatedAt The time/date the Milestone was created.
 	CreatedAt time.Time `json:"created_at"`
-	// The Milestone's description.
+	// Description The Milestone's description.
 	Description string `json:"description"`
-	// A string description of this resource.
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// The unique ID of the Milestone.
-	Id int64 `json:"id"`
-	// The name of the Milestone.
+	// ID The unique ID of the Milestone.
+	ID int64 `json:"id"`
+	// Name The name of the Milestone.
 	Name string `json:"name"`
-	// A number representing the position of the Milestone in relation to every other Milestone within the Organization.
+	// Position A number representing the position of the Milestone in relation to every other Milestone within the Organization.
 	Position int64 `json:"position"`
-	// A true/false boolean indicating if the Milestone has been started.
+	// Started A true/false boolean indicating if the Milestone has been started.
 	Started bool `json:"started"`
-	// The time/date the Milestone was started.
+	// StartedAt The time/date the Milestone was started.
 	StartedAt *time.Time `json:"started_at"`
-	// A manual override for the time/date the Milestone was started.
+	// StartedAtOverride A manual override for the time/date the Milestone was started.
 	StartedAtOverride *time.Time `json:"started_at_override"`
-	// The workflow state that the Milestone is in.
+	// State The workflow state that the Milestone is in.
 	State string         `json:"state"`
 	Stats MilestoneStats `json:"stats"`
-	// The time/date the Milestone was updated.
+	// UpdatedAt The time/date the Milestone was updated.
 	UpdatedAt time.Time `json:"updated_at"`
 }
 

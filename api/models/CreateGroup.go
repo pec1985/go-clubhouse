@@ -3,15 +3,15 @@ package models
 import "encoding/json"
 
 type CreateGroup struct {
-	// The description of the Group.
+	// Description The description of the Group.
 	Description string `json:"description"`
-	// The Icon id for the avatar of this Group.
-	DisplayIconId string `json:"display_icon_id"`
-	// The Member ids to add to this Group.
-	MemberIds []string `json:"member_ids"`
-	// The mention name of this Group.
+	// DisplayIconID The Icon id for the avatar of this Group.
+	DisplayIconID string `json:"display_icon_id"`
+	// MemberIDs The Member ids to add to this Group.
+	MemberIDs []string `json:"member_ids"`
+	// MentionName The mention name of this Group.
 	MentionName string `json:"mention_name"`
-	// The name of this Group.
+	// Name The name of this Group.
 	Name string `json:"name"`
 }
 

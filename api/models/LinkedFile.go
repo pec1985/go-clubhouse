@@ -5,39 +5,40 @@ import (
 	"time"
 )
 
+// LinkedFile Linked files are stored on a third-party website and linked to one or more Stories. Clubhouse currently supports linking files from Google Drive, Dropbox, Box, and by URL.
 type LinkedFile struct {
-	// The content type of the image (e.g. txt/plain).
+	// ContentType The content type of the image (e.g. txt/plain).
 	ContentType *string `json:"content_type"`
-	// The time/date the LinkedFile was created.
+	// CreatedAt The time/date the LinkedFile was created.
 	CreatedAt time.Time `json:"created_at"`
-	// The description of the file.
+	// Description The description of the file.
 	Description *string `json:"description"`
-	// A string description of this resource.
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// The groups that are mentioned in the description of the file.
-	GroupMentionIds []string `json:"group_mention_ids"`
-	// The unique identifier for the file.
-	Id int64 `json:"id"`
-	// The members that are mentioned in the description of the file.
-	MemberMentionIds []string `json:"member_mention_ids"`
-	// Deprecated: use member_mention_ids.
-	MentionIds []string `json:"mention_ids"`
-	// The name of the linked file.
+	// GroupMentionIDs The groups that are mentioned in the description of the file.
+	GroupMentionIDs []string `json:"group_mention_ids"`
+	// ID The unique identifier for the file.
+	ID int64 `json:"id"`
+	// MemberMentionIDs The members that are mentioned in the description of the file.
+	MemberMentionIDs []string `json:"member_mention_ids"`
+	// MentionIDs Deprecated: use member_mention_ids.
+	MentionIDs []string `json:"mention_ids"`
+	// Name The name of the linked file.
 	Name string `json:"name"`
-	// The filesize, if the integration provided it.
+	// Size The filesize, if the integration provided it.
 	Size *int64 `json:"size"`
-	// The IDs of the stories this file is attached to.
-	StoryIds []int64 `json:"story_ids"`
-	// The URL of the file thumbnail, if the integration provided it.
-	ThumbnailUrl *string `json:"thumbnail_url"`
-	// The integration type (e.g. google, dropbox, box).
+	// StoryIDs The IDs of the stories this file is attached to.
+	StoryIDs []int64 `json:"story_ids"`
+	// ThumbnailURL The URL of the file thumbnail, if the integration provided it.
+	ThumbnailURL *string `json:"thumbnail_url"`
+	// Type The integration type (e.g. google, dropbox, box).
 	Type string `json:"type"`
-	// The time/date the LinkedFile was updated.
+	// UpdatedAt The time/date the LinkedFile was updated.
 	UpdatedAt time.Time `json:"updated_at"`
-	// The UUID of the member that uploaded the file.
-	UploaderId string `json:"uploader_id"`
-	// The URL of the file.
-	Url string `json:"url"`
+	// UploaderID The UUID of the member that uploaded the file.
+	UploaderID string `json:"uploader_id"`
+	// URL The URL of the file.
+	URL string `json:"url"`
 }
 
 func (m *LinkedFile) Stringify() string {

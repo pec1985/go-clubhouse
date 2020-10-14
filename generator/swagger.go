@@ -30,6 +30,7 @@ type swaggerPayload struct {
 }
 type swaggerPayloadDefinition struct {
 	AdditionalProperties *json.RawMessage `json:"additionalProperties"`
+	Description          *string          `json:"description"`
 	Properties           *map[string]swaggerPayloadDefinitionProperty
 	Required             *[]string `json:"required"`
 	Type                 *string   `json:"type"`

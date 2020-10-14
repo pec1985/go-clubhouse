@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type CreateStories struct {
-	// An array of stories to be created.
+	// Stories An array of stories to be created.
 	Stories []CreateStoryParams `json:"stories"`
 }
 

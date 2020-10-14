@@ -3,8 +3,8 @@ package models
 import "encoding/json"
 
 type DeleteStories struct {
-	// An array of IDs of Stories to delete.
-	StoryIds []int64 `json:"story_ids"`
+	// StoryIDs An array of IDs of Stories to delete.
+	StoryIDs []int64 `json:"story_ids"`
 }
 
 func (m *DeleteStories) Stringify() string {

@@ -28,11 +28,11 @@ func (a *api) ListLabels(listLabels *models.ListLabels) (*[]models.Label, error)
 }
 
 // Create Label allows you to create a new Label in Clubhouse.
-func (a *api) CreateLabel(createLabelParams *models.CreateLabelParams) error {
+func (a *api) CreateLabel(labelParams *models.CreateLabelParams) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createLabelParams != nil {
-		jsonbody, _ := json.Marshal(createLabelParams)
+	if labelParams != nil {
+		jsonbody, _ := json.Marshal(labelParams)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -43,35 +43,35 @@ func (a *api) CreateLabel(createLabelParams *models.CreateLabelParams) error {
 }
 
 // Delete Label can be used to delete any Label.
-func (a *api) DeleteLabel(labelPublicId int64) error {
+func (a *api) DeleteLabel(labelID int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.Request("DELETE", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/labels/"+fmt.Sprint(labelID)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
 }
 
 // Get Label returns information about the selected Label.
-func (a *api) GetLabel(labelPublicId int64) (*models.Label, error) {
+func (a *api) GetLabel(labelID int64) (*models.Label, error) {
 	params := url.Values{}
 	var out models.Label
-	if err := a.Request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/labels/"+fmt.Sprint(labelID)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 
 // Update Label allows you to replace a Label name with another name. If you try to name a Label something that already exists, you will receive a 422 response.
-func (a *api) UpdateLabel(labelPublicId int64, updateLabel *models.UpdateLabel) (*models.Label, error) {
+func (a *api) UpdateLabel(labelID int64, label *models.UpdateLabel) (*models.Label, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateLabel != nil {
-		jsonbody, _ := json.Marshal(updateLabel)
+	if label != nil {
+		jsonbody, _ := json.Marshal(label)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Label
-	if err := a.Request("PUT", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/labels/"+fmt.Sprint(labelID)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

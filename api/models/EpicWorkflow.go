@@ -5,18 +5,19 @@ import (
 	"time"
 )
 
+// EpicWorkflow Epic Workflow is the array of defined Epic States. Epic Workflow can be queried using the API but must be updated in the Clubhouse UI.
 type EpicWorkflow struct {
-	// The date the Epic Workflow was created.
+	// CreatedAt The date the Epic Workflow was created.
 	CreatedAt time.Time `json:"created_at"`
-	// The unique ID of the default Epic State that new Epics are assigned by default.
-	DefaultEpicStateId int64 `json:"default_epic_state_id"`
-	// A string description of this resource.
+	// DefaultEpicStateID The unique ID of the default Epic State that new Epics are assigned by default.
+	DefaultEpicStateID int64 `json:"default_epic_state_id"`
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// A map of the Epic States in this Epic Workflow.
+	// EpicStates A map of the Epic States in this Epic Workflow.
 	EpicStates []EpicState `json:"epic_states"`
-	// The unique ID of the Epic Workflow.
-	Id int64 `json:"id"`
-	// The date the Epic Workflow was updated.
+	// ID The unique ID of the Epic Workflow.
+	ID int64 `json:"id"`
+	// UpdatedAt The date the Epic Workflow was updated.
 	UpdatedAt time.Time `json:"updated_at"`
 }
 

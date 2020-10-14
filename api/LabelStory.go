@@ -9,7 +9,7 @@ import (
 )
 
 // List all of the Stories with the Label.
-func (a *api) ListLabelStories(labelPublicId int64, getLabelStories *models.GetLabelStories) (*[]models.StorySlim, error) {
+func (a *api) ListLabelStories(labelID int64, getLabelStories *models.GetLabelStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	if getLabelStories != nil {
 		kv := map[string]interface{}{}
@@ -20,7 +20,7 @@ func (a *api) ListLabelStories(labelPublicId int64, getLabelStories *models.GetL
 		}
 	}
 	var out []models.StorySlim
-	if err := a.Request("GET", "/api/v3/labels/"+fmt.Sprint(labelPublicId)+"/stories", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/labels/"+fmt.Sprint(labelID)+"/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

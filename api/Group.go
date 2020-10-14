@@ -16,11 +16,11 @@ func (a *api) ListGroups() (*[]models.Group, error) {
 	}
 	return &out, nil
 }
-func (a *api) CreateGroup(createGroup *models.CreateGroup) error {
+func (a *api) CreateGroup(group *models.CreateGroup) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createGroup != nil {
-		jsonbody, _ := json.Marshal(createGroup)
+	if group != nil {
+		jsonbody, _ := json.Marshal(group)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -29,23 +29,23 @@ func (a *api) CreateGroup(createGroup *models.CreateGroup) error {
 	}
 	return nil
 }
-func (a *api) GetGroup(groupPublicId string) (*models.Group, error) {
+func (a *api) GetGroup(groupID string) (*models.Group, error) {
 	params := url.Values{}
 	var out models.Group
-	if err := a.Request("GET", "/api/v3/groups/"+groupPublicId+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/groups/"+groupID+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
-func (a *api) UpdateGroup(groupPublicId string, updateGroup *models.UpdateGroup) (*models.Group, error) {
+func (a *api) UpdateGroup(groupID string, group *models.UpdateGroup) (*models.Group, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateGroup != nil {
-		jsonbody, _ := json.Marshal(updateGroup)
+	if group != nil {
+		jsonbody, _ := json.Marshal(group)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Group
-	if err := a.Request("PUT", "/api/v3/groups/"+groupPublicId+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/groups/"+groupID+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

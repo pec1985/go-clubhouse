@@ -27,7 +27,7 @@ func (a *api) ListMembers(listMembers *models.ListMembers) (*[]models.Member, er
 }
 
 // Returns information about a Member.
-func (a *api) GetMember(memberPublicId string, getMember *models.GetMember) (*models.Member, error) {
+func (a *api) GetMember(memberID string, getMember *models.GetMember) (*models.Member, error) {
 	params := url.Values{}
 	if getMember != nil {
 		kv := map[string]interface{}{}
@@ -38,7 +38,7 @@ func (a *api) GetMember(memberPublicId string, getMember *models.GetMember) (*mo
 		}
 	}
 	var out models.Member
-	if err := a.Request("GET", "/api/v3/members/"+memberPublicId+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/members/"+memberID+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

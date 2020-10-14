@@ -2,12 +2,13 @@ package models
 
 import "encoding/json"
 
+// ProjectStats A group of calculated values for this Project.
 type ProjectStats struct {
-	// The total number of points in this Project.
+	// NumPoints The total number of points in this Project.
 	NumPoints int64 `json:"num_points"`
-	// The total number of documents related to this Project
+	// NumRelatedDocuments The total number of documents related to this Project
 	NumRelatedDocuments int64 `json:"num_related_documents"`
-	// The total number of stories in this Project.
+	// NumStories The total number of stories in this Project.
 	NumStories int64 `json:"num_stories"`
 }
 

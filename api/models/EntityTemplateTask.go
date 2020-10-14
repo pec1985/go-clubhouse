@@ -2,15 +2,16 @@ package models
 
 import "encoding/json"
 
+// EntityTemplateTask Request parameters for specifying how to pre-populate a task through a template.
 type EntityTemplateTask struct {
-	// True/false boolean indicating whether the Task is completed. Defaults to false.
+	// Complete True/false boolean indicating whether the Task is completed. Defaults to false.
 	Complete bool `json:"complete"`
-	// The Task description.
+	// Description The Task description.
 	Description string `json:"description"`
-	// This field can be set to another unique ID. In the case that the Task has been imported from another tool, the ID in the other tool can be indicated here.
-	ExternalId string `json:"external_id"`
-	// An array of UUIDs for any members you want to add as Owners on this new Task.
-	OwnerIds []string `json:"owner_ids"`
+	// ExternalID This field can be set to another unique ID. In the case that the Task has been imported from another tool, the ID in the other tool can be indicated here.
+	ExternalID string `json:"external_id"`
+	// OwnerIDs An array of UUIDs for any members you want to add as Owners on this new Task.
+	OwnerIDs []string `json:"owner_ids"`
 }
 
 func (m *EntityTemplateTask) Stringify() string {

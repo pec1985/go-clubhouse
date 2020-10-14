@@ -3,8 +3,8 @@ package models
 import "encoding/json"
 
 type ListMembers struct {
-	// The unique ID of the Organization to limit the list to.
-	OrgPublicId string `json:"org-public-id"`
+	// OrgPublicID The unique ID of the Organization to limit the list to.
+	OrgPublicID string `json:"org-public-id"`
 }
 
 func (m *ListMembers) Stringify() string {

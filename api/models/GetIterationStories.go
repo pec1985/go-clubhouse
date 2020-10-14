@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type GetIterationStories struct {
-	// A true/false boolean indicating whether to return Stories with their descriptions.
+	// IncludesDescription A true/false boolean indicating whether to return Stories with their descriptions.
 	IncludesDescription bool `json:"includes_description"`
 }
 

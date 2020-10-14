@@ -5,20 +5,21 @@ import (
 	"time"
 )
 
+// StoryLink Story links allow you create semantic relationships between two stories. Relationship types are relates to, blocks / blocked by, and duplicates / is duplicated by. The format is `subject -> link -> object`, or for example "story 5 blocks story 6".
 type StoryLink struct {
-	// The time/date when the Story Link was created.
+	// CreatedAt The time/date when the Story Link was created.
 	CreatedAt time.Time `json:"created_at"`
-	// A string description of this resource.
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// The unique identifier of the Story Link.
-	Id int64 `json:"id"`
-	// The ID of the object Story.
-	ObjectId int64 `json:"object_id"`
-	// The ID of the subject Story.
-	SubjectId int64 `json:"subject_id"`
-	// The time/date when the Story Link was last updated.
+	// ID The unique identifier of the Story Link.
+	ID int64 `json:"id"`
+	// ObjectID The ID of the object Story.
+	ObjectID int64 `json:"object_id"`
+	// SubjectID The ID of the subject Story.
+	SubjectID int64 `json:"subject_id"`
+	// UpdatedAt The time/date when the Story Link was last updated.
 	UpdatedAt time.Time `json:"updated_at"`
-	// How the subject Story acts on the object Story. This can be "blocks", "duplicates", or "relates to".
+	// Verb How the subject Story acts on the object Story. This can be "blocks", "duplicates", or "relates to".
 	Verb string `json:"verb"`
 }
 

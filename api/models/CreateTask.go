@@ -6,17 +6,17 @@ import (
 )
 
 type CreateTask struct {
-	// True/false boolean indicating whether the Task is completed. Defaults to false.
+	// Complete True/false boolean indicating whether the Task is completed. Defaults to false.
 	Complete bool `json:"complete"`
-	// Defaults to the time/date the Task is created but can be set to reflect another creation time/date.
+	// CreatedAt Defaults to the time/date the Task is created but can be set to reflect another creation time/date.
 	CreatedAt time.Time `json:"created_at"`
-	// The Task description.
+	// Description The Task description.
 	Description string `json:"description"`
-	// This field can be set to another unique ID. In the case that the Task has been imported from another tool, the ID in the other tool can be indicated here.
-	ExternalId string `json:"external_id"`
-	// An array of UUIDs for any members you want to add as Owners on this new Task.
-	OwnerIds []string `json:"owner_ids"`
-	// Defaults to the time/date the Task is created in Clubhouse but can be set to reflect another time/date.
+	// ExternalID This field can be set to another unique ID. In the case that the Task has been imported from another tool, the ID in the other tool can be indicated here.
+	ExternalID string `json:"external_id"`
+	// OwnerIDs An array of UUIDs for any members you want to add as Owners on this new Task.
+	OwnerIDs []string `json:"owner_ids"`
+	// UpdatedAt Defaults to the time/date the Task is created in Clubhouse but can be set to reflect another time/date.
 	UpdatedAt time.Time `json:"updated_at"`
 }
 

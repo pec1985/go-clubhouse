@@ -10,60 +10,60 @@ import (
 )
 
 // Get a list of all Comments on an Epic.
-func (a *api) ListEpicComments(epicPublicId int64) (*[]models.ThreadedComment, error) {
+func (a *api) ListEpicComments(epicID int64) (*[]models.ThreadedComment, error) {
 	params := url.Values{}
 	var out []models.ThreadedComment
-	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicID)+"/comments", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 
 // This endpoint allows you to create a threaded Comment on an Epic.
-func (a *api) CreateEpicComment(epicPublicId int64, createEpicComment *models.CreateEpicComment) error {
+func (a *api) CreateEpicComment(epicID int64, epicComment *models.CreateEpicComment) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createEpicComment != nil {
-		jsonbody, _ := json.Marshal(createEpicComment)
+	if epicComment != nil {
+		jsonbody, _ := json.Marshal(epicComment)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.Request("POST", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/epics/"+fmt.Sprint(epicID)+"/comments", params, body, &out); err != nil {
 		return err
 	}
 	return nil
 }
 
 // This endpoint allows you to delete a Comment from an Epic.
-func (a *api) DeleteEpicComment(epicPublicId int64, commentPublicId int64) error {
+func (a *api) DeleteEpicComment(epicID int64, commentID int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.Request("DELETE", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/epics/"+fmt.Sprint(epicID)+"/comments/"+fmt.Sprint(commentID)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
 }
 
 // This endpoint returns information about the selected Epic Comment.
-func (a *api) GetEpicComment(epicPublicId int64, commentPublicId int64) (*models.ThreadedComment, error) {
+func (a *api) GetEpicComment(epicID int64, commentID int64) (*models.ThreadedComment, error) {
 	params := url.Values{}
 	var out models.ThreadedComment
-	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicID)+"/comments/"+fmt.Sprint(commentID)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 
 // This endpoint allows you to update a threaded Comment on an Epic.
-func (a *api) UpdateEpicComment(epicPublicId int64, commentPublicId int64, updateComment *models.UpdateComment) (*models.ThreadedComment, error) {
+func (a *api) UpdateEpicComment(epicID int64, commentID int64, comment *models.UpdateComment) (*models.ThreadedComment, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateComment != nil {
-		jsonbody, _ := json.Marshal(updateComment)
+	if comment != nil {
+		jsonbody, _ := json.Marshal(comment)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.ThreadedComment
-	if err := a.Request("PUT", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/epics/"+fmt.Sprint(epicID)+"/comments/"+fmt.Sprint(commentID)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

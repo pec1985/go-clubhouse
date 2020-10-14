@@ -2,12 +2,13 @@ package models
 
 import "encoding/json"
 
+// CreateStoryLinkParams Request parameters for creating a Story Link within a Story.
 type CreateStoryLinkParams struct {
-	// The unique ID of the Story defined as object.
-	ObjectId int64 `json:"object_id"`
-	// The unique ID of the Story defined as subject.
-	SubjectId int64 `json:"subject_id"`
-	// How the subject Story acts on the object Story. This can be "blocks", "duplicates", or "relates to".
+	// ObjectID The unique ID of the Story defined as object.
+	ObjectID int64 `json:"object_id"`
+	// SubjectID The unique ID of the Story defined as subject.
+	SubjectID int64 `json:"subject_id"`
+	// Verb How the subject Story acts on the object Story. This can be "blocks", "duplicates", or "relates to".
 	Verb string `json:"verb"`
 }
 

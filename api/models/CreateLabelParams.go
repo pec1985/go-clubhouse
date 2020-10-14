@@ -2,14 +2,15 @@ package models
 
 import "encoding/json"
 
+// CreateLabelParams Request parameters for creating a Label on a Clubhouse story.
 type CreateLabelParams struct {
-	// The hex color to be displayed with the Label (for example, "#ff0000").
+	// Color The hex color to be displayed with the Label (for example, "#ff0000").
 	Color string `json:"color"`
-	// The description of the new Label.
+	// Description The description of the new Label.
 	Description string `json:"description"`
-	// This field can be set to another unique ID. In the case that the Label has been imported from another tool, the ID in the other tool can be indicated here.
-	ExternalId string `json:"external_id"`
-	// The name of the new Label.
+	// ExternalID This field can be set to another unique ID. In the case that the Label has been imported from another tool, the ID in the other tool can be indicated here.
+	ExternalID string `json:"external_id"`
+	// Name The name of the new Label.
 	Name string `json:"name"`
 }
 

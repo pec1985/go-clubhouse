@@ -9,7 +9,7 @@ import (
 )
 
 // Get a list of all Stories in an Iteration.
-func (a *api) ListIterationStories(iterationPublicId int64, getIterationStories *models.GetIterationStories) (*[]models.StorySlim, error) {
+func (a *api) ListIterationStories(iterationID int64, getIterationStories *models.GetIterationStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	if getIterationStories != nil {
 		kv := map[string]interface{}{}
@@ -20,7 +20,7 @@ func (a *api) ListIterationStories(iterationPublicId int64, getIterationStories 
 		}
 	}
 	var out []models.StorySlim
-	if err := a.Request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationPublicId)+"/stories", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/iterations/"+fmt.Sprint(iterationID)+"/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

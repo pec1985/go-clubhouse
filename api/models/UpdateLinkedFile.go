@@ -3,22 +3,22 @@ package models
 import "encoding/json"
 
 type UpdateLinkedFile struct {
-	// The description of the file.
+	// Description The description of the file.
 	Description string `json:"description"`
-	// The name of the file.
+	// Name The name of the file.
 	Name string `json:"name"`
-	// The filesize, if the integration provided it.
+	// Size The filesize, if the integration provided it.
 	Size int64 `json:"size"`
-	// The ID of the linked story.
-	StoryId int64 `json:"story_id"`
-	// The URL of the thumbnail, if the integration provided it.
-	ThumbnailUrl string `json:"thumbnail_url"`
-	// The integration type of the file (e.g. google, dropbox, box).
+	// StoryID The ID of the linked story.
+	StoryID int64 `json:"story_id"`
+	// ThumbnailURL The URL of the thumbnail, if the integration provided it.
+	ThumbnailURL string `json:"thumbnail_url"`
+	// Type The integration type of the file (e.g. google, dropbox, box).
 	Type string `json:"type"`
-	// The UUID of the member that uploaded the file.
-	UploaderId string `json:"uploader_id"`
-	// The URL of linked file.
-	Url string `json:"url"`
+	// UploaderID The UUID of the member that uploaded the file.
+	UploaderID string `json:"uploader_id"`
+	// URL The URL of linked file.
+	URL string `json:"url"`
 }
 
 func (m *UpdateLinkedFile) Stringify() string {

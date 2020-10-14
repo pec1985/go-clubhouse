@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type MemberInfo struct {
-	Id          string             `json:"id"`
+	ID          string             `json:"id"`
 	MentionName string             `json:"mention_name"`
 	Name        string             `json:"name"`
 	Workspace2  BasicWorkspaceInfo `json:"workspace2"`

@@ -6,61 +6,61 @@ import (
 )
 
 type SearchStories struct {
-	// A true/false boolean indicating whether the Story is in archived state.
+	// Archived A true/false boolean indicating whether the Story is in archived state.
 	Archived bool `json:"archived"`
-	// Stories should have been completed before this date.
+	// CompletedAtEnd Stories should have been completed before this date.
 	CompletedAtEnd time.Time `json:"completed_at_end"`
-	// Stories should have been competed after this date.
+	// CompletedAtStart Stories should have been competed after this date.
 	CompletedAtStart time.Time `json:"completed_at_start"`
-	// Stories should have been created before this date.
+	// CreatedAtEnd Stories should have been created before this date.
 	CreatedAtEnd time.Time `json:"created_at_end"`
-	// Stories should have been created after this date.
+	// CreatedAtStart Stories should have been created after this date.
 	CreatedAtStart time.Time `json:"created_at_start"`
-	// Stories should have a deadline before this date.
+	// DeadlineEnd Stories should have a deadline before this date.
 	DeadlineEnd time.Time `json:"deadline_end"`
-	// Stories should have a deadline after this date.
+	// DeadlineStart Stories should have a deadline after this date.
 	DeadlineStart time.Time `json:"deadline_start"`
-	// The Epic IDs that may be associated with the Stories.
-	EpicId *int64 `json:"epic_id"`
-	// The Epic IDs that may be associated with the Stories.
-	EpicIds []int64 `json:"epic_ids"`
-	// The number of estimate points associate with the Stories.
+	// EpicID The Epic IDs that may be associated with the Stories.
+	EpicID *int64 `json:"epic_id"`
+	// EpicIDs The Epic IDs that may be associated with the Stories.
+	EpicIDs []int64 `json:"epic_ids"`
+	// Estimate The number of estimate points associate with the Stories.
 	Estimate int64 `json:"estimate"`
-	// An ID or URL that references an external resource. Useful during imports.
-	ExternalId string `json:"external_id"`
-	// The Group ID that is associated with the Stories
-	GroupId *string `json:"group_id"`
-	// The Group IDs that are associated with the Stories
-	GroupIds []string `json:"group_ids"`
-	// Whether to include the story description in the response.
+	// ExternalID An ID or URL that references an external resource. Useful during imports.
+	ExternalID string `json:"external_id"`
+	// GroupID The Group ID that is associated with the Stories
+	GroupID *string `json:"group_id"`
+	// GroupIDs The Group IDs that are associated with the Stories
+	GroupIDs []string `json:"group_ids"`
+	// IncludesDescription Whether to include the story description in the response.
 	IncludesDescription bool `json:"includes_description"`
-	// The Iteration ID that may be associated with the Stories.
-	IterationId *int64 `json:"iteration_id"`
-	// The Iteration IDs that may be associated with the Stories.
-	IterationIds []int64 `json:"iteration_ids"`
-	// The Label IDs that may be associated with the Stories.
-	LabelIds []int64 `json:"label_ids"`
-	// The name of any associated Labels.
+	// IterationID The Iteration ID that may be associated with the Stories.
+	IterationID *int64 `json:"iteration_id"`
+	// IterationIDs The Iteration IDs that may be associated with the Stories.
+	IterationIDs []int64 `json:"iteration_ids"`
+	// LabelIDs The Label IDs that may be associated with the Stories.
+	LabelIDs []int64 `json:"label_ids"`
+	// LabelName The name of any associated Labels.
 	LabelName string `json:"label_name"`
-	// An array of UUIDs for any Users who may be Owners of the Stories.
-	OwnerId *string `json:"owner_id"`
-	// An array of UUIDs for any Users who may be Owners of the Stories.
-	OwnerIds []string `json:"owner_ids"`
-	// The IDs for the Projects the Stories may be assigned to.
-	ProjectId int64 `json:"project_id"`
-	// The IDs for the Projects the Stories may be assigned to.
-	ProjectIds []int64 `json:"project_ids"`
-	// The UUID of any Users who may have requested the Stories.
-	RequestedById string `json:"requested_by_id"`
-	// The type of Stories that you want returned.
+	// OwnerID An array of UUIDs for any Users who may be Owners of the Stories.
+	OwnerID *string `json:"owner_id"`
+	// OwnerIDs An array of UUIDs for any Users who may be Owners of the Stories.
+	OwnerIDs []string `json:"owner_ids"`
+	// ProjectID The IDs for the Projects the Stories may be assigned to.
+	ProjectID int64 `json:"project_id"`
+	// ProjectIDs The IDs for the Projects the Stories may be assigned to.
+	ProjectIDs []int64 `json:"project_ids"`
+	// RequestedByID The UUID of any Users who may have requested the Stories.
+	RequestedByID string `json:"requested_by_id"`
+	// StoryType The type of Stories that you want returned.
 	StoryType string `json:"story_type"`
-	// Stories should have been updated before this date.
+	// UpdatedAtEnd Stories should have been updated before this date.
 	UpdatedAtEnd time.Time `json:"updated_at_end"`
-	// Stories should have been updated after this date.
+	// UpdatedAtStart Stories should have been updated after this date.
 	UpdatedAtStart time.Time `json:"updated_at_start"`
-	// The unique IDs of the specific Workflow States that the Stories should be in.
-	WorkflowStateId int64 `json:"workflow_state_id"`
-	// The type of Workflow State the Stories may be in.
+	// WorkflowStateID The unique IDs of the specific Workflow States that the Stories should be in.
+	WorkflowStateID int64 `json:"workflow_state_id"`
+	// WorkflowStateTypes The type of Workflow State the Stories may be in.
 	WorkflowStateTypes []string `json:"workflow_state_types"`
 }
 

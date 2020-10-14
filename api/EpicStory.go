@@ -9,7 +9,7 @@ import (
 )
 
 // Get a list of all Stories in an Epic.
-func (a *api) ListEpicStories(epicPublicId int64, getEpicStories *models.GetEpicStories) (*[]models.StorySlim, error) {
+func (a *api) ListEpicStories(epicID int64, getEpicStories *models.GetEpicStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	if getEpicStories != nil {
 		kv := map[string]interface{}{}
@@ -20,7 +20,7 @@ func (a *api) ListEpicStories(epicPublicId int64, getEpicStories *models.GetEpic
 		}
 	}
 	var out []models.StorySlim
-	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicPublicId)+"/stories", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/epics/"+fmt.Sprint(epicID)+"/stories", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

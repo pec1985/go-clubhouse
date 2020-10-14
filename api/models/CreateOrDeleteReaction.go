@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type CreateOrDeleteReaction struct {
-	// The emoji short-code to add / remove. E.g. `:thumbsup::skin-tone-4:`.
+	// Emoji The emoji short-code to add / remove. E.g. `:thumbsup::skin-tone-4:`.
 	Emoji string `json:"emoji"`
 }
 

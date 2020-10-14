@@ -2,12 +2,13 @@ package models
 
 import "encoding/json"
 
+// CreateCategoryParams Request parameters for creating a Category with a Milestone.
 type CreateCategoryParams struct {
-	// The hex color to be displayed with the Category (for example, "#ff0000").
+	// Color The hex color to be displayed with the Category (for example, "#ff0000").
 	Color string `json:"color"`
-	// This field can be set to another unique ID. In the case that the Category has been imported from another tool, the ID in the other tool can be indicated here.
-	ExternalId string `json:"external_id"`
-	// The name of the new Category.
+	// ExternalID This field can be set to another unique ID. In the case that the Category has been imported from another tool, the ID in the other tool can be indicated here.
+	ExternalID string `json:"external_id"`
+	// Name The name of the new Category.
 	Name string `json:"name"`
 }
 

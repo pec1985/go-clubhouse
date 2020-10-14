@@ -17,11 +17,11 @@ import (
 // - "story 5 blocks story 6” -- story 6 is now "blocked" until story 5 is moved to a Done workflow state.
 // - "story 2 duplicates story 1” -- Story 2 represents the same body of work as Story 1 (and should probably be archived).
 // - "story 7 relates to story 3”
-func (a *api) CreateStoryLink(createStoryLink *models.CreateStoryLink) error {
+func (a *api) CreateStoryLink(storyLink *models.CreateStoryLink) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createStoryLink != nil {
-		jsonbody, _ := json.Marshal(createStoryLink)
+	if storyLink != nil {
+		jsonbody, _ := json.Marshal(storyLink)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -32,35 +32,35 @@ func (a *api) CreateStoryLink(createStoryLink *models.CreateStoryLink) error {
 }
 
 // Removes the relationship between the stories for the given Story Link.
-func (a *api) DeleteStoryLink(storyLinkPublicId int64) error {
+func (a *api) DeleteStoryLink(storyLinkID int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.Request("DELETE", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/story-links/"+fmt.Sprint(storyLinkID)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
 }
 
 // Returns the stories and their relationship for the given Story Link.
-func (a *api) GetStoryLink(storyLinkPublicId int64) (*models.StoryLink, error) {
+func (a *api) GetStoryLink(storyLinkID int64) (*models.StoryLink, error) {
 	params := url.Values{}
 	var out models.StoryLink
-	if err := a.Request("GET", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/story-links/"+fmt.Sprint(storyLinkID)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 
 // Updates the stories and/or the relationship for the given Story Link.
-func (a *api) UpdateStoryLink(storyLinkPublicId int64, updateStoryLink *models.UpdateStoryLink) (*models.StoryLink, error) {
+func (a *api) UpdateStoryLink(storyLinkID int64, storyLink *models.UpdateStoryLink) (*models.StoryLink, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateStoryLink != nil {
-		jsonbody, _ := json.Marshal(updateStoryLink)
+	if storyLink != nil {
+		jsonbody, _ := json.Marshal(storyLink)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.StoryLink
-	if err := a.Request("PUT", "/api/v3/story-links/"+fmt.Sprint(storyLinkPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/story-links/"+fmt.Sprint(storyLinkID)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

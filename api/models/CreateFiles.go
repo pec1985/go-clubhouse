@@ -3,8 +3,8 @@ package models
 import "encoding/json"
 
 type CreateFiles struct {
-	// The story ID that this file will be associated with.
-	StoryId int64 `json:"story_id"`
+	// StoryID The story ID that this file will be associated with.
+	StoryID int64 `json:"story_id"`
 }
 
 func (m *CreateFiles) Stringify() string {

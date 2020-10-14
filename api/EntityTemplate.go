@@ -19,11 +19,11 @@ func (a *api) ListEntityTemplates() (*[]models.EntityTemplate, error) {
 }
 
 // Create a new entity template for your organization.
-func (a *api) CreateEntityTemplate(createEntityTemplate *models.CreateEntityTemplate) error {
+func (a *api) CreateEntityTemplate(entityTemplate *models.CreateEntityTemplate) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createEntityTemplate != nil {
-		jsonbody, _ := json.Marshal(createEntityTemplate)
+	if entityTemplate != nil {
+		jsonbody, _ := json.Marshal(entityTemplate)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -32,35 +32,35 @@ func (a *api) CreateEntityTemplate(createEntityTemplate *models.CreateEntityTemp
 	}
 	return nil
 }
-func (a *api) DeleteEntityTemplate(entityTemplatePublicId string) error {
+func (a *api) DeleteEntityTemplate(entityTemplateID string) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.Request("DELETE", "/api/v3/entity-templates/"+entityTemplatePublicId+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/entity-templates/"+entityTemplateID+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
 }
 
 // Get Entity Template returns information about a given entity template.
-func (a *api) GetEntityTemplate(entityTemplatePublicId string) (*models.EntityTemplate, error) {
+func (a *api) GetEntityTemplate(entityTemplateID string) (*models.EntityTemplate, error) {
 	params := url.Values{}
 	var out models.EntityTemplate
-	if err := a.Request("GET", "/api/v3/entity-templates/"+entityTemplatePublicId+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/entity-templates/"+entityTemplateID+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 
 // Update an entity template's name or its contents.
-func (a *api) UpdateEntityTemplate(entityTemplatePublicId string, updateEntityTemplate *models.UpdateEntityTemplate) (*models.EntityTemplate, error) {
+func (a *api) UpdateEntityTemplate(entityTemplateID string, entityTemplate *models.UpdateEntityTemplate) (*models.EntityTemplate, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateEntityTemplate != nil {
-		jsonbody, _ := json.Marshal(updateEntityTemplate)
+	if entityTemplate != nil {
+		jsonbody, _ := json.Marshal(entityTemplate)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.EntityTemplate
-	if err := a.Request("PUT", "/api/v3/entity-templates/"+entityTemplatePublicId+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/entity-templates/"+entityTemplateID+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

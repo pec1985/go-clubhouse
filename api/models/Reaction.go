@@ -2,11 +2,11 @@ package models
 
 import "encoding/json"
 
+// Reaction Emoji reaction on a comment.
 type Reaction struct {
-	// Emoji text of the reaction.
 	Emoji string `json:"emoji"`
-	// Permissions who have reacted with this.
-	PermissionIds []string `json:"permission_ids"`
+	// PermissionIDs Permissions who have reacted with this.
+	PermissionIDs []string `json:"permission_ids"`
 }
 
 func (m *Reaction) Stringify() string {

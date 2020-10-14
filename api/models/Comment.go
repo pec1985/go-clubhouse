@@ -5,34 +5,35 @@ import (
 	"time"
 )
 
+// Comment A Comment is any note added within the Comment field of a Story.
 type Comment struct {
-	// The Clubhouse application url for the Comment.
-	AppUrl string `json:"app_url"`
-	// The unique ID of the Member who is the Comment's author.
-	AuthorId *string `json:"author_id"`
-	// The time/date when the Comment was created.
+	// AppURL The Clubhouse application url for the Comment.
+	AppURL string `json:"app_url"`
+	// AuthorID The unique ID of the Member who is the Comment's author.
+	AuthorID *string `json:"author_id"`
+	// CreatedAt The time/date when the Comment was created.
 	CreatedAt time.Time `json:"created_at"`
-	// A string description of this resource.
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// This field can be set to another unique ID. In the case that the Comment has been imported from another tool, the ID in the other tool can be indicated here.
-	ExternalId *string `json:"external_id"`
-	// The unique IDs of the Group who are mentioned in the Comment.
-	GroupMentionIds []string `json:"group_mention_ids"`
-	// The unique ID of the Comment.
-	Id int64 `json:"id"`
-	// The unique IDs of the Member who are mentioned in the Comment.
-	MemberMentionIds []string `json:"member_mention_ids"`
-	// Deprecated: use member_mention_ids.
-	MentionIds []string `json:"mention_ids"`
-	// The Comments numerical position in the list from oldest to newest.
+	// ExternalID This field can be set to another unique ID. In the case that the Comment has been imported from another tool, the ID in the other tool can be indicated here.
+	ExternalID *string `json:"external_id"`
+	// GroupMentionIDs The unique IDs of the Group who are mentioned in the Comment.
+	GroupMentionIDs []string `json:"group_mention_ids"`
+	// ID The unique ID of the Comment.
+	ID int64 `json:"id"`
+	// MemberMentionIDs The unique IDs of the Member who are mentioned in the Comment.
+	MemberMentionIDs []string `json:"member_mention_ids"`
+	// MentionIDs Deprecated: use member_mention_ids.
+	MentionIDs []string `json:"mention_ids"`
+	// Position The Comments numerical position in the list from oldest to newest.
 	Position int64 `json:"position"`
-	// A set of Reactions to this Comment.
+	// Reactions A set of Reactions to this Comment.
 	Reactions []Reaction `json:"reactions"`
-	// The ID of the Story on which the Comment appears.
-	StoryId int64 `json:"story_id"`
-	// The text of the Comment.
+	// StoryID The ID of the Story on which the Comment appears.
+	StoryID int64 `json:"story_id"`
+	// Text The text of the Comment.
 	Text string `json:"text"`
-	// The time/date when the Comment was updated.
+	// UpdatedAt The time/date when the Comment was updated.
 	UpdatedAt *time.Time `json:"updated_at"`
 }
 

@@ -2,12 +2,13 @@ package models
 
 import "encoding/json"
 
+// MilestoneStats A group of calculated values for this Milestone.
 type MilestoneStats struct {
-	// The average cycle time (in seconds) of completed stories in this Milestone.
+	// AverageCycleTime The average cycle time (in seconds) of completed stories in this Milestone.
 	AverageCycleTime int64 `json:"average_cycle_time"`
-	// The average lead time (in seconds) of completed stories in this Milestone.
+	// AverageLeadTime The average lead time (in seconds) of completed stories in this Milestone.
 	AverageLeadTime int64 `json:"average_lead_time"`
-	// The number of related documents tp this Milestone.
+	// NumRelatedDocuments The number of related documents tp this Milestone.
 	NumRelatedDocuments int64 `json:"num_related_documents"`
 }
 

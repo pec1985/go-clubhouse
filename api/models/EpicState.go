@@ -5,24 +5,25 @@ import (
 	"time"
 )
 
+// EpicState Epic State is any of the at least 3 columns. Epic States correspond to one of 3 types: Unstarted, Started, or Done.
 type EpicState struct {
-	// The hex color for this Epic State.
+	// Color The hex color for this Epic State.
 	Color string `json:"color"`
-	// The time/date the Epic State was created.
+	// CreatedAt The time/date the Epic State was created.
 	CreatedAt time.Time `json:"created_at"`
-	// The description of what sort of Epics belong in that Epic State.
+	// Description The description of what sort of Epics belong in that Epic State.
 	Description string `json:"description"`
-	// A string description of this resource.
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// The unique ID of the Epic State.
-	Id int64 `json:"id"`
-	// The Epic State's name.
+	// ID The unique ID of the Epic State.
+	ID int64 `json:"id"`
+	// Name The Epic State's name.
 	Name string `json:"name"`
-	// The position that the Epic State is in, starting with 0 at the left.
+	// Position The position that the Epic State is in, starting with 0 at the left.
 	Position int64 `json:"position"`
-	// The type of Epic State (Unstarted, Started, or Done)
+	// Type The type of Epic State (Unstarted, Started, or Done)
 	Type string `json:"type"`
-	// When the Epic State was last updated.
+	// UpdatedAt When the Epic State was last updated.
 	UpdatedAt time.Time `json:"updated_at"`
 }
 

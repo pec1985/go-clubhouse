@@ -10,11 +10,11 @@ import (
 )
 
 // Delete Multiple Stories allows you to delete multiple archived stories at once.
-func (a *api) DeleteMultipleStories(deleteStories *models.DeleteStories) error {
+func (a *api) DeleteMultipleStories(stories *models.DeleteStories) error {
 	params := url.Values{}
-	if deleteStories != nil {
+	if stories != nil {
 		kv := map[string]interface{}{}
-		b, _ := json.Marshal(deleteStories)
+		b, _ := json.Marshal(stories)
 		json.Unmarshal(b, &kv)
 		for k, v := range kv {
 			params.Set(k, fmt.Sprint(v))
@@ -28,11 +28,11 @@ func (a *api) DeleteMultipleStories(deleteStories *models.DeleteStories) error {
 }
 
 // Create Multiple Stories allows you to create multiple stories in a single request using the same syntax as [Create Story](https://clubhouse.io/api/#create-story).
-func (a *api) CreateMultipleStories(createStories *models.CreateStories) error {
+func (a *api) CreateMultipleStories(stories *models.CreateStories) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createStories != nil {
-		jsonbody, _ := json.Marshal(createStories)
+	if stories != nil {
+		jsonbody, _ := json.Marshal(stories)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -43,11 +43,11 @@ func (a *api) CreateMultipleStories(createStories *models.CreateStories) error {
 }
 
 // Update Multiple Stories allows you to make changes to numerous stories at once.
-func (a *api) UpdateMultipleStories(updateStories *models.UpdateStories) (*[]models.StorySlim, error) {
+func (a *api) UpdateMultipleStories(stories *models.UpdateStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateStories != nil {
-		jsonbody, _ := json.Marshal(updateStories)
+	if stories != nil {
+		jsonbody, _ := json.Marshal(stories)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out []models.StorySlim

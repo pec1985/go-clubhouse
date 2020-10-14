@@ -4,11 +4,11 @@ import "encoding/json"
 
 type Search struct {
 	Include string `json:"include"`
-	// The next page token.
+	// Next The next page token.
 	Next string `json:"next"`
-	// The number of search results to include in a page. Minimum of 1 and maximum of 25.
+	// PageSize The number of search results to include in a page. Minimum of 1 and maximum of 25.
 	PageSize int64 `json:"page_size"`
-	// See our help center article on [search operators](https://help.clubhouse.io/hc/en-us/articles/360000046646-Search-Operators)
+	// Query See our help center article on [search operators](https://help.clubhouse.io/hc/en-us/articles/360000046646-Search-Operators)
 	Query string `json:"query"`
 }
 

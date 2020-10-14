@@ -3,10 +3,10 @@ package models
 import "encoding/json"
 
 type CreateExternalTicketParams struct {
-	// The id of the ticket in the external system.
-	ExternalId string `json:"external_id"`
-	// The url for the ticket in the external system.
-	ExternalUrl string `json:"external_url"`
+	// ExternalID The id of the ticket in the external system.
+	ExternalID string `json:"external_id"`
+	// ExternalURL The url for the ticket in the external system.
+	ExternalURL string `json:"external_url"`
 }
 
 func (m *CreateExternalTicketParams) Stringify() string {

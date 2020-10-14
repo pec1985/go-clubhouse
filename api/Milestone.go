@@ -20,11 +20,11 @@ func (a *api) ListMilestones() (*[]models.Milestone, error) {
 }
 
 // Create Milestone allows you to create a new Milestone in Clubhouse.
-func (a *api) CreateMilestone(createMilestone *models.CreateMilestone) error {
+func (a *api) CreateMilestone(milestone *models.CreateMilestone) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createMilestone != nil {
-		jsonbody, _ := json.Marshal(createMilestone)
+	if milestone != nil {
+		jsonbody, _ := json.Marshal(milestone)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -35,35 +35,35 @@ func (a *api) CreateMilestone(createMilestone *models.CreateMilestone) error {
 }
 
 // Delete Milestone can be used to delete any Milestone.
-func (a *api) DeleteMilestone(milestonePublicId int64) error {
+func (a *api) DeleteMilestone(milestoneID int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.Request("DELETE", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/milestones/"+fmt.Sprint(milestoneID)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
 }
 
 // Get Milestone returns information about a chosen Milestone.
-func (a *api) GetMilestone(milestonePublicId int64) (*models.Milestone, error) {
+func (a *api) GetMilestone(milestoneID int64) (*models.Milestone, error) {
 	params := url.Values{}
 	var out models.Milestone
-	if err := a.Request("GET", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/milestones/"+fmt.Sprint(milestoneID)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 
 // Update Milestone can be used to update Milestone properties.
-func (a *api) UpdateMilestone(milestonePublicId int64, updateMilestone *models.UpdateMilestone) (*models.Milestone, error) {
+func (a *api) UpdateMilestone(milestoneID int64, milestone *models.UpdateMilestone) (*models.Milestone, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateMilestone != nil {
-		jsonbody, _ := json.Marshal(updateMilestone)
+	if milestone != nil {
+		jsonbody, _ := json.Marshal(milestone)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Milestone
-	if err := a.Request("PUT", "/api/v3/milestones/"+fmt.Sprint(milestonePublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/milestones/"+fmt.Sprint(milestoneID)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

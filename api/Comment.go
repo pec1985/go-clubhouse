@@ -10,50 +10,50 @@ import (
 )
 
 // Create Comment allows you to create a Comment on any Story.
-func (a *api) CreateComment(storyPublicId int64, createComment *models.CreateComment) error {
+func (a *api) CreateComment(storyID int64, comment *models.CreateComment) error {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if createComment != nil {
-		jsonbody, _ := json.Marshal(createComment)
+	if comment != nil {
+		jsonbody, _ := json.Marshal(comment)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
-	if err := a.Request("POST", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments", params, body, &out); err != nil {
+	if err := a.Request("POST", "/api/v3/stories/"+fmt.Sprint(storyID)+"/comments", params, body, &out); err != nil {
 		return err
 	}
 	return nil
 }
 
 // Delete a Comment from any story.
-func (a *api) DeleteComment(storyPublicId int64, commentPublicId int64) error {
+func (a *api) DeleteComment(storyID int64, commentID int64) error {
 	params := url.Values{}
 	var out interface{}
-	if err := a.Request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("DELETE", "/api/v3/stories/"+fmt.Sprint(storyID)+"/comments/"+fmt.Sprint(commentID)+"", params, nil, &out); err != nil {
 		return err
 	}
 	return nil
 }
 
 // Get Comment is used to get Comment information.
-func (a *api) GetComment(storyPublicId int64, commentPublicId int64) (*models.Comment, error) {
+func (a *api) GetComment(storyID int64, commentID int64) (*models.Comment, error) {
 	params := url.Values{}
 	var out models.Comment
-	if err := a.Request("GET", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, nil, &out); err != nil {
+	if err := a.Request("GET", "/api/v3/stories/"+fmt.Sprint(storyID)+"/comments/"+fmt.Sprint(commentID)+"", params, nil, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil
 }
 
 // Update Comment replaces the text of the existing Comment.
-func (a *api) UpdateComment(storyPublicId int64, commentPublicId int64, updateComment *models.UpdateComment) (*models.Comment, error) {
+func (a *api) UpdateComment(storyID int64, commentID int64, comment *models.UpdateComment) (*models.Comment, error) {
 	params := url.Values{}
 	var body *bytes.Buffer
-	if updateComment != nil {
-		jsonbody, _ := json.Marshal(updateComment)
+	if comment != nil {
+		jsonbody, _ := json.Marshal(comment)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Comment
-	if err := a.Request("PUT", "/api/v3/stories/"+fmt.Sprint(storyPublicId)+"/comments/"+fmt.Sprint(commentPublicId)+"", params, body, &out); err != nil {
+	if err := a.Request("PUT", "/api/v3/stories/"+fmt.Sprint(storyID)+"/comments/"+fmt.Sprint(commentID)+"", params, body, &out); err != nil {
 		return nil, err
 	}
 	return &out, nil

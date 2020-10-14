@@ -5,17 +5,18 @@ import (
 	"time"
 )
 
+// Icons are used to attach images to Organizations, Members, and Loading screens in the Clubhouse web application.
 type Icon struct {
-	// The time/date that the Icon was created.
+	// CreatedAt The time/date that the Icon was created.
 	CreatedAt time.Time `json:"created_at"`
-	// A string description of this resource.
+	// EntityType A string description of this resource.
 	EntityType string `json:"entity_type"`
-	// The unique ID of the Icon.
-	Id string `json:"id"`
-	// The time/date that the Icon was updated.
+	// ID The unique ID of the Icon.
+	ID string `json:"id"`
+	// UpdatedAt The time/date that the Icon was updated.
 	UpdatedAt time.Time `json:"updated_at"`
-	// The URL of the Icon.
-	Url string `json:"url"`
+	// URL The URL of the Icon.
+	URL string `json:"url"`
 }
 
 func (m *Icon) Stringify() string {
