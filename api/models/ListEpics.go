@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type ListEpics struct {
-	// IncludesDescription A true/false boolean indicating whether to return Epics with their descriptions.
+	// IncludesDescription a true/false boolean indicating whether to return Epics with their descriptions.
 	IncludesDescription bool `json:"includes_description"`
 }
 

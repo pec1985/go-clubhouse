@@ -4,7 +4,7 @@ import (
 	"net/url"
 )
 
-// DisableGroups Disables Groups for the current workspace2
+// DisableGroups disables Groups for the current workspace2
 func (a *api) DisableGroups() error {
 	params := url.Values{}
 	var out interface{}

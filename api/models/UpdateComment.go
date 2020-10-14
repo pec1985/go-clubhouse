@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type UpdateComment struct {
-	// Text The updated comment text.
+	// Text the updated comment text.
 	Text string `json:"text"`
 }
 

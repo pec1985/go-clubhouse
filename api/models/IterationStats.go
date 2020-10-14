@@ -2,29 +2,29 @@ package models
 
 import "encoding/json"
 
-// IterationStats A group of calculated values for this Iteration.
+// IterationStats a group of calculated values for this Iteration.
 type IterationStats struct {
-	// AverageCycleTime The average cycle time (in seconds) of completed stories in this Iteration.
+	// AverageCycleTime the average cycle time (in seconds) of completed stories in this Iteration.
 	AverageCycleTime int64 `json:"average_cycle_time"`
-	// AverageLeadTime The average lead time (in seconds) of completed stories in this Iteration.
+	// AverageLeadTime the average lead time (in seconds) of completed stories in this Iteration.
 	AverageLeadTime int64 `json:"average_lead_time"`
-	// NumPoints The total number of points in this Iteration.
+	// NumPoints the total number of points in this Iteration.
 	NumPoints int64 `json:"num_points"`
-	// NumPointsDone The total number of completed points in this Iteration.
+	// NumPointsDone the total number of completed points in this Iteration.
 	NumPointsDone int64 `json:"num_points_done"`
-	// NumPointsStarted The total number of started points in this Iteration.
+	// NumPointsStarted the total number of started points in this Iteration.
 	NumPointsStarted int64 `json:"num_points_started"`
-	// NumPointsUnstarted The total number of unstarted points in this Iteration.
+	// NumPointsUnstarted the total number of unstarted points in this Iteration.
 	NumPointsUnstarted int64 `json:"num_points_unstarted"`
-	// NumRelatedDocuments The total number of documents related to an Iteration
+	// NumRelatedDocuments the total number of documents related to an Iteration
 	NumRelatedDocuments int64 `json:"num_related_documents"`
-	// NumStoriesDone The total number of done Stories in this Iteration.
+	// NumStoriesDone the total number of done Stories in this Iteration.
 	NumStoriesDone int64 `json:"num_stories_done"`
-	// NumStoriesStarted The total number of started Stories in this Iteration.
+	// NumStoriesStarted the total number of started Stories in this Iteration.
 	NumStoriesStarted int64 `json:"num_stories_started"`
-	// NumStoriesUnestimated The total number of Stories with no point estimate.
+	// NumStoriesUnestimated the total number of Stories with no point estimate.
 	NumStoriesUnestimated int64 `json:"num_stories_unestimated"`
-	// NumStoriesUnstarted The total number of unstarted Stories in this Iteration.
+	// NumStoriesUnstarted the total number of unstarted Stories in this Iteration.
 	NumStoriesUnstarted int64 `json:"num_stories_unstarted"`
 }
 

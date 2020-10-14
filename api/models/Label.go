@@ -5,28 +5,28 @@ import (
 	"time"
 )
 
-// Label A Label can be used to associate and filter Stories and Epics, and also create new Workspaces.
+// Label a Label can be used to associate and filter Stories and Epics, and also create new Workspaces.
 type Label struct {
-	// AppURL The Clubhouse application url for the Label.
+	// AppURL the Clubhouse application url for the Label.
 	AppURL string `json:"app_url"`
-	// Archived A true/false boolean indicating if the Label has been archived.
+	// Archived a true/false boolean indicating if the Label has been archived.
 	Archived bool `json:"archived"`
-	// Color The hex color to be displayed with the Label (for example, "#ff0000").
+	// Color the hex color to be displayed with the Label (for example, "#ff0000").
 	Color *string `json:"color"`
-	// CreatedAt The time/date that the Label was created.
+	// CreatedAt the time/date that the Label was created.
 	CreatedAt *time.Time `json:"created_at"`
-	// Description The description of the Label.
+	// Description the description of the Label.
 	Description *string `json:"description"`
-	// EntityType A string description of this resource.
+	// EntityType a string description of this resource.
 	EntityType string `json:"entity_type"`
-	// ExternalID This field can be set to another unique ID. In the case that the Label has been imported from another tool, the ID in the other tool can be indicated here.
+	// ExternalID this field can be set to another unique ID. In the case that the Label has been imported from another tool, the ID in the other tool can be indicated here.
 	ExternalID *string `json:"external_id"`
-	// ID The unique ID of the Label.
+	// ID the unique ID of the Label.
 	ID int64 `json:"id"`
-	// Name The name of the Label.
+	// Name the name of the Label.
 	Name  string     `json:"name"`
 	Stats LabelStats `json:"stats"`
-	// UpdatedAt The time/date that the Label was updated.
+	// UpdatedAt the time/date that the Label was updated.
 	UpdatedAt *time.Time `json:"updated_at"`
 }
 

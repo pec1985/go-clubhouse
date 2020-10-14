@@ -34,7 +34,7 @@ func (a *api) DeleteTask(storyID int64, taskID int64) error {
 	return nil
 }
 
-// GetTask Returns information about a chosen Task.
+// GetTask returns information about a chosen Task.
 func (a *api) GetTask(storyID int64, taskID int64) (*models.Task, error) {
 	params := url.Values{}
 	var out models.Task

@@ -5,103 +5,103 @@ import (
 	"time"
 )
 
-// Story Stories are the standard unit of work in Clubhouse and represent individual features, bugs, and chores.
+// Story stories are the standard unit of work in Clubhouse and represent individual features, bugs, and chores.
 type Story struct {
-	// AppURL The Clubhouse application url for the Story.
+	// AppURL the Clubhouse application url for the Story.
 	AppURL string `json:"app_url"`
-	// Archived True if the story has been archived or not.
+	// Archived true if the story has been archived or not.
 	Archived bool `json:"archived"`
-	// Blocked A true/false boolean indicating if the Story is currently blocked.
+	// Blocked a true/false boolean indicating if the Story is currently blocked.
 	Blocked bool `json:"blocked"`
-	// Blocker A true/false boolean indicating if the Story is currently a blocker of another story.
+	// Blocker a true/false boolean indicating if the Story is currently a blocker of another story.
 	Blocker bool `json:"blocker"`
-	// Branches An array of Git branches attached to the story.
+	// Branches an array of Git branches attached to the story.
 	Branches []Branch `json:"branches"`
-	// Comments An array of comments attached to the story.
+	// Comments an array of comments attached to the story.
 	Comments []Comment `json:"comments"`
-	// Commits An array of commits attached to the story.
+	// Commits an array of commits attached to the story.
 	Commits []Commit `json:"commits"`
-	// Completed A true/false boolean indicating if the Story has been completed.
+	// Completed a true/false boolean indicating if the Story has been completed.
 	Completed bool `json:"completed"`
-	// CompletedAt The time/date the Story was completed.
+	// CompletedAt the time/date the Story was completed.
 	CompletedAt *time.Time `json:"completed_at"`
-	// CompletedAtOverride A manual override for the time/date the Story was completed.
+	// CompletedAtOverride a manual override for the time/date the Story was completed.
 	CompletedAtOverride *time.Time `json:"completed_at_override"`
-	// CreatedAt The time/date the Story was created.
+	// CreatedAt the time/date the Story was created.
 	CreatedAt time.Time `json:"created_at"`
-	// CycleTime The cycle time (in seconds) of this story when complete.
+	// CycleTime the cycle time (in seconds) of this story when complete.
 	CycleTime int64 `json:"cycle_time"`
-	// Deadline The due date of the story.
+	// Deadline the due date of the story.
 	Deadline *time.Time `json:"deadline"`
-	// Description The description of the story.
+	// Description the description of the story.
 	Description string `json:"description"`
-	// EntityType A string description of this resource.
+	// EntityType a string description of this resource.
 	EntityType string `json:"entity_type"`
-	// EpicID The ID of the epic the story belongs to.
+	// EpicID the ID of the epic the story belongs to.
 	EpicID *int64 `json:"epic_id"`
-	// Estimate The numeric point estimate of the story. Can also be null, which means unestimated.
+	// Estimate the numeric point estimate of the story. Can also be null, which means unestimated.
 	Estimate *int64 `json:"estimate"`
-	// ExternalID This field can be set to another unique ID. In the case that the Story has been imported from another tool, the ID in the other tool can be indicated here.
+	// ExternalID this field can be set to another unique ID. In the case that the Story has been imported from another tool, the ID in the other tool can be indicated here.
 	ExternalID *string `json:"external_id"`
-	// ExternalLinks An array of external link (strings) associated with a Story
+	// ExternalLinks an array of external link (strings) associated with a Story
 	ExternalLinks []string `json:"external_links"`
-	// ExternalTickets An array of External Tickets associated with a Story
+	// ExternalTickets an array of External Tickets associated with a Story
 	ExternalTickets []ExternalTicket `json:"external_tickets"`
-	// Files An array of files attached to the story.
+	// Files an array of files attached to the story.
 	Files []File `json:"files"`
-	// FollowerIDs An array of UUIDs for any Members listed as Followers.
+	// FollowerIDs an array of UUIDs for any Members listed as Followers.
 	FollowerIDs []string `json:"follower_ids"`
-	// GroupID The ID of the group associated with the story.
+	// GroupID the ID of the group associated with the story.
 	GroupID *string `json:"group_id"`
-	// GroupMentionIDs An array of Group IDs that have been mentioned in the Story description.
+	// GroupMentionIDs an array of Group IDs that have been mentioned in the Story description.
 	GroupMentionIDs []string `json:"group_mention_ids"`
-	// ID The unique ID of the Story.
+	// ID the unique ID of the Story.
 	ID int64 `json:"id"`
-	// IterationID The ID of the iteration the story belongs to.
+	// IterationID the ID of the iteration the story belongs to.
 	IterationID *int64 `json:"iteration_id"`
-	// Labels An array of labels attached to the story.
+	// Labels an array of labels attached to the story.
 	Labels []Label `json:"labels"`
-	// LeadTime The lead time (in seconds) of this story when complete.
+	// LeadTime the lead time (in seconds) of this story when complete.
 	LeadTime int64 `json:"lead_time"`
-	// LinkedFiles An array of linked files attached to the story.
+	// LinkedFiles an array of linked files attached to the story.
 	LinkedFiles []LinkedFile `json:"linked_files"`
-	// MemberMentionIDs An array of Member IDs that have been mentioned in the Story description.
+	// MemberMentionIDs an array of Member IDs that have been mentioned in the Story description.
 	MemberMentionIDs []string `json:"member_mention_ids"`
-	// MentionIDs Deprecated: use member_mention_ids.
+	// MentionIDs deprecated: use member_mention_ids.
 	MentionIDs []string `json:"mention_ids"`
-	// MovedAt The time/date the Story was last changed workflow-state.
+	// MovedAt the time/date the Story was last changed workflow-state.
 	MovedAt *time.Time `json:"moved_at"`
-	// Name The name of the story.
+	// Name the name of the story.
 	Name string `json:"name"`
-	// OwnerIDs An array of UUIDs of the owners of this story.
+	// OwnerIDs an array of UUIDs of the owners of this story.
 	OwnerIDs []string `json:"owner_ids"`
-	// Position A number representing the position of the story in relation to every other story in the current project.
+	// Position a number representing the position of the story in relation to every other story in the current project.
 	Position int64 `json:"position"`
-	// PreviousIterationIDs The IDs of the iteration the story belongs to.
+	// PreviousIterationIDs the IDs of the iteration the story belongs to.
 	PreviousIterationIDs []int64 `json:"previous_iteration_ids"`
-	// ProjectID The ID of the project the story belongs to.
+	// ProjectID the ID of the project the story belongs to.
 	ProjectID int64 `json:"project_id"`
-	// PullRequests An array of Pull/Merge Requests attached to the story.
+	// PullRequests an array of Pull/Merge Requests attached to the story.
 	PullRequests []PullRequest `json:"pull_requests"`
-	// RequestedByID The ID of the Member that requested the story.
+	// RequestedByID the ID of the Member that requested the story.
 	RequestedByID string `json:"requested_by_id"`
-	// Started A true/false boolean indicating if the Story has been started.
+	// Started a true/false boolean indicating if the Story has been started.
 	Started bool `json:"started"`
-	// StartedAt The time/date the Story was started.
+	// StartedAt the time/date the Story was started.
 	StartedAt *time.Time `json:"started_at"`
-	// StartedAtOverride A manual override for the time/date the Story was started.
+	// StartedAtOverride a manual override for the time/date the Story was started.
 	StartedAtOverride *time.Time `json:"started_at_override"`
 	Stats             StoryStats `json:"stats"`
-	// StoryLinks An array of story links attached to the Story.
+	// StoryLinks an array of story links attached to the Story.
 	StoryLinks []TypedStoryLink `json:"story_links"`
-	// StoryType The type of story (feature, bug, chore).
+	// StoryType the type of story (feature, bug, chore).
 	StoryType      string          `json:"story_type"`
 	SupportTickets []SupportTicket `json:"support_tickets"`
-	// Tasks An array of tasks connected to the story.
+	// Tasks an array of tasks connected to the story.
 	Tasks []Task `json:"tasks"`
-	// UpdatedAt The time/date the Story was updated.
+	// UpdatedAt the time/date the Story was updated.
 	UpdatedAt *time.Time `json:"updated_at"`
-	// WorkflowStateID The ID of the workflow state the story is currently in.
+	// WorkflowStateID the ID of the workflow state the story is currently in.
 	WorkflowStateID int64 `json:"workflow_state_id"`
 }
 

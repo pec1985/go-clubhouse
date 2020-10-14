@@ -2,10 +2,10 @@ package models
 
 import "encoding/json"
 
-// UpdateEntityTemplate Request parameters for changing either a template's name or any of
+// UpdateEntityTemplate request parameters for changing either a template's name or any of
 //   the attributes it is designed to pre-populate.
 type UpdateEntityTemplate struct {
-	// Name The updated template name.
+	// Name the updated template name.
 	Name          string              `json:"name"`
 	StoryContents CreateStoryContents `json:"story_contents"`
 }

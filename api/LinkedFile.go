@@ -44,7 +44,7 @@ func (a *api) DeleteLinkedFile(linkedFileID int64) error {
 	return nil
 }
 
-// GetLinkedFile Get File returns information about the selected Linked File.
+// GetLinkedFile get File returns information about the selected Linked File.
 func (a *api) GetLinkedFile(linkedFileID int64) (*models.LinkedFile, error) {
 	params := url.Values{}
 	var out models.LinkedFile
@@ -54,7 +54,7 @@ func (a *api) GetLinkedFile(linkedFileID int64) (*models.LinkedFile, error) {
 	return &out, nil
 }
 
-// UpdateLinkedFile Updated Linked File allows you to update properties of a previously attached Linked-File.
+// UpdateLinkedFile updated Linked File allows you to update properties of a previously attached Linked-File.
 func (a *api) UpdateLinkedFile(linkedFileID int64, linkedFile *models.UpdateLinkedFile) (*models.LinkedFile, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

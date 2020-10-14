@@ -4,7 +4,7 @@ import (
 	"net/url"
 )
 
-// EnableStoryTemplates Enables the Story Template feature for the given Organization.
+// EnableStoryTemplates enables the Story Template feature for the given Organization.
 func (a *api) EnableStoryTemplates() error {
 	params := url.Values{}
 	var out interface{}

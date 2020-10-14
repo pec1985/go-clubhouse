@@ -8,7 +8,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// ListIterationStories Get a list of all Stories in an Iteration.
+// ListIterationStories get a list of all Stories in an Iteration.
 func (a *api) ListIterationStories(iterationID int64, getIterationStories *models.GetIterationStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	if getIterationStories != nil {

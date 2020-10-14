@@ -2,13 +2,13 @@ package models
 
 import "encoding/json"
 
-// Identity The Identity of the VCS user that authored the Commit.
+// Identity the Identity of the VCS user that authored the Commit.
 type Identity struct {
-	// EntityType A string description of this resource.
+	// EntityType a string description of this resource.
 	EntityType string `json:"entity_type"`
-	// Name This is your login in VCS.
+	// Name this is your login in VCS.
 	Name *string `json:"name"`
-	// Type The type of Identity; currently only type is github.
+	// Type the type of Identity; currently only type is github.
 	Type *string `json:"type"`
 }
 

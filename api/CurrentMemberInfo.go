@@ -6,7 +6,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// GetCurrentMemberInfo Returns information about the authenticated member.
+// GetCurrentMemberInfo returns information about the authenticated member.
 func (a *api) GetCurrentMemberInfo() (*models.MemberInfo, error) {
 	params := url.Values{}
 	var out models.MemberInfo

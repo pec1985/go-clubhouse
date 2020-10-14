@@ -26,7 +26,7 @@ func (a *api) ListMembers(listMembers *models.ListMembers) (*[]models.Member, er
 	return &out, nil
 }
 
-// GetMember Returns information about a Member.
+// GetMember returns information about a Member.
 func (a *api) GetMember(memberID string, getMember *models.GetMember) (*models.Member, error) {
 	params := url.Values{}
 	if getMember != nil {

@@ -3,11 +3,11 @@ package models
 import "encoding/json"
 
 type CreateStoryLink struct {
-	// ObjectID The ID of the object Story.
+	// ObjectID the ID of the object Story.
 	ObjectID int64 `json:"object_id"`
-	// SubjectID The ID of the subject Story.
+	// SubjectID the ID of the subject Story.
 	SubjectID int64 `json:"subject_id"`
-	// Verb The type of link.
+	// Verb the type of link.
 	Verb string `json:"verb"`
 }
 

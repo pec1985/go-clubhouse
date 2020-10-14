@@ -2,9 +2,9 @@ package models
 
 import "encoding/json"
 
-// StoryStats The stats object for Stories
+// StoryStats the stats object for Stories
 type StoryStats struct {
-	// NumRelatedDocuments The number of documents related to this Story.
+	// NumRelatedDocuments the number of documents related to this Story.
 	NumRelatedDocuments int64 `json:"num_related_documents"`
 }
 

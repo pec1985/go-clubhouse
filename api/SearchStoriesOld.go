@@ -8,7 +8,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// SearchStoriesOld Search Stories lets you search Stories based on desired parameters.
+// SearchStoriesOld search Stories lets you search Stories based on desired parameters.
 func (a *api) SearchStoriesOld(searchStories *models.SearchStories) error {
 	params := url.Values{}
 	var body *bytes.Buffer

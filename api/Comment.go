@@ -24,7 +24,7 @@ func (a *api) CreateComment(storyID int64, comment *models.CreateComment) error 
 	return nil
 }
 
-// DeleteComment Delete a Comment from any story.
+// DeleteComment delete a Comment from any story.
 func (a *api) DeleteComment(storyID int64, commentID int64) error {
 	params := url.Values{}
 	var out interface{}

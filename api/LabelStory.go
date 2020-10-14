@@ -8,7 +8,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// ListLabelStories List all of the Stories with the Label.
+// ListLabelStories list all of the Stories with the Label.
 func (a *api) ListLabelStories(labelID int64, getLabelStories *models.GetLabelStories) (*[]models.StorySlim, error) {
 	params := url.Values{}
 	if getLabelStories != nil {

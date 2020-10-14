@@ -3,17 +3,17 @@ package models
 import "encoding/json"
 
 type UpdateGroup struct {
-	// Archived Whether or not this Group is archived.
+	// Archived whether or not this Group is archived.
 	Archived *bool `json:"archived"`
-	// Description The description of this Group.
+	// Description the description of this Group.
 	Description string `json:"description"`
-	// DisplayIconID The Icon id for the avatar of this Group.
+	// DisplayIconID the Icon id for the avatar of this Group.
 	DisplayIconID *string `json:"display_icon_id"`
-	// MemberIDs The Member ids to add to this Group.
+	// MemberIDs the Member ids to add to this Group.
 	MemberIDs []string `json:"member_ids"`
-	// MentionName The mention name of this Group.
+	// MentionName the mention name of this Group.
 	MentionName string `json:"mention_name"`
-	// Name The name of this Group.
+	// Name the name of this Group.
 	Name string `json:"name"`
 }
 

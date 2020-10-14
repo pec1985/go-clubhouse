@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type ListMembers struct {
-	// OrgPublicID The unique ID of the Organization to limit the list to.
+	// OrgPublicID the unique ID of the Organization to limit the list to.
 	OrgPublicID string `json:"org-public-id"`
 }
 

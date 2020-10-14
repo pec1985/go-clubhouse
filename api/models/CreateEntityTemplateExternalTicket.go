@@ -3,9 +3,9 @@ package models
 import "encoding/json"
 
 type CreateEntityTemplateExternalTicket struct {
-	// ExternalID The id of the ticket in the external system.
+	// ExternalID the id of the ticket in the external system.
 	ExternalID string `json:"external_id"`
-	// ExternalURL The url for the ticket in the external system.
+	// ExternalURL the url for the ticket in the external system.
 	ExternalURL string `json:"external_url"`
 }
 

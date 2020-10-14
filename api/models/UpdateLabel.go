@@ -3,13 +3,13 @@ package models
 import "encoding/json"
 
 type UpdateLabel struct {
-	// Archived A true/false boolean indicating if the Label has been archived.
+	// Archived a true/false boolean indicating if the Label has been archived.
 	Archived bool `json:"archived"`
-	// Color The hex color to be displayed with the Label (for example, "#ff0000").
+	// Color the hex color to be displayed with the Label (for example, "#ff0000").
 	Color *string `json:"color"`
-	// Description The new description of the label.
+	// Description the new description of the label.
 	Description string `json:"description"`
-	// Name The new name of the label.
+	// Name the new name of the label.
 	Name string `json:"name"`
 }
 

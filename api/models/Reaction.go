@@ -2,10 +2,10 @@ package models
 
 import "encoding/json"
 
-// Reaction Emoji reaction on a comment.
+// Reaction emoji reaction on a comment.
 type Reaction struct {
 	Emoji string `json:"emoji"`
-	// PermissionIDs Permissions who have reacted with this.
+	// PermissionIDs permissions who have reacted with this.
 	PermissionIDs []string `json:"permission_ids"`
 }
 

@@ -4,7 +4,7 @@ import (
 	"net/url"
 )
 
-// EnableGroups Enables Groups for the current workspace2
+// EnableGroups enables Groups for the current workspace2
 func (a *api) EnableGroups() error {
 	params := url.Values{}
 	var out interface{}

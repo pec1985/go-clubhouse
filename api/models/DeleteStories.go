@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type DeleteStories struct {
-	// StoryIDs An array of IDs of Stories to delete.
+	// StoryIDs an array of IDs of Stories to delete.
 	StoryIDs []int64 `json:"story_ids"`
 }
 

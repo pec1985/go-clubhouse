@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type GetMember struct {
-	// OrgPublicID The unique ID of the Organization to limit the lookup to.
+	// OrgPublicID the unique ID of the Organization to limit the lookup to.
 	OrgPublicID string `json:"org-public-id"`
 }
 

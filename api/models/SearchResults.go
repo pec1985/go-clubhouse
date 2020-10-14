@@ -2,7 +2,7 @@ package models
 
 import "encoding/json"
 
-// SearchResults The results of the multi-entity search query.
+// SearchResults the results of the multi-entity search query.
 type SearchResults struct {
 	Epics   EpicSearchResults  `json:"epics"`
 	Stories StorySearchResults `json:"stories"`

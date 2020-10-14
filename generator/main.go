@@ -112,6 +112,7 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 				for i, d := range descs {
 					d = strings.TrimPrefix(d, *details.Summary)
 					d = strings.TrimSpace(d)
+					d = lowercaseFirstWord(d)
 					if i == 0 {
 						line = append(line, "// "+funcname+" "+d)
 						funcnames = append(funcnames, "// "+funcname+" "+d)
@@ -291,8 +292,10 @@ func generateModels(dir string, definitions map[string]swaggerPayloadDefinition)
 			parts := strings.Split(*desc, "\n")
 			for i, each := range parts {
 				if i == 0 && !strings.HasPrefix(each, name) {
+					each = lowercaseFirstWord(each)
 					lines = append(lines, "// "+name+" "+each)
 				} else {
+					each = lowercaseFirstWord(each)
 					lines = append(lines, "// "+each)
 				}
 			}
@@ -405,7 +408,13 @@ func generatePropery(name string, property swaggerPayloadDefinitionProperty) str
 	}
 	line += " `json:\"" + name + "\"`"
 	if property.Description != nil && !strings.HasPrefix(*property.Description, propname) {
-		return "// " + propname + " " + *property.Description + "\n" + line
+		return "// " + propname + " " + lowercaseFirstWord(*property.Description) + "\n" + line
 	}
 	return line
+}
+
+func lowercaseFirstWord(in string) string {
+	parts := strings.Split(in, " ")
+	parts[0] = strings.ToLower(parts[0])
+	return strings.Join(parts, " ")
 }

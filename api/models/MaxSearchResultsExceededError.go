@@ -2,13 +2,13 @@ package models
 
 import "encoding/json"
 
-// MaxSearchResultsExceededError Error returned when total maximum supported results have been reached.
+// MaxSearchResultsExceededError error returned when total maximum supported results have been reached.
 type MaxSearchResultsExceededError struct {
-	// Error The name for this type of error, `maximum-results-exceeded`
+	// Error the name for this type of error, `maximum-results-exceeded`
 	Error string `json:"error"`
-	// MaximumResults The maximum number of search results supported, `1000`
+	// MaximumResults the maximum number of search results supported, `1000`
 	MaximumResults int64 `json:"maximum-results"`
-	// Message An explanatory message: "A maximum of 1000 search results are supported."
+	// Message an explanatory message: "A maximum of 1000 search results are supported."
 	Message string `json:"message"`
 }
 

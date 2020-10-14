@@ -9,7 +9,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// ListEpicComments Get a list of all Comments on an Epic.
+// ListEpicComments get a list of all Comments on an Epic.
 func (a *api) ListEpicComments(epicID int64) (*[]models.ThreadedComment, error) {
 	params := url.Values{}
 	var out []models.ThreadedComment
@@ -19,7 +19,7 @@ func (a *api) ListEpicComments(epicID int64) (*[]models.ThreadedComment, error) 
 	return &out, nil
 }
 
-// CreateEpicComment This endpoint allows you to create a threaded Comment on an Epic.
+// CreateEpicComment this endpoint allows you to create a threaded Comment on an Epic.
 func (a *api) CreateEpicComment(epicID int64, epicComment *models.CreateEpicComment) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -34,7 +34,7 @@ func (a *api) CreateEpicComment(epicID int64, epicComment *models.CreateEpicComm
 	return nil
 }
 
-// DeleteEpicComment This endpoint allows you to delete a Comment from an Epic.
+// DeleteEpicComment this endpoint allows you to delete a Comment from an Epic.
 func (a *api) DeleteEpicComment(epicID int64, commentID int64) error {
 	params := url.Values{}
 	var out interface{}
@@ -44,7 +44,7 @@ func (a *api) DeleteEpicComment(epicID int64, commentID int64) error {
 	return nil
 }
 
-// GetEpicComment This endpoint returns information about the selected Epic Comment.
+// GetEpicComment this endpoint returns information about the selected Epic Comment.
 func (a *api) GetEpicComment(epicID int64, commentID int64) (*models.ThreadedComment, error) {
 	params := url.Values{}
 	var out models.ThreadedComment
@@ -54,7 +54,7 @@ func (a *api) GetEpicComment(epicID int64, commentID int64) (*models.ThreadedCom
 	return &out, nil
 }
 
-// UpdateEpicComment This endpoint allows you to update a threaded Comment on an Epic.
+// UpdateEpicComment this endpoint allows you to update a threaded Comment on an Epic.
 func (a *api) UpdateEpicComment(epicID int64, commentID int64, comment *models.UpdateComment) (*models.ThreadedComment, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

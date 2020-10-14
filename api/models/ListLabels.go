@@ -3,7 +3,7 @@ package models
 import "encoding/json"
 
 type ListLabels struct {
-	// Slim A true/false boolean indicating if the slim versions of the Label should be returned.
+	// Slim a true/false boolean indicating if the slim versions of the Label should be returned.
 	Slim bool `json:"slim"`
 }
 

@@ -8,7 +8,7 @@ import (
 	"github.com/pec1985/go-clubhouse/api/models"
 )
 
-// ListEntityTemplates List all the entity templates for an organization.
+// ListEntityTemplates list all the entity templates for an organization.
 func (a *api) ListEntityTemplates() (*[]models.EntityTemplate, error) {
 	params := url.Values{}
 	var out []models.EntityTemplate
@@ -18,7 +18,7 @@ func (a *api) ListEntityTemplates() (*[]models.EntityTemplate, error) {
 	return &out, nil
 }
 
-// CreateEntityTemplate Create a new entity template for your organization.
+// CreateEntityTemplate create a new entity template for your organization.
 func (a *api) CreateEntityTemplate(entityTemplate *models.CreateEntityTemplate) error {
 	params := url.Values{}
 	var body *bytes.Buffer
@@ -51,7 +51,7 @@ func (a *api) GetEntityTemplate(entityTemplateID string) (*models.EntityTemplate
 	return &out, nil
 }
 
-// UpdateEntityTemplate Update an entity template's name or its contents.
+// UpdateEntityTemplate update an entity template's name or its contents.
 func (a *api) UpdateEntityTemplate(entityTemplateID string, entityTemplate *models.UpdateEntityTemplate) (*models.EntityTemplate, error) {
 	params := url.Values{}
 	var body *bytes.Buffer

@@ -5,26 +5,26 @@ import (
 	"time"
 )
 
-// Member Details about individual Clubhouse user within the Clubhouse organization that has issued the token.
+// Member details about individual Clubhouse user within the Clubhouse organization that has issued the token.
 type Member struct {
-	// CreatedAt The time/date the Member was created.
+	// CreatedAt the time/date the Member was created.
 	CreatedAt *time.Time `json:"created_at"`
-	// CreatedWithoutInvite Whether this member was created as a placeholder entity.
+	// CreatedWithoutInvite whether this member was created as a placeholder entity.
 	CreatedWithoutInvite bool `json:"created_without_invite"`
-	// Disabled True/false boolean indicating whether the Member has been disabled within this Organization.
+	// Disabled true/false boolean indicating whether the Member has been disabled within this Organization.
 	Disabled bool `json:"disabled"`
-	// EntityType A string description of this resource.
+	// EntityType a string description of this resource.
 	EntityType string `json:"entity_type"`
-	// GroupIDs The Member's group ids
+	// GroupIDs the Member's group ids
 	GroupIDs []string `json:"group_ids"`
-	// ID The Member's ID in Clubhouse.
+	// ID the Member's ID in Clubhouse.
 	ID      string  `json:"id"`
 	Profile Profile `json:"profile"`
-	// ReplacedBy The id of the member that replaces this one when merged.
+	// ReplacedBy the id of the member that replaces this one when merged.
 	ReplacedBy string `json:"replaced_by"`
-	// Role The Member's role in the Clubhouse organization.
+	// Role the Member's role in the Clubhouse organization.
 	Role string `json:"role"`
-	// UpdatedAt The time/date the Member was last updated.
+	// UpdatedAt the time/date the Member was last updated.
 	UpdatedAt *time.Time `json:"updated_at"`
 }
 
