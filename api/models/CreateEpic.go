@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type CreateEpic struct {
 	// CompletedAtOverride a manual override for the time/date the Epic was completed.
@@ -43,10 +40,10 @@ type CreateEpic struct {
 }
 
 func (m *CreateEpic) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateEpic) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

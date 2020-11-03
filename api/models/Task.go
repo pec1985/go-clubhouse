@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type Task struct {
 	// Complete true/false boolean indicating whether the Task has been completed.
@@ -37,10 +34,10 @@ type Task struct {
 }
 
 func (m *Task) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *Task) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

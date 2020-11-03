@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -24,7 +23,7 @@ func (a *api) CreateCategory(category *models.CreateCategory) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if category != nil {
-		jsonbody, _ := json.Marshal(category)
+		jsonbody, _ := toPayload(category, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -59,7 +58,7 @@ func (a *api) UpdateCategory(categoryID int64, category *models.UpdateCategory) 
 	params := url.Values{}
 	var body *bytes.Buffer
 	if category != nil {
-		jsonbody, _ := json.Marshal(category)
+		jsonbody, _ := toPayload(category, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Category

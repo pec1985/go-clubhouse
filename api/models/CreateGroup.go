@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type CreateGroup struct {
 	// Description the description of the Group.
 	Description string `json:"description,omitempty"`
@@ -16,10 +14,10 @@ type CreateGroup struct {
 }
 
 func (m *CreateGroup) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateGroup) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

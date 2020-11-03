@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -24,7 +23,7 @@ func (a *api) CreateLinkedFile(linkedFile *models.CreateLinkedFile) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if linkedFile != nil {
-		jsonbody, _ := json.Marshal(linkedFile)
+		jsonbody, _ := toPayload(linkedFile, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -59,7 +58,7 @@ func (a *api) UpdateLinkedFile(linkedFileID int64, linkedFile *models.UpdateLink
 	params := url.Values{}
 	var body *bytes.Buffer
 	if linkedFile != nil {
-		jsonbody, _ := json.Marshal(linkedFile)
+		jsonbody, _ := toPayload(linkedFile, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.LinkedFile

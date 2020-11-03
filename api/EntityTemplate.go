@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"net/url"
 
 	"github.com/pec1985/go-clubhouse/api/models"
@@ -23,7 +22,7 @@ func (a *api) CreateEntityTemplate(entityTemplate *models.CreateEntityTemplate) 
 	params := url.Values{}
 	var body *bytes.Buffer
 	if entityTemplate != nil {
-		jsonbody, _ := json.Marshal(entityTemplate)
+		jsonbody, _ := toPayload(entityTemplate, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -56,7 +55,7 @@ func (a *api) UpdateEntityTemplate(entityTemplateID string, entityTemplate *mode
 	params := url.Values{}
 	var body *bytes.Buffer
 	if entityTemplate != nil {
-		jsonbody, _ := json.Marshal(entityTemplate)
+		jsonbody, _ := toPayload(entityTemplate, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.EntityTemplate

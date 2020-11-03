@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type UpdateEpic struct {
 	// AfterID the ID of the Epic we want to move this Epic after.
@@ -43,10 +40,10 @@ type UpdateEpic struct {
 }
 
 func (m *UpdateEpic) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateEpic) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

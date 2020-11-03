@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type CreateIteration struct {
 	// Description the description of the Iteration.
 	Description string `json:"description,omitempty"`
@@ -20,10 +18,10 @@ type CreateIteration struct {
 }
 
 func (m *CreateIteration) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateIteration) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

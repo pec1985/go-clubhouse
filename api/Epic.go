@@ -32,7 +32,7 @@ func (a *api) CreateEpic(epic *models.CreateEpic) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if epic != nil {
-		jsonbody, _ := json.Marshal(epic)
+		jsonbody, _ := toPayload(epic, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -67,7 +67,7 @@ func (a *api) UpdateEpic(epicID int64, epic *models.UpdateEpic) (*models.Epic, e
 	params := url.Values{}
 	var body *bytes.Buffer
 	if epic != nil {
-		jsonbody, _ := json.Marshal(epic)
+		jsonbody, _ := toPayload(epic, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Epic

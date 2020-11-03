@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"net/url"
 
 	"github.com/pec1985/go-clubhouse/api/models"
@@ -20,7 +19,7 @@ func (a *api) CreateGroup(group *models.CreateGroup) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if group != nil {
-		jsonbody, _ := json.Marshal(group)
+		jsonbody, _ := toPayload(group, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -41,7 +40,7 @@ func (a *api) UpdateGroup(groupID string, group *models.UpdateGroup) (*models.Gr
 	params := url.Values{}
 	var body *bytes.Buffer
 	if group != nil {
-		jsonbody, _ := json.Marshal(group)
+		jsonbody, _ := toPayload(group, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Group

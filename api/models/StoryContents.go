@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // StoryContents a container entity for the attributes this template should populate.
 type StoryContents struct {
@@ -46,10 +43,10 @@ type StoryContents struct {
 }
 
 func (m *StoryContents) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *StoryContents) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

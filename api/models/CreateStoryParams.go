@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // CreateStoryParams used to create multiple stories in a single request.
 type CreateStoryParams struct {
@@ -65,10 +62,10 @@ type CreateStoryParams struct {
 }
 
 func (m *CreateStoryParams) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateStoryParams) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

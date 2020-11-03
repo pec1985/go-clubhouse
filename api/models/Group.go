@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // Group a Group.
 type Group struct {
 	// AppURL the Clubhouse application url for the Group.
@@ -24,10 +22,10 @@ type Group struct {
 }
 
 func (m *Group) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *Group) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

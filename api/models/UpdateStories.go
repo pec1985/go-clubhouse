@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type UpdateStories struct {
 	// AfterID the ID of the story that the stories are to be moved below.
@@ -50,10 +47,10 @@ type UpdateStories struct {
 }
 
 func (m *UpdateStories) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateStories) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

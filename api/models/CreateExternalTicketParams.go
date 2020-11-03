@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type CreateExternalTicketParams struct {
 	// ExternalID the id of the ticket in the external system.
 	ExternalID string `json:"external_id,omitempty"`
@@ -10,10 +8,10 @@ type CreateExternalTicketParams struct {
 }
 
 func (m *CreateExternalTicketParams) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateExternalTicketParams) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

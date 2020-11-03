@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type CreateCategory struct {
 	// Color the hex color to be displayed with the Category (for example, "#ff0000").
 	Color string `json:"color,omitempty"`
@@ -14,10 +12,10 @@ type CreateCategory struct {
 }
 
 func (m *CreateCategory) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateCategory) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

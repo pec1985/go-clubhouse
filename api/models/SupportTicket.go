@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type SupportTicket struct {
 	ExternalID  string    `json:"external_id,omitempty"`
 	ExternalURL string    `json:"external_url,omitempty"`
@@ -10,10 +8,10 @@ type SupportTicket struct {
 }
 
 func (m *SupportTicket) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *SupportTicket) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // ProjectStats a group of calculated values for this Project.
 type ProjectStats struct {
 	// NumPoints the total number of points in this Project.
@@ -13,10 +11,10 @@ type ProjectStats struct {
 }
 
 func (m *ProjectStats) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *ProjectStats) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

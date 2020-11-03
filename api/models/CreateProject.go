@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type CreateProject struct {
 	// Abbreviation the Project abbreviation used in Story summaries. Should be kept to 3 characters at most.
@@ -31,10 +28,10 @@ type CreateProject struct {
 }
 
 func (m *CreateProject) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateProject) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

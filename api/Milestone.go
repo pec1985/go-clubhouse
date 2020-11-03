@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -24,7 +23,7 @@ func (a *api) CreateMilestone(milestone *models.CreateMilestone) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if milestone != nil {
-		jsonbody, _ := json.Marshal(milestone)
+		jsonbody, _ := toPayload(milestone, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -59,7 +58,7 @@ func (a *api) UpdateMilestone(milestoneID int64, milestone *models.UpdateMilesto
 	params := url.Values{}
 	var body *bytes.Buffer
 	if milestone != nil {
-		jsonbody, _ := json.Marshal(milestone)
+		jsonbody, _ := toPayload(milestone, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Milestone

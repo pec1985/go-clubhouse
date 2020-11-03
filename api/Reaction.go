@@ -32,7 +32,7 @@ func (a *api) CreateReaction(storyID int64, commentID int64, orDeleteReaction *m
 	params := url.Values{}
 	var body *bytes.Buffer
 	if orDeleteReaction != nil {
-		jsonbody, _ := json.Marshal(orDeleteReaction)
+		jsonbody, _ := toPayload(orDeleteReaction, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}

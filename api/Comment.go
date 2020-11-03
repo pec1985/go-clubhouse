@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -14,7 +13,7 @@ func (a *api) CreateComment(storyID int64, comment *models.CreateComment) error 
 	params := url.Values{}
 	var body *bytes.Buffer
 	if comment != nil {
-		jsonbody, _ := json.Marshal(comment)
+		jsonbody, _ := toPayload(comment, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -49,7 +48,7 @@ func (a *api) UpdateComment(storyID int64, commentID int64, comment *models.Upda
 	params := url.Values{}
 	var body *bytes.Buffer
 	if comment != nil {
-		jsonbody, _ := json.Marshal(comment)
+		jsonbody, _ := toPayload(comment, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Comment

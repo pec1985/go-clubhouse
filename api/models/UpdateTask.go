@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type UpdateTask struct {
 	// AfterID move task after this task ID.
 	AfterID int64 `json:"after_id,omitempty"`
@@ -16,10 +14,10 @@ type UpdateTask struct {
 }
 
 func (m *UpdateTask) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateTask) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

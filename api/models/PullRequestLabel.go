@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // PullRequestLabel corresponds to a VCS Label associated with a Pull Request.
 type PullRequestLabel struct {
 	// Color the color of the VCS label.
@@ -17,10 +15,10 @@ type PullRequestLabel struct {
 }
 
 func (m *PullRequestLabel) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *PullRequestLabel) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

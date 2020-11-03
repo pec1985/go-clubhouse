@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type CreateStoryLink struct {
 	// ObjectID the ID of the object Story.
 	ObjectID int64 `json:"object_id,omitempty"`
@@ -12,10 +10,10 @@ type CreateStoryLink struct {
 }
 
 func (m *CreateStoryLink) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateStoryLink) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

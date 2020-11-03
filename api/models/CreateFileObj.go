@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type CreateFileObj struct {
 	ContentType string `json:"content-type,omitempty"`
 	Filename    string `json:"filename,omitempty"`
@@ -10,10 +8,10 @@ type CreateFileObj struct {
 }
 
 func (m *CreateFileObj) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateFileObj) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

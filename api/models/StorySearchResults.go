@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // StorySearchResults the results of the Story search query.
 type StorySearchResults struct {
 	Cursors []string `json:"cursors,omitempty"`
@@ -14,10 +12,10 @@ type StorySearchResults struct {
 }
 
 func (m *StorySearchResults) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *StorySearchResults) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

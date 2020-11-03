@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // CreateStoryLinkParams request parameters for creating a Story Link within a Story.
 type CreateStoryLinkParams struct {
 	// ObjectID the unique ID of the Story defined as object.
@@ -13,10 +11,10 @@ type CreateStoryLinkParams struct {
 }
 
 func (m *CreateStoryLinkParams) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateStoryLinkParams) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type UpdateGroup struct {
 	// Archived whether or not this Group is archived.
 	Archived *bool `json:"archived,omitempty"`
@@ -18,10 +16,10 @@ type UpdateGroup struct {
 }
 
 func (m *UpdateGroup) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateGroup) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

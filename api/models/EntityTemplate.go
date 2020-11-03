@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // EntityTemplate an entity template can be used to prefill various fields when creating new stories.
 type EntityTemplate struct {
@@ -25,10 +22,10 @@ type EntityTemplate struct {
 }
 
 func (m *EntityTemplate) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *EntityTemplate) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

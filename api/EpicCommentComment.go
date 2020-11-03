@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -14,7 +13,7 @@ func (a *api) CreateEpicCommentComment(epicID int64, commentID int64, commentCom
 	params := url.Values{}
 	var body *bytes.Buffer
 	if commentComment != nil {
-		jsonbody, _ := json.Marshal(commentComment)
+		jsonbody, _ := toPayload(commentComment, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}

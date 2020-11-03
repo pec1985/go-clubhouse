@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type StoryContentsTask struct {
 	// Complete true/false boolean indicating whether the Task has been completed.
 	Complete bool `json:"complete,omitempty"`
@@ -16,10 +14,10 @@ type StoryContentsTask struct {
 }
 
 func (m *StoryContentsTask) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *StoryContentsTask) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

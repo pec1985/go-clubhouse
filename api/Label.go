@@ -32,7 +32,7 @@ func (a *api) CreateLabel(labelParams *models.CreateLabelParams) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if labelParams != nil {
-		jsonbody, _ := json.Marshal(labelParams)
+		jsonbody, _ := toPayload(labelParams, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -67,7 +67,7 @@ func (a *api) UpdateLabel(labelID int64, label *models.UpdateLabel) (*models.Lab
 	params := url.Values{}
 	var body *bytes.Buffer
 	if label != nil {
-		jsonbody, _ := json.Marshal(label)
+		jsonbody, _ := toPayload(label, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Label

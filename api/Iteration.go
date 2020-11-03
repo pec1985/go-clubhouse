@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -21,7 +20,7 @@ func (a *api) CreateIteration(iteration *models.CreateIteration) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if iteration != nil {
-		jsonbody, _ := json.Marshal(iteration)
+		jsonbody, _ := toPayload(iteration, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -50,7 +49,7 @@ func (a *api) UpdateIteration(iterationID int64, iteration *models.UpdateIterati
 	params := url.Values{}
 	var body *bytes.Buffer
 	if iteration != nil {
-		jsonbody, _ := json.Marshal(iteration)
+		jsonbody, _ := toPayload(iteration, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Iteration

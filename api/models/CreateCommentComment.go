@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type CreateCommentComment struct {
 	// AuthorID the Member ID of the Comment's author. Defaults to the user identified by the API token.
@@ -19,10 +16,10 @@ type CreateCommentComment struct {
 }
 
 func (m *CreateCommentComment) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateCommentComment) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

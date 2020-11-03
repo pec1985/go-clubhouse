@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type UpdateCategory struct {
 	// Archived a true/false boolean indicating if the Category has been archived.
 	Archived bool `json:"archived,omitempty"`
@@ -12,10 +10,10 @@ type UpdateCategory struct {
 }
 
 func (m *UpdateCategory) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateCategory) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

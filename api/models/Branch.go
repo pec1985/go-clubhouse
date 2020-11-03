@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // branch refers to a VCS branch. Branches are feature branches associated with Clubhouse Stories.
 type Branch struct {
@@ -32,10 +29,10 @@ type Branch struct {
 }
 
 func (m *Branch) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *Branch) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

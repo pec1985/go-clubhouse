@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type SearchStories struct {
 	// Archived a true/false boolean indicating whether the Story is in archived state.
@@ -65,10 +62,10 @@ type SearchStories struct {
 }
 
 func (m *SearchStories) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *SearchStories) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // ThreadedComment comments associated with Epic Discussions.
 type ThreadedComment struct {
@@ -36,10 +33,10 @@ type ThreadedComment struct {
 }
 
 func (m *ThreadedComment) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *ThreadedComment) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // EntityTemplateTask request parameters for specifying how to pre-populate a task through a template.
 type EntityTemplateTask struct {
 	// Complete true/false boolean indicating whether the Task is completed. Defaults to false.
@@ -15,10 +13,10 @@ type EntityTemplateTask struct {
 }
 
 func (m *EntityTemplateTask) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *EntityTemplateTask) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

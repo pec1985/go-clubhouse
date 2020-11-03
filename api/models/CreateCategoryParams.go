@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // CreateCategoryParams request parameters for creating a Category with a Milestone.
 type CreateCategoryParams struct {
 	// Color the hex color to be displayed with the Category (for example, "#ff0000").
@@ -13,10 +11,10 @@ type CreateCategoryParams struct {
 }
 
 func (m *CreateCategoryParams) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateCategoryParams) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

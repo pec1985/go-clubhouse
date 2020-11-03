@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // icons are used to attach images to Organizations, Members, and Loading screens in the Clubhouse web application.
 type Icon struct {
@@ -20,10 +17,10 @@ type Icon struct {
 }
 
 func (m *Icon) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *Icon) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

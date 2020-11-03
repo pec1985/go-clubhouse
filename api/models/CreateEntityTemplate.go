@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // CreateEntityTemplate request paramaters for creating an entirely new entity template.
 type CreateEntityTemplate struct {
 	// AuthorID the id of the user creating this template.
@@ -12,10 +10,10 @@ type CreateEntityTemplate struct {
 }
 
 func (m *CreateEntityTemplate) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateEntityTemplate) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // Profile a group of Member profile details.
 type Profile struct {
 	// Deactivated a true/false boolean indicating whether the Member has been deactivated within Clubhouse.
@@ -24,10 +22,10 @@ type Profile struct {
 }
 
 func (m *Profile) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *Profile) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type UpdateLinkedFile struct {
 	// Description the description of the file.
 	Description string `json:"description,omitempty"`
@@ -22,10 +20,10 @@ type UpdateLinkedFile struct {
 }
 
 func (m *UpdateLinkedFile) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateLinkedFile) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

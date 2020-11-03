@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // TypedStoryLink the type of Story Link. The string can be subject or object.
 type TypedStoryLink struct {
@@ -26,10 +23,10 @@ type TypedStoryLink struct {
 }
 
 func (m *TypedStoryLink) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *TypedStoryLink) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

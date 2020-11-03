@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // CreateTaskParams request parameters for creating a Task on a Story.
 type CreateTaskParams struct {
@@ -22,10 +19,10 @@ type CreateTaskParams struct {
 }
 
 func (m *CreateTaskParams) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateTaskParams) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

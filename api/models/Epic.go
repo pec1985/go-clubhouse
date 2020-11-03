@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // Epic an Epic is a collection of stories that together might make up a release, a milestone, or some other large initiative that your organization is working on.
 type Epic struct {
@@ -74,10 +71,10 @@ type Epic struct {
 }
 
 func (m *Epic) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *Epic) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

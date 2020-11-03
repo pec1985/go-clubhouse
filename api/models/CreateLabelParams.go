@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // CreateLabelParams request parameters for creating a Label on a Clubhouse story.
 type CreateLabelParams struct {
 	// Color the hex color to be displayed with the Label (for example, "#ff0000").
@@ -15,10 +13,10 @@ type CreateLabelParams struct {
 }
 
 func (m *CreateLabelParams) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateLabelParams) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

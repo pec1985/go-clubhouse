@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type UpdateMilestone struct {
 	// AfterID the ID of the Milestone we want to move this Milestone after.
@@ -25,10 +22,10 @@ type UpdateMilestone struct {
 }
 
 func (m *UpdateMilestone) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateMilestone) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

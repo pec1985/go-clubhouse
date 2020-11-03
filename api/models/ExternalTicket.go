@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // ExternalTicket a External Ticket allows you to create a link between an external system, like Zendesk, and a Clubhouse story.
 type ExternalTicket struct {
 	// ExternalID the ID used in the external system.
@@ -15,10 +13,10 @@ type ExternalTicket struct {
 }
 
 func (m *ExternalTicket) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *ExternalTicket) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

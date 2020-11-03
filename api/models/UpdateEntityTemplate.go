@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // UpdateEntityTemplate request parameters for changing either a template's name or any of
 //   the attributes it is designed to pre-populate.
 type UpdateEntityTemplate struct {
@@ -11,10 +9,10 @@ type UpdateEntityTemplate struct {
 }
 
 func (m *UpdateEntityTemplate) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateEntityTemplate) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

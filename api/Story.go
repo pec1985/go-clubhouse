@@ -32,7 +32,7 @@ func (a *api) CreateStory(storyParams *models.CreateStoryParams) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if storyParams != nil {
-		jsonbody, _ := json.Marshal(storyParams)
+		jsonbody, _ := toPayload(storyParams, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -67,7 +67,7 @@ func (a *api) UpdateStory(storyID int64, story *models.UpdateStory) (*models.Sto
 	params := url.Values{}
 	var body *bytes.Buffer
 	if story != nil {
-		jsonbody, _ := json.Marshal(story)
+		jsonbody, _ := toPayload(story, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Story

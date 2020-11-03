@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type UpdateProject struct {
 	// Abbreviation the Project abbreviation used in Story summaries. Should be kept to 3 characters at most.
 	Abbreviation string `json:"abbreviation,omitempty"`
@@ -24,10 +22,10 @@ type UpdateProject struct {
 }
 
 func (m *UpdateProject) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateProject) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

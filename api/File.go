@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -22,7 +21,7 @@ func (a *api) CreateFiles(files *models.CreateFiles) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if files != nil {
-		jsonbody, _ := json.Marshal(files)
+		jsonbody, _ := toPayload(files, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -57,7 +56,7 @@ func (a *api) UpdateFile(fileID int64, file *models.UpdateFile) (*models.File, e
 	params := url.Values{}
 	var body *bytes.Buffer
 	if file != nil {
-		jsonbody, _ := json.Marshal(file)
+		jsonbody, _ := toPayload(file, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.File

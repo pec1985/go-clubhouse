@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type UpdateIteration struct {
 	// Description the description of the Iteration.
 	Description string `json:"description,omitempty"`
@@ -20,10 +18,10 @@ type UpdateIteration struct {
 }
 
 func (m *UpdateIteration) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateIteration) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

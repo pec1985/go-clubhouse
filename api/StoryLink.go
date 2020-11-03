@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -21,7 +20,7 @@ func (a *api) CreateStoryLink(storyLink *models.CreateStoryLink) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if storyLink != nil {
-		jsonbody, _ := json.Marshal(storyLink)
+		jsonbody, _ := toPayload(storyLink, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -56,7 +55,7 @@ func (a *api) UpdateStoryLink(storyLinkID int64, storyLink *models.UpdateStoryLi
 	params := url.Values{}
 	var body *bytes.Buffer
 	if storyLink != nil {
-		jsonbody, _ := json.Marshal(storyLink)
+		jsonbody, _ := toPayload(storyLink, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.StoryLink

@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // IterationStats a group of calculated values for this Iteration.
 type IterationStats struct {
 	// AverageCycleTime the average cycle time (in seconds) of completed stories in this Iteration.
@@ -29,10 +27,10 @@ type IterationStats struct {
 }
 
 func (m *IterationStats) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *IterationStats) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

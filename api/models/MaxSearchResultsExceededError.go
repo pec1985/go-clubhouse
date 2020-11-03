@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // MaxSearchResultsExceededError error returned when total maximum supported results have been reached.
 type MaxSearchResultsExceededError struct {
 	// Error the name for this type of error, `maximum-results-exceeded`
@@ -13,10 +11,10 @@ type MaxSearchResultsExceededError struct {
 }
 
 func (m *MaxSearchResultsExceededError) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *MaxSearchResultsExceededError) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

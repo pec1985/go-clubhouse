@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // PullRequest corresponds to a VCS Pull Request attached to a Clubhouse story.
 type PullRequest struct {
@@ -50,10 +47,10 @@ type PullRequest struct {
 }
 
 func (m *PullRequest) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *PullRequest) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

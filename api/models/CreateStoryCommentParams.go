@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // CreateStoryCommentParams request parameters for creating a Comment on a Clubhouse Story.
 type CreateStoryCommentParams struct {
@@ -20,10 +17,10 @@ type CreateStoryCommentParams struct {
 }
 
 func (m *CreateStoryCommentParams) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateStoryCommentParams) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

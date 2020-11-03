@@ -32,7 +32,7 @@ func (a *api) CreateMultipleStories(stories *models.CreateStories) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if stories != nil {
-		jsonbody, _ := json.Marshal(stories)
+		jsonbody, _ := toPayload(stories, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -47,7 +47,7 @@ func (a *api) UpdateMultipleStories(stories *models.UpdateStories) (*[]models.St
 	params := url.Values{}
 	var body *bytes.Buffer
 	if stories != nil {
-		jsonbody, _ := json.Marshal(stories)
+		jsonbody, _ := toPayload(stories, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out []models.StorySlim

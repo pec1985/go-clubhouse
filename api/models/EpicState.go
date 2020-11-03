@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // EpicState epic State is any of the at least 3 columns. Epic States correspond to one of 3 types: Unstarted, Started, or Done.
 type EpicState struct {
@@ -28,10 +25,10 @@ type EpicState struct {
 }
 
 func (m *EpicState) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *EpicState) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

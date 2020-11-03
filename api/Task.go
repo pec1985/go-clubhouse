@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -14,7 +13,7 @@ func (a *api) CreateTask(storyID int64, task *models.CreateTask) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if task != nil {
-		jsonbody, _ := json.Marshal(task)
+		jsonbody, _ := toPayload(task, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -49,7 +48,7 @@ func (a *api) UpdateTask(storyID int64, taskID int64, task *models.UpdateTask) (
 	params := url.Values{}
 	var body *bytes.Buffer
 	if task != nil {
-		jsonbody, _ := json.Marshal(task)
+		jsonbody, _ := toPayload(task, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Task

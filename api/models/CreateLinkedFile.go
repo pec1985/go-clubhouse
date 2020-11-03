@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type CreateLinkedFile struct {
 	// ContentType the content type of the image (e.g. txt/plain).
 	ContentType string `json:"content_type,omitempty"`
@@ -24,10 +22,10 @@ type CreateLinkedFile struct {
 }
 
 func (m *CreateLinkedFile) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateLinkedFile) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

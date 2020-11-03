@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // SearchResults the results of the multi-entity search query.
 type SearchResults struct {
 	Epics   EpicSearchResults  `json:"epics,omitempty"`
@@ -9,10 +7,10 @@ type SearchResults struct {
 }
 
 func (m *SearchResults) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *SearchResults) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

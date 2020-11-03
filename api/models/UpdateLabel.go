@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type UpdateLabel struct {
 	// Archived a true/false boolean indicating if the Label has been archived.
 	Archived bool `json:"archived,omitempty"`
@@ -14,10 +12,10 @@ type UpdateLabel struct {
 }
 
 func (m *UpdateLabel) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *UpdateLabel) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // EpicSearchResults the results of the Epic search query.
 type EpicSearchResults struct {
 	Cursors []string `json:"cursors,omitempty"`
@@ -14,10 +12,10 @@ type EpicSearchResults struct {
 }
 
 func (m *EpicSearchResults) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *EpicSearchResults) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

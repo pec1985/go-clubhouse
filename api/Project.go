@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -24,7 +23,7 @@ func (a *api) CreateProject(project *models.CreateProject) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if project != nil {
-		jsonbody, _ := json.Marshal(project)
+		jsonbody, _ := toPayload(project, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -59,7 +58,7 @@ func (a *api) UpdateProject(projectID int64, project *models.UpdateProject) (*mo
 	params := url.Values{}
 	var body *bytes.Buffer
 	if project != nil {
-		jsonbody, _ := json.Marshal(project)
+		jsonbody, _ := toPayload(project, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.Project

@@ -171,7 +171,7 @@ func generateApi(dir string, paths map[string]map[string]swaggerPayloadPath) []s
 						}
 						if method == "post" || method == "put" {
 							body = append(params, "if "+shortname+" != nil {")
-							body = append(body, "jsonbody, _ := json.Marshal("+shortname+")")
+							body = append(body, "jsonbody, _ := toPayload("+shortname+",false)")
 							body = append(body, "body = bytes.NewBuffer(jsonbody)")
 							body = append(body, "}")
 						} else {
@@ -315,11 +315,11 @@ func generateModels(dir string, definitions map[string]swaggerPayloadDefinition)
 		}
 		lines = append(lines, "}")
 		lines = append(lines, "func (m*"+name+") Stringify() string {")
-		lines = append(lines, "b,_:=json.Marshal(m)")
+		lines = append(lines, "b,_:=toPayload(m,false)")
 		lines = append(lines, "return string(b)")
 		lines = append(lines, "}")
 		lines = append(lines, "func (m*"+name+") StringifyPretty() string {")
-		lines = append(lines, `b,_:=json.MarshalIndent(m,"","  ")`)
+		lines = append(lines, `b,_:=toPayload(m,true)`)
 		lines = append(lines, "return string(b)")
 		lines = append(lines, "}")
 		object := strings.Join(lines, "\n")

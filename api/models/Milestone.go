@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 // Milestone a Milestone is a collection of Epics that represent a release or some other large initiative that your organization is working on.
 type Milestone struct {
@@ -43,10 +40,10 @@ type Milestone struct {
 }
 
 func (m *Milestone) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *Milestone) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

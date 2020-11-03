@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type Search struct {
 	Include string `json:"include,omitempty"`
 	// Next the next page token.
@@ -13,10 +11,10 @@ type Search struct {
 }
 
 func (m *Search) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *Search) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

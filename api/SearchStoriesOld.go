@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"net/url"
 
 	"github.com/pec1985/go-clubhouse/api/models"
@@ -13,7 +12,7 @@ func (a *api) SearchStoriesOld(searchStories *models.SearchStories) error {
 	params := url.Values{}
 	var body *bytes.Buffer
 	if searchStories != nil {
-		jsonbody, _ := json.Marshal(searchStories)
+		jsonbody, _ := toPayload(searchStories, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}

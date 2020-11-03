@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 // MilestoneStats a group of calculated values for this Milestone.
 type MilestoneStats struct {
 	// AverageCycleTime the average cycle time (in seconds) of completed stories in this Milestone.
@@ -13,10 +11,10 @@ type MilestoneStats struct {
 }
 
 func (m *MilestoneStats) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *MilestoneStats) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

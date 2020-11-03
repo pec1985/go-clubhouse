@@ -2,7 +2,6 @@ package api
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -24,7 +23,7 @@ func (a *api) CreateEpicComment(epicID int64, epicComment *models.CreateEpicComm
 	params := url.Values{}
 	var body *bytes.Buffer
 	if epicComment != nil {
-		jsonbody, _ := json.Marshal(epicComment)
+		jsonbody, _ := toPayload(epicComment, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out interface{}
@@ -59,7 +58,7 @@ func (a *api) UpdateEpicComment(epicID int64, commentID int64, comment *models.U
 	params := url.Values{}
 	var body *bytes.Buffer
 	if comment != nil {
-		jsonbody, _ := json.Marshal(comment)
+		jsonbody, _ := toPayload(comment, false)
 		body = bytes.NewBuffer(jsonbody)
 	}
 	var out models.ThreadedComment

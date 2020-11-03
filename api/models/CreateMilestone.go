@@ -1,9 +1,6 @@
 package models
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type CreateMilestone struct {
 	// Categories an array of IDs of Categories attached to the Milestone.
@@ -21,10 +18,10 @@ type CreateMilestone struct {
 }
 
 func (m *CreateMilestone) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *CreateMilestone) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }

@@ -1,7 +1,5 @@
 package models
 
-import "encoding/json"
-
 type MemberInfo struct {
 	ID          string             `json:"id,omitempty"`
 	MentionName string             `json:"mention_name,omitempty"`
@@ -10,10 +8,10 @@ type MemberInfo struct {
 }
 
 func (m *MemberInfo) Stringify() string {
-	b, _ := json.Marshal(m)
+	b, _ := toPayload(m, false)
 	return string(b)
 }
 func (m *MemberInfo) StringifyPretty() string {
-	b, _ := json.MarshalIndent(m, "", "  ")
+	b, _ := toPayload(m, true)
 	return string(b)
 }
