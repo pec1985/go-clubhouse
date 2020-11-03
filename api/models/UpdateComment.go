@@ -4,7 +4,7 @@ import "encoding/json"
 
 type UpdateComment struct {
 	// Text the updated comment text.
-	Text string `json:"text"`
+	Text string `json:"text,omitempty"`
 }
 
 func (m *UpdateComment) Stringify() string {

@@ -5,10 +5,10 @@ import "encoding/json"
 // CreateEntityTemplate request paramaters for creating an entirely new entity template.
 type CreateEntityTemplate struct {
 	// AuthorID the id of the user creating this template.
-	AuthorID string `json:"author_id"`
+	AuthorID string `json:"author_id,omitempty"`
 	// Name the name of the new entity template
-	Name          string              `json:"name"`
-	StoryContents CreateStoryContents `json:"story_contents"`
+	Name          string              `json:"name,omitempty"`
+	StoryContents CreateStoryContents `json:"story_contents,omitempty"`
 }
 
 func (m *CreateEntityTemplate) Stringify() string {

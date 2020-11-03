@@ -4,15 +4,15 @@ import "encoding/json"
 
 type UpdateTask struct {
 	// AfterID move task after this task ID.
-	AfterID int64 `json:"after_id"`
+	AfterID int64 `json:"after_id,omitempty"`
 	// BeforeID move task before this task ID.
-	BeforeID int64 `json:"before_id"`
+	BeforeID int64 `json:"before_id,omitempty"`
 	// Complete a true/false boolean indicating whether the task is complete.
-	Complete bool `json:"complete"`
+	Complete bool `json:"complete,omitempty"`
 	// Description the Task's description.
-	Description string `json:"description"`
+	Description string `json:"description,omitempty"`
 	// OwnerIDs an array of UUIDs of the owners of this story.
-	OwnerIDs []string `json:"owner_ids"`
+	OwnerIDs []string `json:"owner_ids,omitempty"`
 }
 
 func (m *UpdateTask) Stringify() string {

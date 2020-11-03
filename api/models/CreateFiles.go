@@ -4,7 +4,7 @@ import "encoding/json"
 
 type CreateFiles struct {
 	// StoryID the story ID that this file will be associated with.
-	StoryID int64 `json:"story_id"`
+	StoryID int64 `json:"story_id,omitempty"`
 }
 
 func (m *CreateFiles) Stringify() string {

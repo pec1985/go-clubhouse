@@ -5,22 +5,22 @@ import "encoding/json"
 // Group a Group.
 type Group struct {
 	// AppURL the Clubhouse application url for the Group.
-	AppURL string `json:"app_url"`
+	AppURL string `json:"app_url,omitempty"`
 	// Archived whether or not the Group is archived.
-	Archived bool `json:"archived"`
+	Archived bool `json:"archived,omitempty"`
 	// Description the description of the Group.
-	Description string `json:"description"`
-	DisplayIcon *Icon  `json:"display_icon"`
+	Description string `json:"description,omitempty"`
+	DisplayIcon *Icon  `json:"display_icon,omitempty"`
 	// EntityType a string description of this resource.
-	EntityType string `json:"entity_type"`
+	EntityType string `json:"entity_type,omitempty"`
 	// ID the id of the Group.
-	ID string `json:"id"`
+	ID string `json:"id,omitempty"`
 	// MemberIDs the Member IDs contain within the Group.
-	MemberIDs []string `json:"member_ids"`
+	MemberIDs []string `json:"member_ids,omitempty"`
 	// MentionName the mention name of the Group.
-	MentionName string `json:"mention_name"`
+	MentionName string `json:"mention_name,omitempty"`
 	// Name the name of the Group.
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 func (m *Group) Stringify() string {

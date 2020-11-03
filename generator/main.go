@@ -406,7 +406,7 @@ func generatePropery(name string, property swaggerPayloadDefinitionProperty) str
 		fmt.Println("could not find type")
 		return ""
 	}
-	line += " `json:\"" + name + "\"`"
+	line += " `json:\"" + name + ",omitempty" + "\"`"
 	if property.Description != nil && !strings.HasPrefix(*property.Description, propname) {
 		return "// " + propname + " " + lowercaseFirstWord(*property.Description) + "\n" + line
 	}

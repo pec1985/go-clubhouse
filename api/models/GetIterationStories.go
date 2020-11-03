@@ -4,7 +4,7 @@ import "encoding/json"
 
 type GetIterationStories struct {
 	// IncludesDescription a true/false boolean indicating whether to return Stories with their descriptions.
-	IncludesDescription bool `json:"includes_description"`
+	IncludesDescription bool `json:"includes_description,omitempty"`
 }
 
 func (m *GetIterationStories) Stringify() string {

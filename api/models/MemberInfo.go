@@ -3,10 +3,10 @@ package models
 import "encoding/json"
 
 type MemberInfo struct {
-	ID          string             `json:"id"`
-	MentionName string             `json:"mention_name"`
-	Name        string             `json:"name"`
-	Workspace2  BasicWorkspaceInfo `json:"workspace2"`
+	ID          string             `json:"id,omitempty"`
+	MentionName string             `json:"mention_name,omitempty"`
+	Name        string             `json:"name,omitempty"`
+	Workspace2  BasicWorkspaceInfo `json:"workspace2,omitempty"`
 }
 
 func (m *MemberInfo) Stringify() string {

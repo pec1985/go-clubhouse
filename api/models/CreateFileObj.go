@@ -3,10 +3,10 @@ package models
 import "encoding/json"
 
 type CreateFileObj struct {
-	ContentType string `json:"content-type"`
-	Filename    string `json:"filename"`
-	Size        int64  `json:"size"`
-	Tempfile    File   `json:"tempfile"`
+	ContentType string `json:"content-type,omitempty"`
+	Filename    string `json:"filename,omitempty"`
+	Size        int64  `json:"size,omitempty"`
+	Tempfile    File   `json:"tempfile,omitempty"`
 }
 
 func (m *CreateFileObj) Stringify() string {

@@ -4,7 +4,7 @@ import "encoding/json"
 
 type CreateOrDeleteReaction struct {
 	// Emoji the emoji short-code to add / remove. E.g. `:thumbsup::skin-tone-4:`.
-	Emoji string `json:"emoji"`
+	Emoji string `json:"emoji,omitempty"`
 }
 
 func (m *CreateOrDeleteReaction) Stringify() string {

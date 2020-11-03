@@ -3,8 +3,8 @@ package models
 import "encoding/json"
 
 type BasicWorkspaceInfo struct {
-	EstimateScale []int64 `json:"estimate_scale"`
-	UrlSlug       string  `json:"url_slug"`
+	EstimateScale []int64 `json:"estimate_scale,omitempty"`
+	UrlSlug       string  `json:"url_slug,omitempty"`
 }
 
 func (m *BasicWorkspaceInfo) Stringify() string {

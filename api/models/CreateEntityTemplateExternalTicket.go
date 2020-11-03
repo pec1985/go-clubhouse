@@ -4,9 +4,9 @@ import "encoding/json"
 
 type CreateEntityTemplateExternalTicket struct {
 	// ExternalID the id of the ticket in the external system.
-	ExternalID string `json:"external_id"`
+	ExternalID string `json:"external_id,omitempty"`
 	// ExternalURL the url for the ticket in the external system.
-	ExternalURL string `json:"external_url"`
+	ExternalURL string `json:"external_url,omitempty"`
 }
 
 func (m *CreateEntityTemplateExternalTicket) Stringify() string {

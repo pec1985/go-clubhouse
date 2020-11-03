@@ -4,7 +4,7 @@ import "encoding/json"
 
 type ListLabels struct {
 	// Slim a true/false boolean indicating if the slim versions of the Label should be returned.
-	Slim bool `json:"slim"`
+	Slim bool `json:"slim,omitempty"`
 }
 
 func (m *ListLabels) Stringify() string {

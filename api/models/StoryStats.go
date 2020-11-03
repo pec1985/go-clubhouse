@@ -5,7 +5,7 @@ import "encoding/json"
 // StoryStats the stats object for Stories
 type StoryStats struct {
 	// NumRelatedDocuments the number of documents related to this Story.
-	NumRelatedDocuments int64 `json:"num_related_documents"`
+	NumRelatedDocuments int64 `json:"num_related_documents,omitempty"`
 }
 
 func (m *StoryStats) Stringify() string {

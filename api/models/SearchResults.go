@@ -4,8 +4,8 @@ import "encoding/json"
 
 // SearchResults the results of the multi-entity search query.
 type SearchResults struct {
-	Epics   EpicSearchResults  `json:"epics"`
-	Stories StorySearchResults `json:"stories"`
+	Epics   EpicSearchResults  `json:"epics,omitempty"`
+	Stories StorySearchResults `json:"stories,omitempty"`
 }
 
 func (m *SearchResults) Stringify() string {

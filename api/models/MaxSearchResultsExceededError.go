@@ -5,11 +5,11 @@ import "encoding/json"
 // MaxSearchResultsExceededError error returned when total maximum supported results have been reached.
 type MaxSearchResultsExceededError struct {
 	// Error the name for this type of error, `maximum-results-exceeded`
-	Error string `json:"error"`
+	Error string `json:"error,omitempty"`
 	// MaximumResults the maximum number of search results supported, `1000`
-	MaximumResults int64 `json:"maximum-results"`
+	MaximumResults int64 `json:"maximum-results,omitempty"`
 	// Message an explanatory message: "A maximum of 1000 search results are supported."
-	Message string `json:"message"`
+	Message string `json:"message,omitempty"`
 }
 
 func (m *MaxSearchResultsExceededError) Stringify() string {

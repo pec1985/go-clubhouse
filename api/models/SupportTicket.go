@@ -3,10 +3,10 @@ package models
 import "encoding/json"
 
 type SupportTicket struct {
-	ExternalID  string    `json:"external_id"`
-	ExternalURL string    `json:"external_url"`
-	ID          string    `json:"id"`
-	StoryIDs    []float64 `json:"story_ids"`
+	ExternalID  string    `json:"external_id,omitempty"`
+	ExternalURL string    `json:"external_url,omitempty"`
+	ID          string    `json:"id,omitempty"`
+	StoryIDs    []float64 `json:"story_ids,omitempty"`
 }
 
 func (m *SupportTicket) Stringify() string {

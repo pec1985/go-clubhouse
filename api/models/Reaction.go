@@ -4,9 +4,9 @@ import "encoding/json"
 
 // Reaction emoji reaction on a comment.
 type Reaction struct {
-	Emoji string `json:"emoji"`
+	Emoji string `json:"emoji,omitempty"`
 	// PermissionIDs permissions who have reacted with this.
-	PermissionIDs []string `json:"permission_ids"`
+	PermissionIDs []string `json:"permission_ids,omitempty"`
 }
 
 func (m *Reaction) Stringify() string {

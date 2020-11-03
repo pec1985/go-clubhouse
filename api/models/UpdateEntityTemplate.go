@@ -6,8 +6,8 @@ import "encoding/json"
 //   the attributes it is designed to pre-populate.
 type UpdateEntityTemplate struct {
 	// Name the updated template name.
-	Name          string              `json:"name"`
-	StoryContents CreateStoryContents `json:"story_contents"`
+	Name          string              `json:"name,omitempty"`
+	StoryContents CreateStoryContents `json:"story_contents,omitempty"`
 }
 
 func (m *UpdateEntityTemplate) Stringify() string {
