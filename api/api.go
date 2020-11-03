@@ -244,9 +244,9 @@ func (a *api) Request(method string, endpoint string, params url.Values, data io
 	var req *http.Request
 	var err error
 	if data == nil {
-		req, err = http.NewRequest(http.MethodGet, ur+"/"+endpoint+"?"+params.Encode(), nil)
+		req, err = http.NewRequest(method, ur+"/"+endpoint+"?"+params.Encode(), nil)
 	} else {
-		req, err = http.NewRequest(http.MethodGet, ur+"/"+endpoint+"?"+params.Encode(), data)
+		req, err = http.NewRequest(method, ur+"/"+endpoint+"?"+params.Encode(), data)
 	}
 	if err != nil {
 		return err
